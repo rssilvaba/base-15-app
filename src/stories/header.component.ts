@@ -1,7 +1,9 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import ButtonComponent from './button.component';
 import { User } from './User';
 
 @Component({
+  standalone: true,
   selector: 'storybook-header',
   template: `<header>
     <div class="wrapper">
@@ -27,7 +29,7 @@ import { User } from './User';
       <div>
         <div *ngIf="user">
           <span class="welcome">
-            Welcome, <b>{{ user.name }}</b
+            Welcome, <b>{{ user?.name }}</b
             >!
           </span>
           <storybook-button
@@ -47,9 +49,8 @@ import { User } from './User';
           ></storybook-button>
           <storybook-button
             *ngIf="!user"
-            primary
             size="small"
-            primary="true"
+            [primary]="true"
             class="margin-left"
             (onClick)="onCreateAccount.emit($event)"
             label="Sign up"
@@ -58,6 +59,7 @@ import { User } from './User';
       </div>
     </div>
   </header>`,
+  imports: [ButtonComponent],
   styleUrls: ['./header.css'],
 })
 export default class HeaderComponent {

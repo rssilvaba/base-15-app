@@ -1,6 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'storybook-button',
   template: ` <button
     type="button"
@@ -11,6 +13,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     {{ label }}
   </button>`,
   styleUrls: ['./button.css'],
+  imports: [CommonModule]
 })
 export default class ButtonComponent {
   /**

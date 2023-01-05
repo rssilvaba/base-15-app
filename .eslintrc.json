@@ -1,0 +1,84 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*", "*.json", "generated-cookie-consent-api-connector.service.ts"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "eslint:recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "prettier/prettier": "warn",
+        "@angular-eslint/no-output-on-prefix": "off", 
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "prefix": "cpt",
+            "style": "kebab-case",
+            "type": "element"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "prefix": "app",
+            "style": "camelCase",
+            "type": "attribute"
+          }
+        ],
+        "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+
+        "lines-between-class-members": ["warn", "always", { "exceptAfterSingleLine": true }], // Require or disallow an empty line between class members
+        "no-console": ["warn", { "allow": ["warn", "error"] }], // Disallow the use of console
+        "no-debugger": ["warn"], // Disallow the use of debugger
+        "no-duplicate-imports": ["error"], // Disallow duplicate module imports
+        "no-self-compare": ["warn"], // Disallow comparisons where both sides are exactly the same
+        "no-template-curly-in-string": ["error"], // Disallow template literal placeholder syntax in regular strings
+        "block-scoped-var": ["error"], //Enforce the use of variables within the scope they are defined
+        "eqeqeq": ["warn"], // Require the use of === and !==
+        "max-depth": ["warn", 4], // Enforce a maximum depth that blocks can be nested
+        "no-alert": ["warn"], // Disallow the use of alert, confirm, and prompt
+        "no-invalid-this": ["error"], // Disallow use of this in contexts where the value of this is undefined
+        "no-lonely-if": ["warn"], // Disallow if statements as the only statement in else blocks
+        "no-unneeded-ternary": ["error"], // Disallow ternary operators when simpler alternatives exist
+        "no-undefined": ["warn"] // Disallow the use of undefined as an identifier
+      }
+    },
+    {
+      "files": ["*.spec.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json", "e2e/tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": ["off"]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended", "plugin:prettier/recommended"],
+      "rules": {}
+    },
+    {
+      "files": ["*.component.html"],
+      "parser": "@angular-eslint/template-parser",
+      "parserOptions": {
+        "project": "./tsconfig.app.json",
+        "ecmaVersion": 2020,
+        "sourceType": "module",
+        "printWidth": 80
+      },
+      "plugins": ["@angular-eslint/template"],
+      "extends": ["plugin:@angular-eslint/template/recommended", "plugin:prettier/recommended"]
+    }
+  ]
+}
