@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet" />
+
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- <div class="flex w-min h-full items-center  after:content"> -->
+    <div class="p-2 text-sm font-['Karla']">
+      <div
+        class="
+          relative
+          focus-within:border-blue-600
+          inline-block
+          focus-within:ring-blur
+          rounded-[0.125rem]
+          after:pointer-events-none
+          after:absolute
+          after:top-0
+          after:bottom-0
+          after:right-0
+          after:h-full
+          after:w-[24px]
+          after:border-l
+          after:bg-[url(#zed)]
+          after:bg-[length:9px_15px]
+          after:bg-center after:bg-no-repeat
+          after:[background-position-x:6px]
+        "
+      >
+        <select
+          class="outline-none block rounded-[0.125rem] appearance-none border py-1 pl-3 pr-10"
+          name="test-select"
+          id="test-select"
+        >
+          <option disabled selected class="hidden" value="1">Placeholder</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+      </div>
+    </div>
+    <!-- <label class="flex border items-stretch h-full" for="test-select">
+    <svg class="h-full w-4" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 0.5L7.5625 7.5L14.125 0.5" stroke="#BFBFBF" />
+  </svg>
+  </label> -->
+    <!-- <div class="h-full border w-2">
+  </div> -->
+    <!-- </div> -->
+
+    <svg id="svg" class="h-full w-4" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 0.5L7.5625 7.5L14.125 0.5" stroke="#BFBFBF" />
+    </svg>
+    <div
+      class="
+        mx-5
+        h-10
+        w-10
+        after:block
+        after:h-full
+        after:w-[20px]
+        after:border-l-2
+        after:bg-[url('#zed')]
+        after:bg-[length:9px_15px]
+        after:bg-center after:bg-no-repeat
+        after:[background-position-x:4px]
+      "
+    ></div>
+
+    <svg fill="none" stroke="blue"><use xlink:href="http://127.0.0.1:5500/z.svg#chevron"></use></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs>
+          <pattern id="rect-fill" patternUnits="userSpaceOnUse" x="0" y="0" width="1112" height="100%">
+              <image xlink:href="../assets/images/hero.png"  width="100%" height="100%" preserveAspectRatio="xMinYMid slice"/>
+          </pattern>
+      </defs>
+  </svg>
+  </body>
+</html>
+<!-- https://play.tailwindcss.com/N47J1RtMwF?layout=horizontal status card -->
+<!-- https://play.tailwindcss.com/pDU2QcyZ0L?layout=horizontal page layout -->
+<!-- https://play.tailwindcss.com/S82HscyZDq?layout=horizontal select -->
+<!--  tabs -->
+<!--  checkbox -->
+<!--  buttons -->
