@@ -40,10 +40,10 @@ export class ButtonComponent {
   label = '';
 
   @Input()
-  class = '';
+  class? = '';
 
-  @HostBinding('class')
-  get class__() {
+  @HostBinding('attr.class')
+  get class_() {
     return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${
       this.class
     } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;
@@ -78,10 +78,10 @@ export class ButtonLinkComponent {
   class = 'block';
 
   @Input()
-  @HostBinding('type')
+  @HostBinding('attr.type')
   type = 'button';
 
-  @HostBinding('class')
+  @HostBinding('attr.class')
   get class__() {
     return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${
       this.class
