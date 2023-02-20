@@ -37,6 +37,14 @@ const buttonColorVariantStyles = {
 })
 export class ButtonComponent {
   @Input()
+  disabled = null;
+
+  @HostBinding('attr.disabled')
+  get disabled_ () {
+    return this.disabled ? true : null;
+  }
+  
+  @Input()
   label = '';
 
   @Input()
@@ -111,6 +119,14 @@ export class ButtonLinkComponent {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonInputComponent {
+  @Input()
+  disabled = null;
+
+  @HostBinding('attr.disabled')
+  get disabled_ () {
+    return this.disabled ? true : null;
+  }
+
   @Input()
   @HostBinding('attr.value')
   label = '';

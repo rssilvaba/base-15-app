@@ -33,7 +33,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-d728150216e9a57d43ff48c7e7ca1462c8661b9e593265b9cb5bf5a1aa5582a4bdbf865c81c9a2528b7f46408e63f6ada9982c05e82fc845dd62dddc4433dd0b",
+            "id": "component-AppComponent-f11073622a215f1fceac03cb9dc25d8c25e5366057600931bb0d204f85960bed9af3f771a48a29716305b38182da0740ed29e8e1308f4cb809569a56a557e2d3",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -71,7 +71,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CheckboxInputComponent } from 'src/components/checkbox.component';\n\n@Component({\n  // eslint-disable-next-line @angular-eslint/component-selector\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n  standalone: true,\n  imports: [CheckboxInputComponent],\n})\nexport class AppComponent {\n  title = 'base-15-app';\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CheckboxInputComponent } from 'src/components/checkbox.component';\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'app-root',\r\n  templateUrl: './app.component.html',\r\n  styleUrls: ['./app.component.scss'],\r\n  standalone: true,\r\n  imports: [CheckboxInputComponent],\r\n})\r\nexport class AppComponent {\r\n  title = 'base-15-app';\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -84,7 +84,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-7601f0068ce5c6052985e0c3367414b95a93015e5e204c0bbea80f3d4d4abf9c6011ca5eaf0f1bdb3a989b9c1a70a108b668ec063831c59dc3ae7ae3324b269b",
+            "id": "component-ButtonComponent-975204f79facdd8564c8989b8170e49bb0997563e29bae76949cea0bae0ab1197fa076b277e7aab2108ebb2099510bef025e92476e307b3f9a47fa8e0cddf269",
             "file": "src/components/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -143,7 +143,7 @@
             "deprecationMessage": "",
             "hostBindings": [
                 {
-                    "name": "class",
+                    "name": "attr.class",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 46,
@@ -155,7 +155,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { NgIf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\r\n\r\nconst buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';\r\n\r\nconst buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';\r\nconst buttonDisabledStyles =\r\n  'disabled:cursor-not-allowed disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white';\r\nconst buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';\r\n\r\nconst buttonSizeVariantStyles = {\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n};\r\n\r\nconst buttonColorVariantStyles = {\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA] ',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA] ',\r\n};\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'button[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class? = '';\r\n\r\n  @HostBinding('class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'a[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonLinkComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('type')\r\n  type = 'button';\r\n\r\n  @HostBinding('class')\r\n  get class__() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonInputComponent {\r\n  @Input()\r\n  @HostBinding('attr.value')\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @HostBinding('value')\r\n  get value() {\r\n    return this.label;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n",
+            "sourceCode": "import { NgIf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\r\n\r\nconst buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';\r\n\r\nconst buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';\r\nconst buttonDisabledStyles =\r\n  'disabled:cursor-not-allowed disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white';\r\nconst buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';\r\n\r\nconst buttonSizeVariantStyles = {\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n};\r\n\r\nconst buttonColorVariantStyles = {\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA] ',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA] ',\r\n};\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'button[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class? = '';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'a[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonLinkComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class__() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonInputComponent {\r\n  @Input()\r\n  @HostBinding('attr.value')\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @HostBinding('value')\r\n  get value() {\r\n    return this.label;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -300,7 +300,7 @@
         },
         {
             "name": "ButtonInputComponent",
-            "id": "component-ButtonInputComponent-7601f0068ce5c6052985e0c3367414b95a93015e5e204c0bbea80f3d4d4abf9c6011ca5eaf0f1bdb3a989b9c1a70a108b668ec063831c59dc3ae7ae3324b269b",
+            "id": "component-ButtonInputComponent-975204f79facdd8564c8989b8170e49bb0997563e29bae76949cea0bae0ab1197fa076b277e7aab2108ebb2099510bef025e92476e307b3f9a47fa8e0cddf269",
             "file": "src/components/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -388,7 +388,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { NgIf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\r\n\r\nconst buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';\r\n\r\nconst buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';\r\nconst buttonDisabledStyles =\r\n  'disabled:cursor-not-allowed disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white';\r\nconst buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';\r\n\r\nconst buttonSizeVariantStyles = {\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n};\r\n\r\nconst buttonColorVariantStyles = {\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA] ',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA] ',\r\n};\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'button[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class? = '';\r\n\r\n  @HostBinding('class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'a[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonLinkComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('type')\r\n  type = 'button';\r\n\r\n  @HostBinding('class')\r\n  get class__() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonInputComponent {\r\n  @Input()\r\n  @HostBinding('attr.value')\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @HostBinding('value')\r\n  get value() {\r\n    return this.label;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n",
+            "sourceCode": "import { NgIf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\r\n\r\nconst buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';\r\n\r\nconst buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';\r\nconst buttonDisabledStyles =\r\n  'disabled:cursor-not-allowed disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white';\r\nconst buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';\r\n\r\nconst buttonSizeVariantStyles = {\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n};\r\n\r\nconst buttonColorVariantStyles = {\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA] ',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA] ',\r\n};\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'button[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class? = '';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'a[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonLinkComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class__() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonInputComponent {\r\n  @Input()\r\n  @HostBinding('attr.value')\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @HostBinding('value')\r\n  get value() {\r\n    return this.label;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -415,7 +415,7 @@
         },
         {
             "name": "ButtonLinkComponent",
-            "id": "component-ButtonLinkComponent-7601f0068ce5c6052985e0c3367414b95a93015e5e204c0bbea80f3d4d4abf9c6011ca5eaf0f1bdb3a989b9c1a70a108b668ec063831c59dc3ae7ae3324b269b",
+            "id": "component-ButtonLinkComponent-975204f79facdd8564c8989b8170e49bb0997563e29bae76949cea0bae0ab1197fa076b277e7aab2108ebb2099510bef025e92476e307b3f9a47fa8e0cddf269",
             "file": "src/components/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -483,7 +483,7 @@
             "deprecationMessage": "",
             "hostBindings": [
                 {
-                    "name": "class",
+                    "name": "attr.class",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 85,
@@ -495,7 +495,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { NgIf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\r\n\r\nconst buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';\r\n\r\nconst buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';\r\nconst buttonDisabledStyles =\r\n  'disabled:cursor-not-allowed disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white';\r\nconst buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';\r\n\r\nconst buttonSizeVariantStyles = {\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n};\r\n\r\nconst buttonColorVariantStyles = {\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA] ',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA] ',\r\n};\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'button[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class? = '';\r\n\r\n  @HostBinding('class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'a[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonLinkComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('type')\r\n  type = 'button';\r\n\r\n  @HostBinding('class')\r\n  get class__() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonInputComponent {\r\n  @Input()\r\n  @HostBinding('attr.value')\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @HostBinding('value')\r\n  get value() {\r\n    return this.label;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n",
+            "sourceCode": "import { NgIf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\r\n\r\nconst buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';\r\n\r\nconst buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';\r\nconst buttonDisabledStyles =\r\n  'disabled:cursor-not-allowed disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white';\r\nconst buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';\r\n\r\nconst buttonSizeVariantStyles = {\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n};\r\n\r\nconst buttonColorVariantStyles = {\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA] ',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA] ',\r\n};\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'button[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class? = '';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'a[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonLinkComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class__() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonInputComponent {\r\n  @Input()\r\n  @HostBinding('attr.value')\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @HostBinding('value')\r\n  get value() {\r\n    return this.label;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -813,13 +813,13 @@
     "modules": [
         {
             "name": "AppRoutingModule",
-            "id": "module-AppRoutingModule-78922b3ae99d2c5249b333980bd5afde1b120b2cc6fedfd41b8b2cc90f279797cb4b22e183bf7e1d1dfab8c6100e77e7812c110234d81f866f544f28a3e18b15",
+            "id": "module-AppRoutingModule-4518c33195180c88b148f5ad346bbd509e37db201ff0191c9bd5d00989bc674a7e8476b2298b5f61b74b4fa3379b6d71a3615e2cc472074cf6e416b23941131b",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app-routing.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\n\nconst routes: Routes = [];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)],\n  exports: [RouterModule]\n})\nexport class AppRoutingModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { RouterModule, Routes } from '@angular/router';\r\n\r\nconst routes: Routes = [];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forRoot(routes)],\r\n  exports: [RouterModule]\r\n})\r\nexport class AppRoutingModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -855,6 +855,16 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/components/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(args: ButtonComponent) => ({\r\n    template: `\r\n      <input cpt-btn class=\"Aw\" [size]=\"${args.size}\" [variant]=\"${args.variant}\" label=\"${args.label}\">\r\n    `,\r\n  })"
+            },
+            {
+                "name": "Button",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/button.component.stories_.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<ButtonComponent>",
@@ -934,16 +944,6 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/button.component_.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/components/checkbox.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1004,16 +1004,6 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/button.component_.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/stories/Header.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1051,6 +1041,18 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/components/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(args: ButtonComponent) => ({\r\n    template: `\r\n      <input cpt-btn class=\"Aw\" [size]=\"${args.size}\" [variant]=\"${args.variant}\" label=\"${args.label}\">\r\n    `,\r\n  })"
+                }
+            ],
+            "src/components/button.component.stories_.ts": [
+                {
+                    "name": "Button",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/button.component.stories_.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<ButtonComponent>",
@@ -1149,28 +1151,6 @@
                     "deprecationMessage": "",
                     "type": "object",
                     "defaultValue": "{\r\n  args: {\r\n    id: 'tersd',\r\n    checked: true,\r\n  },\r\n}"
-                }
-            ],
-            "src/components/button.component_.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/components/button.component_.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/components/button.component_.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
                 }
             ],
             "src/stories/Header.stories.ts": [
@@ -1279,6 +1259,16 @@
                 "status": "low"
             },
             {
+                "filePath": "src/components/button.component.stories_.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Button",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/components/button.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -1361,26 +1351,6 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "buttonSizeVariantStyles",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/components/button.component_.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Default",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/components/button.component_.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Template",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

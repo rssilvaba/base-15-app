@@ -10,7 +10,7 @@ export default {
    * to learn how to generate automatic titles
    */
   title: 'Components/Buttons',
-  component: ButtonComponent,
+  component: ButtonInputComponent,
   argTypes: {
     disabled: {
       options: [true, false],
@@ -28,9 +28,6 @@ export default {
   },
   decorators: [
     componentWrapperDecorator((story) => `<div class="p-2">${story}</div>`),
-    // moduleMetadata({
-    //   imports:[ButtonComponent, ButtonLinkComponent, ButtonInputComponent]
-    // })
   ],
 } as Meta;
 
@@ -40,11 +37,11 @@ const Template: Story = (args) => ({
 });
 
 //👇 Each story then reuses that template
-export const Button = Template.bind({});
-Button.args = {
-  disabled: false,
+export const ButtonInput = Template.bind({});
+ButtonInput.args = {
   variant: 'primary',
   label: 'Button',
+  disabled: false,
 };
 // export const Button = (args: ButtonComponent) => ({
 //     template: `
