@@ -32,8 +32,74 @@
     "directives": [],
     "components": [
         {
+            "name": "AlbatrossContainerComponent",
+            "id": "component-AlbatrossContainerComponent-add3d0763073255bf5d3e8ef41c480a559285445d46ad93681f3914c91b969f383b350b6e274c883d64a5cbf07aec547eed04f7a9de714a91cfffb2e648166e5",
+            "file": "src/components/layout/albatross-container.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "[cpt-albatross]",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<ng-content></ng-content>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "class",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "decorators": [
+                        {
+                            "name": "HostBinding",
+                            "stringifiedArguments": "'class'"
+                        }
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "class",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, HostBinding, Input } from '@angular/core';\r\n\r\nconst Classes = 'inline-block [&>*]:min-w-[clamp(var(--min-width,0px),(var(--breakpoint)-100%)*999,100%-var(--gutter,0px))]';\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: '[cpt-albatross]',\r\n  template: '<ng-content></ng-content>',\r\n  standalone: true,\r\n})\r\nexport class AlbatrossContainerComponent {\r\n  // @Input()\r\n  // checked = false;\r\n\r\n  // @HostBinding('attr.checked')\r\n  // get checked_() {\r\n  //   return this.checked ? true : null;\r\n  // }\r\n\r\n  @HostBinding('class')\r\n  class = '';\r\n\r\n  // @HostBinding('attr.type')\r\n  // type = 'checkbox';\r\n\r\n  // @Input()\r\n  // @HostBinding('indeterminate')\r\n  // indeterminate = false;\r\n\r\n  // get indeterminate_() {\r\n  //   // debugger;\r\n  //   return this.indeterminate ? true : null;\r\n  // }\r\n\r\n  constructor() {\r\n    // debugger\r\n    this.class = `flex flex-wrap [--breakpoint:360px] ${this.class} AlbatrossContainer ${Classes}`;\r\n  }\r\n\r\n  // ngOnInit(): void {\r\n  //   this.elementRef.nativeElement.indeterminate = this.indeterminate;\r\n  // }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 20
+            }
+        },
+        {
             "name": "AppComponent",
-            "id": "component-AppComponent-f11073622a215f1fceac03cb9dc25d8c25e5366057600931bb0d204f85960bed9af3f771a48a29716305b38182da0740ed29e8e1308f4cb809569a56a557e2d3",
+            "id": "component-AppComponent-3ae7345306e88658eb6fa9472acc8bdf4c5a9ac36569952806128a673c42b9d4b390e5fe2e6f2e138c3b09e200223d495fc7e7f6de897d224804dff4920e93b1",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -60,7 +126,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 13
+                    "line": 12
                 }
             ],
             "methodsClass": [],
@@ -71,7 +137,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CheckboxInputComponent } from 'src/components/checkbox.component';\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'app-root',\r\n  templateUrl: './app.component.html',\r\n  styleUrls: ['./app.component.scss'],\r\n  standalone: true,\r\n  imports: [CheckboxInputComponent],\r\n})\r\nexport class AppComponent {\r\n  title = 'base-15-app';\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'app-root',\r\n  templateUrl: './app.component.html',\r\n  styleUrls: ['./app.component.scss'],\r\n  standalone: true,\r\n  imports: [],\r\n})\r\nexport class AppComponent {\r\n  title = 'base-15-app';\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -83,70 +149,50 @@
             "templateData": "<input cpt-checkbox-input id=\"test2\" class=\"dwr\" />"
         },
         {
-            "name": "ButtonComponent",
-            "id": "component-ButtonComponent-975204f79facdd8564c8989b8170e49bb0997563e29bae76949cea0bae0ab1197fa076b277e7aab2108ebb2099510bef025e92476e307b3f9a47fa8e0cddf269",
-            "file": "src/components/button.component.ts",
-            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "name": "BlockContainerComponent",
+            "id": "component-BlockContainerComponent-a00dc5cc2055bed356109263d0f14ba86db99ad9d78aeaee52234ae21c1986963112d029365416b6bdf592c6a6ad1fc62abe1a08540a8b754ad4902972ab6745",
+            "file": "src/components/layout/block-container.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "button[cpt-btn]",
+            "selector": "[cpt-block]",
             "styleUrls": [],
             "styles": [],
-            "template": "<ng-container *ngIf=\"label\">\n  {{ label }}\n</ng-container>\n<ng-container *ngIf=\"!label\">\n  <ng-content></ng-content>\n</ng-container>\n",
+            "template": "<ng-content></ng-content>",
             "templateUrl": [],
             "viewProviders": [],
-            "inputsClass": [
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
                 {
                     "name": "class",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 43,
                     "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "label",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 40,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "size",
-                    "defaultValue": "'large'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 53,
-                    "type": "",
-                    "decorators": []
-                },
-                {
-                    "name": "variant",
-                    "defaultValue": "'primary'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 56,
-                    "type": "",
-                    "decorators": []
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "decorators": [
+                        {
+                            "name": "HostBinding",
+                            "stringifiedArguments": "'class'"
+                        }
+                    ]
                 }
             ],
-            "outputsClass": [],
-            "propertiesClass": [],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [
                 {
-                    "name": "attr.class",
+                    "name": "class",
+                    "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 46,
+                    "line": 19,
                     "type": "string",
                     "decorators": []
                 }
@@ -155,25 +201,22 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { NgIf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\r\n\r\nconst buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';\r\n\r\nconst buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';\r\nconst buttonDisabledStyles =\r\n  'disabled:cursor-not-allowed disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white';\r\nconst buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';\r\n\r\nconst buttonSizeVariantStyles = {\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n};\r\n\r\nconst buttonColorVariantStyles = {\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA] ',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA] ',\r\n};\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'button[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class? = '';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'a[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonLinkComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class__() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonInputComponent {\r\n  @Input()\r\n  @HostBinding('attr.value')\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @HostBinding('value')\r\n  get value() {\r\n    return this.label;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n",
+            "sourceCode": "import { Component, HostBinding, Input } from '@angular/core';\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: '[cpt-block]',\r\n  template: '<ng-content></ng-content>',\r\n  standalone: true,\r\n})\r\nexport class BlockContainerComponent {\r\n  // @Input()\r\n  // checked = false;\r\n\r\n  // @HostBinding('attr.checked')\r\n  // get checked_() {\r\n  //   return this.checked ? true : null;\r\n  // }\r\n\r\n  @HostBinding('class')\r\n  class = '';\r\n\r\n  // @HostBinding('attr.type')\r\n  // type = 'checkbox';\r\n\r\n  // @Input()\r\n  // @HostBinding('indeterminate')\r\n  // indeterminate = false;\r\n\r\n  // get indeterminate_() {\r\n  //   // debugger;\r\n  //   return this.indeterminate ? true : null;\r\n  // }\r\n\r\n  constructor() {\r\n    // debugger\r\n    this.class = `${this.class} BlockContainer`;\r\n  }\r\n\r\n  // ngOnInit(): void {\r\n  //   this.elementRef.nativeElement.indeterminate = this.indeterminate;\r\n  // }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "accessors": {
-                "class_": {
-                    "name": "class_",
-                    "getSignature": {
-                        "name": "class_",
-                        "type": "",
-                        "returnType": "",
-                        "line": 46
-                    }
-                }
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 19
             }
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-a23a703326ec36512e2302aeb6c0f66a4b3f7d852a8a60ef02f66cf720973b02c5c1e5ce10e0606fb122f35a08e62b72977983376fa776e6259ea90b17b16cbd-1",
+            "id": "component-ButtonComponent-a23a703326ec36512e2302aeb6c0f66a4b3f7d852a8a60ef02f66cf720973b02c5c1e5ce10e0606fb122f35a08e62b72977983376fa776e6259ea90b17b16cbd",
             "file": "src/stories/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -293,6 +336,121 @@
                         "line": 51
                     }
                 }
+            }
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-595aca138866973c5a8d4c6ee4be82c31d820b16cc48a27a853202305c21fa2c2810a60b3684539c2226d109d17eb7a54559009a56e85036d6dc7a0db4d0176e-1",
+            "file": "src/components/button/button.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "button[cpt-btn]",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<ng-container *ngIf=\"label\">\n  {{ label }}\n</ng-container>\n<ng-container *ngIf=\"!label\">\n  <ng-content></ng-content>\n</ng-container>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "class",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 55,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 44,
+                    "type": "any",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 52,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'large'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 64,
+                    "type": "",
+                    "decorators": []
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 67,
+                    "type": "",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "attr.class",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 58,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "attr.disabled",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 47,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { NgIf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\r\n\r\nconst buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';\r\n\r\nconst buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';\r\nconst buttonDisabledStyles = {\r\n  primary:\r\n    'disabled:cursor-not-allowed  disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white',\r\n  secondary:\r\n    'disabled:cursor-not-allowed  disabled:bg-white disabled:border-[color:#999999] disabled:text-[color:#999999]',\r\n};\r\nconst buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';\r\n\r\nconst buttonSizeVariantStyles = {\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n};\r\n\r\nconst buttonColorVariantStyles = {\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA]',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA]',\r\n};\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'button[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  disabled = null;\r\n\r\n  @HostBinding('attr.disabled')\r\n  get disabled_() {\r\n    return this.disabled ? true : null;\r\n  }\r\n\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class? = '';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    // eslint-disable-next-line prettier/prettier\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'a[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonLinkComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class__() {\r\n    // eslint-disable-next-line prettier/prettier\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonInputComponent {\r\n  @Input()\r\n  disabled = null;\r\n\r\n  @HostBinding('attr.disabled')\r\n  get disabled_() {\r\n    return this.disabled ? true : null;\r\n  }\r\n\r\n  @Input()\r\n  @HostBinding('attr.value')\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @HostBinding('value')\r\n  get value() {\r\n    return this.label;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "accessors": {
+                "disabled_": {
+                    "name": "disabled_",
+                    "getSignature": {
+                        "name": "disabled_",
+                        "type": "",
+                        "returnType": "",
+                        "line": 47
+                    }
+                },
+                "class_": {
+                    "name": "class_",
+                    "getSignature": {
+                        "name": "class_",
+                        "type": "",
+                        "returnType": "",
+                        "line": 58
+                    }
+                }
             },
             "isDuplicate": true,
             "duplicateId": 1,
@@ -300,8 +458,8 @@
         },
         {
             "name": "ButtonInputComponent",
-            "id": "component-ButtonInputComponent-975204f79facdd8564c8989b8170e49bb0997563e29bae76949cea0bae0ab1197fa076b277e7aab2108ebb2099510bef025e92476e307b3f9a47fa8e0cddf269",
-            "file": "src/components/button.component.ts",
+            "id": "component-ButtonInputComponent-595aca138866973c5a8d4c6ee4be82c31d820b16cc48a27a853202305c21fa2c2810a60b3684539c2226d109d17eb7a54559009a56e85036d6dc7a0db4d0176e",
+            "file": "src/components/button/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
@@ -320,8 +478,17 @@
                     "defaultValue": "'block'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 119,
+                    "line": 137,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 125,
+                    "type": "any",
                     "decorators": []
                 },
                 {
@@ -329,7 +496,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 116,
+                    "line": 134,
                     "type": "string",
                     "decorators": []
                 },
@@ -338,7 +505,7 @@
                     "defaultValue": "'large'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 138,
+                    "line": 156,
                     "type": "",
                     "decorators": []
                 },
@@ -347,7 +514,7 @@
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 123,
+                    "line": 141,
                     "type": "string",
                     "decorators": []
                 },
@@ -356,7 +523,7 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 141,
+                    "line": 159,
                     "type": "",
                     "decorators": []
                 }
@@ -371,15 +538,23 @@
                     "name": "attr.class",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 126,
+                    "line": 144,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "attr.disabled",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 128,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
                     "name": "value",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 133,
+                    "line": 151,
                     "type": "string",
                     "decorators": []
                 }
@@ -388,18 +563,27 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { NgIf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\r\n\r\nconst buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';\r\n\r\nconst buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';\r\nconst buttonDisabledStyles =\r\n  'disabled:cursor-not-allowed disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white';\r\nconst buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';\r\n\r\nconst buttonSizeVariantStyles = {\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n};\r\n\r\nconst buttonColorVariantStyles = {\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA] ',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA] ',\r\n};\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'button[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class? = '';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'a[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonLinkComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class__() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonInputComponent {\r\n  @Input()\r\n  @HostBinding('attr.value')\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @HostBinding('value')\r\n  get value() {\r\n    return this.label;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n",
+            "sourceCode": "import { NgIf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\r\n\r\nconst buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';\r\n\r\nconst buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';\r\nconst buttonDisabledStyles = {\r\n  primary:\r\n    'disabled:cursor-not-allowed  disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white',\r\n  secondary:\r\n    'disabled:cursor-not-allowed  disabled:bg-white disabled:border-[color:#999999] disabled:text-[color:#999999]',\r\n};\r\nconst buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';\r\n\r\nconst buttonSizeVariantStyles = {\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n};\r\n\r\nconst buttonColorVariantStyles = {\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA]',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA]',\r\n};\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'button[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  disabled = null;\r\n\r\n  @HostBinding('attr.disabled')\r\n  get disabled_() {\r\n    return this.disabled ? true : null;\r\n  }\r\n\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class? = '';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    // eslint-disable-next-line prettier/prettier\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'a[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonLinkComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class__() {\r\n    // eslint-disable-next-line prettier/prettier\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonInputComponent {\r\n  @Input()\r\n  disabled = null;\r\n\r\n  @HostBinding('attr.disabled')\r\n  get disabled_() {\r\n    return this.disabled ? true : null;\r\n  }\r\n\r\n  @Input()\r\n  @HostBinding('attr.value')\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @HostBinding('value')\r\n  get value() {\r\n    return this.label;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "accessors": {
+                "disabled_": {
+                    "name": "disabled_",
+                    "getSignature": {
+                        "name": "disabled_",
+                        "type": "",
+                        "returnType": "",
+                        "line": 128
+                    }
+                },
                 "class_": {
                     "name": "class_",
                     "getSignature": {
                         "name": "class_",
                         "type": "",
                         "returnType": "",
-                        "line": 126
+                        "line": 144
                     }
                 },
                 "value": {
@@ -408,15 +592,15 @@
                         "name": "value",
                         "type": "",
                         "returnType": "",
-                        "line": 133
+                        "line": 151
                     }
                 }
             }
         },
         {
             "name": "ButtonLinkComponent",
-            "id": "component-ButtonLinkComponent-975204f79facdd8564c8989b8170e49bb0997563e29bae76949cea0bae0ab1197fa076b277e7aab2108ebb2099510bef025e92476e307b3f9a47fa8e0cddf269",
-            "file": "src/components/button.component.ts",
+            "id": "component-ButtonLinkComponent-595aca138866973c5a8d4c6ee4be82c31d820b16cc48a27a853202305c21fa2c2810a60b3684539c2226d109d17eb7a54559009a56e85036d6dc7a0db4d0176e",
+            "file": "src/components/button/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
@@ -435,7 +619,7 @@
                     "defaultValue": "'block'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 78,
+                    "line": 89,
                     "type": "string",
                     "decorators": []
                 },
@@ -444,7 +628,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 75,
+                    "line": 86,
                     "type": "string",
                     "decorators": []
                 },
@@ -453,7 +637,7 @@
                     "defaultValue": "'large'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 92,
+                    "line": 102,
                     "type": "",
                     "decorators": []
                 },
@@ -462,7 +646,7 @@
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 82,
+                    "line": 93,
                     "type": "string",
                     "decorators": []
                 },
@@ -471,7 +655,7 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 95,
+                    "line": 105,
                     "type": "",
                     "decorators": []
                 }
@@ -486,7 +670,7 @@
                     "name": "attr.class",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 85,
+                    "line": 96,
                     "type": "string",
                     "decorators": []
                 }
@@ -495,7 +679,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { NgIf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\r\n\r\nconst buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';\r\n\r\nconst buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';\r\nconst buttonDisabledStyles =\r\n  'disabled:cursor-not-allowed disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white';\r\nconst buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';\r\n\r\nconst buttonSizeVariantStyles = {\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n};\r\n\r\nconst buttonColorVariantStyles = {\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA] ',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA] ',\r\n};\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'button[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class? = '';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'a[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonLinkComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class__() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonInputComponent {\r\n  @Input()\r\n  @HostBinding('attr.value')\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @HostBinding('value')\r\n  get value() {\r\n    return this.label;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n",
+            "sourceCode": "import { NgIf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\r\n\r\nconst buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';\r\n\r\nconst buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';\r\nconst buttonDisabledStyles = {\r\n  primary:\r\n    'disabled:cursor-not-allowed  disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white',\r\n  secondary:\r\n    'disabled:cursor-not-allowed  disabled:bg-white disabled:border-[color:#999999] disabled:text-[color:#999999]',\r\n};\r\nconst buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';\r\n\r\nconst buttonSizeVariantStyles = {\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n};\r\n\r\nconst buttonColorVariantStyles = {\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA]',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA]',\r\n};\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'button[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  disabled = null;\r\n\r\n  @HostBinding('attr.disabled')\r\n  get disabled_() {\r\n    return this.disabled ? true : null;\r\n  }\r\n\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class? = '';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    // eslint-disable-next-line prettier/prettier\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'a[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonLinkComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class__() {\r\n    // eslint-disable-next-line prettier/prettier\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonInputComponent {\r\n  @Input()\r\n  disabled = null;\r\n\r\n  @HostBinding('attr.disabled')\r\n  get disabled_() {\r\n    return this.disabled ? true : null;\r\n  }\r\n\r\n  @Input()\r\n  @HostBinding('attr.value')\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @HostBinding('value')\r\n  get value() {\r\n    return this.label;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -506,21 +690,21 @@
                         "name": "class__",
                         "type": "",
                         "returnType": "",
-                        "line": 85
+                        "line": 96
                     }
                 }
             }
         },
         {
             "name": "CheckboxInputComponent",
-            "id": "component-CheckboxInputComponent-480449a3a57c7547f8f09e81e7a905e4f6a0b50a5215723ad648594d30e47d36c223b832d8e77351babfe6c8a998286cacfe2db67d9b0ca1b80614f7da975e03",
-            "file": "src/components/checkbox.component.ts",
+            "id": "component-CheckboxInputComponent-df966b774be8026b78e0a84eb7b6d6ce23bd387e4247932f0086f36a38645fd5220cd6370654c1a69d4cf57d6a31684a007a90177359a16fa99bad68d54a2db1",
+            "file": "src/components/checkbox/checkbox.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "input[cpt-checkbox-input]",
+            "selector": "input[cpt-checkbox]",
             "styleUrls": [],
             "styles": [],
             "template": "<ng-content></ng-content>",
@@ -529,32 +713,34 @@
             "inputsClass": [
                 {
                     "name": "checked",
-                    "defaultValue": "null",
+                    "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 13,
-                    "type": "any",
+                    "line": 11,
+                    "type": "boolean",
                     "decorators": []
-                }
-            ],
-            "outputsClass": [],
-            "propertiesClass": [
+                },
                 {
                     "name": "class",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "line": 20,
                     "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 16,
-                    "decorators": [
-                        {
-                            "name": "HostBinding",
-                            "stringifiedArguments": "'class'"
-                        }
-                    ]
+                    "decorators": []
                 },
+                {
+                    "name": "indeterminate",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
                 {
                     "name": "type",
                     "defaultValue": "'checkbox'",
@@ -563,7 +749,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 19,
+                    "line": 23,
                     "decorators": [
                         {
                             "name": "HostBinding",
@@ -577,20 +763,19 @@
             "deprecationMessage": "",
             "hostBindings": [
                 {
+                    "name": "attr.checked",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
                     "name": "attr.type",
                     "defaultValue": "'checkbox'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "class",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 16,
+                    "line": 23,
                     "type": "string",
                     "decorators": []
                 }
@@ -599,7 +784,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, HostBinding, Input, OnInit, ViewChild } from '@angular/core';\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-checkbox-input]',\r\n  template: '<ng-content></ng-content>',\r\n  standalone: true,\r\n})\r\nexport class CheckboxInputComponent {\r\n  @Input()\r\n  @HostBinding('attr.checked')\r\n  checked = null;\r\n\r\n  @HostBinding('class')\r\n  class = '';\r\n\r\n  @HostBinding('attr.type')\r\n  type = 'checkbox';\r\n\r\n  constructor() {\r\n    this.class = `absolute h-0 w-0 ${this.class} Input`;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, HostBinding, Input } from '@angular/core';\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-checkbox]',\r\n  template: '<ng-content></ng-content>',\r\n  standalone: true,\r\n})\r\nexport class CheckboxInputComponent {\r\n  @Input()\r\n  checked = false;\r\n\r\n  @HostBinding('attr.checked')\r\n  get checked_() {\r\n    return this.checked ? true : null;\r\n  }\r\n\r\n  @Input()\r\n  @HostBinding('class')\r\n  class = '';\r\n\r\n  @HostBinding('attr.type')\r\n  type = 'checkbox';\r\n\r\n  @Input()\r\n  @HostBinding('indeterminate')\r\n  indeterminate = false;\r\n\r\n  get indeterminate_() {\r\n    // debugger;\r\n    return this.indeterminate ? true : null;\r\n  }\r\n\r\n  constructor() {\r\n    // debugger\r\n    this.class = `absolute invisible h-0 w-0 ${this.class} Input`;\r\n  }\r\n\r\n  // ngOnInit(): void {\r\n  //   this.elementRef.nativeElement.indeterminate = this.indeterminate;\r\n  // }\r\n}\r\n\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -609,7 +794,27 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 19
+                "line": 32
+            },
+            "accessors": {
+                "checked_": {
+                    "name": "checked_",
+                    "getSignature": {
+                        "name": "checked_",
+                        "type": "",
+                        "returnType": "",
+                        "line": 14
+                    }
+                },
+                "indeterminate_": {
+                    "name": "indeterminate_",
+                    "getSignature": {
+                        "name": "indeterminate_",
+                        "type": "",
+                        "returnType": "",
+                        "line": 29
+                    }
+                }
             }
         },
         {
@@ -684,6 +889,270 @@
                 }
             ],
             "stylesData": ""
+        },
+        {
+            "name": "IconComponent",
+            "id": "component-IconComponent-f871c8d869c3934f32152a95563ad93ac08c81814a19d8e8c72abf5374f71099cea7c7aa94dfe32f0884306a2baec3b80dc8373c00eed4da304d4998e6aa706d",
+            "file": "src/components/icon.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "cpt-icon",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<ng-content></ng-content>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "class",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 11,
+                    "decorators": [
+                        {
+                            "name": "HostBinding",
+                            "stringifiedArguments": "'class'"
+                        }
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "class",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, HostBinding } from \"@angular/core\";\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'cpt-icon',\r\n  template: '<ng-content></ng-content>',\r\n  standalone: true,\r\n})\r\nexport class IconComponent {\r\n  @HostBinding('class')\r\n  class = '';\r\n\r\n  constructor() {\r\n    // debugger\r\n    this.class = `${this.class} Icon`;\r\n  }\r\n}",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 11
+            }
+        },
+        {
+            "name": "InlineItemsContainerComponent",
+            "id": "component-InlineItemsContainerComponent-26c060fbd53b4258939db6653b69130866e72fd72d76c16c6bf6711ce3a7d14f87caf0e4fc27256ace1b55110ae051e846507a4b8dc2b1029c6ef1c1643f239b",
+            "file": "src/components/layout/inline-items-container.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "[cpt-inline-items]",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<ng-content></ng-content>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "class",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "decorators": [
+                        {
+                            "name": "HostBinding",
+                            "stringifiedArguments": "'class'"
+                        }
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "class",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, HostBinding, Input } from '@angular/core';\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: '[cpt-inline-items]',\r\n  template: '<ng-content></ng-content>',\r\n  standalone: true,\r\n})\r\nexport class InlineItemsContainerComponent {\r\n  // @Input()\r\n  // checked = false;\r\n\r\n  // @HostBinding('attr.checked')\r\n  // get checked_() {\r\n  //   return this.checked ? true : null;\r\n  // }\r\n\r\n  @HostBinding('class')\r\n  class = '';\r\n\r\n  // @HostBinding('attr.type')\r\n  // type = 'checkbox';\r\n\r\n  // @Input()\r\n  // @HostBinding('indeterminate')\r\n  // indeterminate = false;\r\n\r\n  // get indeterminate_() {\r\n  //   // debugger;\r\n  //   return this.indeterminate ? true : null;\r\n  // }\r\n\r\n  constructor() {\r\n    // debugger\r\n    this.class = `${this.class} [&>*]:inline-block InlineItemsContainer`;\r\n  }\r\n\r\n  // ngOnInit(): void {\r\n  //   this.elementRef.nativeElement.indeterminate = this.indeterminate;\r\n  // }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 19
+            }
+        },
+        {
+            "name": "InlineScrollableContainerComponent",
+            "id": "component-InlineScrollableContainerComponent-ce730ca2fd67686c3d090e37dc61444b00302ac74be862c8f4aaa24be39ddfd601d7489db6fe02bd4c8dd27438bb0fa25910ef28ca1973532df58fe5cd1f307e",
+            "file": "src/components/layout/inline-scrollable-container.component copy.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "[cpt-inline-items]",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<ng-content></ng-content>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "class",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "decorators": [
+                        {
+                            "name": "HostBinding",
+                            "stringifiedArguments": "'class'"
+                        }
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "class",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, HostBinding, Input } from '@angular/core';\r\n\r\n\r\n// var Classes = '';\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: '[cpt-inline-items]',\r\n  template: '<ng-content></ng-content>',\r\n  standalone: true,\r\n})\r\nexport class InlineScrollableContainerComponent {\r\n  // @Input()\r\n  // checked = false;\r\n\r\n  // @HostBinding('attr.checked')\r\n  // get checked_() {\r\n  //   return this.checked ? true : null;\r\n  // }\r\n\r\n  @HostBinding('class')\r\n  class = '';\r\n\r\n  // @HostBinding('attr.type')\r\n  // type = 'checkbox';\r\n\r\n  // @Input()\r\n  // @HostBinding('indeterminate')\r\n  // indeterminate = false;\r\n\r\n  // get indeterminate_() {\r\n  //   // debugger;\r\n  //   return this.indeterminate ? true : null;\r\n  // }\r\n\r\n  constructor() {\r\n    // debugger\r\n    this.class = `${this.class} block overflow-auto whitespace-nowrap InlineScrollableContainer`;\r\n  }\r\n\r\n  // ngOnInit(): void {\r\n  //   this.elementRef.nativeElement.indeterminate = this.indeterminate;\r\n  // }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 21
+            }
+        },
+        {
+            "name": "LabelComponent",
+            "id": "component-LabelComponent-c0a6b735f943faed275095e4ef8dd7d0dbb2545e170fdb81524667823b78533478b8ae0ffb322b3fc733307eac45ccd000f9191720fac22692c8af5b3501f5b1",
+            "file": "src/components/label.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "label[cpt-label]",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<ng-content></ng-content>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "class",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 11,
+                    "decorators": [
+                        {
+                            "name": "HostBinding",
+                            "stringifiedArguments": "'class'"
+                        }
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "class",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, HostBinding } from \"@angular/core\";\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'label[cpt-label]',\r\n  template: '<ng-content></ng-content>',\r\n  standalone: true,\r\n})\r\nexport class LabelComponent {\r\n  @HostBinding('class')\r\n  class = '';\r\n\r\n  constructor() {\r\n    // debugger\r\n    this.class = `${this.class} Label`;\r\n  }\r\n}",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 11
+            }
         },
         {
             "name": "MyComponent",
@@ -854,27 +1323,17 @@
                 "name": "Button",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/button.component.stories.ts",
+                "file": "src/components/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "(args: ButtonComponent) => ({\r\n    template: `\r\n      <input cpt-btn class=\"Aw\" [size]=\"${args.size}\" [variant]=\"${args.variant}\" label=\"${args.label}\">\r\n    `,\r\n  })"
-            },
-            {
-                "name": "Button",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/components/button.component.stories_.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<ButtonComponent>",
-                "defaultValue": "(args) => ({\r\n  props: {\r\n    size: 'large',\r\n    variant: 'primary',\r\n  },\r\n  template: `\r\n  <div class=\"p-2 flex flex-wrap gap-2\">\r\n    <button cpt-btn class=\"Aw\" [size]=\"size\" [variant]=\"variant\">Primary Button</button>\r\n    <a href=\"#\" cpt-btn class=\"Aw\" [size]=\"size\" [variant]=\"variant\">Primary Link Button</a>\r\n    <input cpt-btn class=\"Aw\" [size]=\"size\" [variant]=\"variant\" type=\"submit\" label=\"Primary Input Button\">\r\n  </div>\r\n  `,\r\n})"
+                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "buttonActiveStyles",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/button.component.ts",
+                "file": "src/components/button/button.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "string",
@@ -884,17 +1343,17 @@
                 "name": "buttonColorVariantStyles",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/button.component.ts",
+                "file": "src/components/button/button.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA] ',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA] ',\r\n}"
+                "defaultValue": "{\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA]',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA]',\r\n}"
             },
             {
                 "name": "buttonDefaultStyles",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/button.component.ts",
+                "file": "src/components/button/button.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "string",
@@ -904,27 +1363,47 @@
                 "name": "buttonDisabledStyles",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/button.component.ts",
+                "file": "src/components/button/button.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "string",
-                "defaultValue": "'disabled:cursor-not-allowed disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white'"
+                "type": "object",
+                "defaultValue": "{\r\n  primary:\r\n    'disabled:cursor-not-allowed  disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white',\r\n  secondary:\r\n    'disabled:cursor-not-allowed  disabled:bg-white disabled:border-[color:#999999] disabled:text-[color:#999999]',\r\n}"
             },
             {
                 "name": "buttonFocusStyles",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/button.component.ts",
+                "file": "src/components/button/button.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "string",
                 "defaultValue": "'[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none'"
             },
             {
+                "name": "ButtonInput",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/button/button-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "ButtonLink",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/button/button-link.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "buttonSizeVariantStyles",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/button.component.ts",
+                "file": "src/components/button/button.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
@@ -934,21 +1413,61 @@
                 "name": "Checked",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/checkbox.component.stories.ts",
+                "file": "src/components/checkbox/checkbox.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\r\n  args: {\r\n    id: 'tersd',\r\n    checked: true,\r\n    label: 'Checked Label',\r\n  },\r\n}"
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Classes",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/layout/albatross-container.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'inline-block [&>*]:min-w-[clamp(var(--min-width,0px),(var(--breakpoint)-100%)*999,100%-var(--gutter,0px))]'"
+            },
+            {
+                "name": "CustomIcon",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/checkbox/checkbox.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<CheckboxInputComponent>",
+                "defaultValue": "(args: any) => ({\r\n  props: args,\r\n  template: `\r\n    <input cpt-checkbox [checked]=\"${args.checked}\" id=\"check1\" class=\"[&:checked~label>svg]:fill-black\" />\r\n    <label for=\"check1\" class=\"inline-block h-8 w-8 border border-black\"\r\n        ><svg class=\"fill-transparent stroke-black\" focusable=\"false\" aria-hidden=\"true\" viewBox=\"0 0 24 24\" data-testid=\"BookmarkBorderIcon\">\r\n          <path d=\"M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z\"></path></svg\r\n      ></label>\r\n  `,\r\n})"
             },
             {
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/checkbox.component.stories.ts",
+                "file": "src/components/checkbox/checkbox.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\r\n  args: {\r\n    id: 'tersd',\r\n    label: 'Default Label',\r\n  },\r\n}"
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/layout/albatross-container.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Indeterminate",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/checkbox/checkbox.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "LoggedIn",
@@ -1021,50 +1540,108 @@
                 "defaultValue": "(args: Page) => ({\n  props: args,\n})"
             },
             {
-                "name": "Unlabeled",
+                "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/checkbox.component.stories.ts",
+                "file": "src/components/button/button-link.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\r\n  args: {\r\n    id: 'tersd',\r\n    checked: true,\r\n  },\r\n}"
+                "type": "Story",
+                "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/button/button-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/checkbox/checkbox.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/layout/albatross-container.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "(args) => ({\r\n  props: args,\r\n\r\n  template: templateTemplate,\r\n})"
+            },
+            {
+                "name": "templateTemplate",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/layout/albatross-container.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "`\r\n  <div class=\"CheckboxGroup\" style=\"flex-direction: column; display: flex\">\r\n    <label style=\"display: block\">Group Label</label>\r\n    <div cpt-albatross class=\"[column-gap:0.4rem] [&_.Checkbox>input]:mr-1\">\r\n      <div class=\"Checkbox\">\r\n        <input type=\"checkbox\" name=\"groupName\" id=\"cinp1\" />\r\n        <label for=\"cinp1\">Label</label>\r\n      </div>\r\n      <div class=\"Checkbox\">\r\n        <input type=\"checkbox\" name=\"groupName\" id=\"cinp2\" />\r\n        <label for=\"cinp2\">Label</label>\r\n      </div>\r\n      <div class=\"Checkbox\">\r\n        <input type=\"checkbox\" name=\"groupName\" id=\"cinp3\" />\r\n        <label for=\"cinp3\">Label</label>\r\n      </div>\r\n      <div class=\"Checkbox\">\r\n        <input type=\"checkbox\" name=\"groupName\" id=\"cinp4\" />\r\n        <label for=\"cinp4\">Label</label>\r\n      </div>\r\n      <div class=\"Checkbox\">\r\n        <input type=\"checkbox\" name=\"groupName\" id=\"cinp5\" />\r\n        <label for=\"cinp5\">Label</label>\r\n      </div>\r\n      <div class=\"Checkbox\">\r\n        <input type=\"checkbox\" name=\"groupName\" id=\"cinp6\" />\r\n        <label for=\"cinp6\">Label</label>\r\n      </div>\r\n    </div>\r\n  </div>\r\n`"
+            },
+            {
+                "name": "Test2",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/checkbox/checkbox.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<CheckboxInputComponent>",
+                "defaultValue": "(args: any) => ({\r\n  props: args,\r\n  template: `\r\n  <input cpt-checkbox [checked]=\"${args.checked}\" />\r\n  This is a template test.`,\r\n})"
             }
         ],
         "functions": [],
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
-            "src/components/button.component.stories.ts": [
+            "src/components/button/button.component.stories.ts": [
                 {
                     "name": "Button",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/components/button.component.stories.ts",
+                    "file": "src/components/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "(args: ButtonComponent) => ({\r\n    template: `\r\n      <input cpt-btn class=\"Aw\" [size]=\"${args.size}\" [variant]=\"${args.variant}\" label=\"${args.label}\">\r\n    `,\r\n  })"
-                }
-            ],
-            "src/components/button.component.stories_.ts": [
+                    "defaultValue": "Template.bind({})"
+                },
                 {
-                    "name": "Button",
+                    "name": "Template",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/components/button.component.stories_.ts",
+                    "file": "src/components/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story<ButtonComponent>",
-                    "defaultValue": "(args) => ({\r\n  props: {\r\n    size: 'large',\r\n    variant: 'primary',\r\n  },\r\n  template: `\r\n  <div class=\"p-2 flex flex-wrap gap-2\">\r\n    <button cpt-btn class=\"Aw\" [size]=\"size\" [variant]=\"variant\">Primary Button</button>\r\n    <a href=\"#\" cpt-btn class=\"Aw\" [size]=\"size\" [variant]=\"variant\">Primary Link Button</a>\r\n    <input cpt-btn class=\"Aw\" [size]=\"size\" [variant]=\"variant\" type=\"submit\" label=\"Primary Input Button\">\r\n  </div>\r\n  `,\r\n})"
+                    "type": "Story",
+                    "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
                 }
             ],
-            "src/components/button.component.ts": [
+            "src/components/button/button.component.ts": [
                 {
                     "name": "buttonActiveStyles",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/components/button.component.ts",
+                    "file": "src/components/button/button.component.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -1074,17 +1651,17 @@
                     "name": "buttonColorVariantStyles",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/components/button.component.ts",
+                    "file": "src/components/button/button.component.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
-                    "defaultValue": "{\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA] ',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA] ',\r\n}"
+                    "defaultValue": "{\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA]',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA]',\r\n}"
                 },
                 {
                     "name": "buttonDefaultStyles",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/components/button.component.ts",
+                    "file": "src/components/button/button.component.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -1094,17 +1671,17 @@
                     "name": "buttonDisabledStyles",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/components/button.component.ts",
+                    "file": "src/components/button/button.component.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string",
-                    "defaultValue": "'disabled:cursor-not-allowed disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white'"
+                    "type": "object",
+                    "defaultValue": "{\r\n  primary:\r\n    'disabled:cursor-not-allowed  disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white',\r\n  secondary:\r\n    'disabled:cursor-not-allowed  disabled:bg-white disabled:border-[color:#999999] disabled:text-[color:#999999]',\r\n}"
                 },
                 {
                     "name": "buttonFocusStyles",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/components/button.component.ts",
+                    "file": "src/components/button/button.component.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -1114,43 +1691,161 @@
                     "name": "buttonSizeVariantStyles",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/components/button.component.ts",
+                    "file": "src/components/button/button.component.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
                     "defaultValue": "{\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n}"
                 }
             ],
-            "src/components/checkbox.component.stories.ts": [
+            "src/components/button/button-input.component.stories.ts": [
+                {
+                    "name": "ButtonInput",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/button/button-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/button/button-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
+                }
+            ],
+            "src/components/button/button-link.component.stories.ts": [
+                {
+                    "name": "ButtonLink",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/button/button-link.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/button/button-link.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
+                }
+            ],
+            "src/components/checkbox/checkbox.component.stories.ts": [
                 {
                     "name": "Checked",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/components/checkbox.component.stories.ts",
+                    "file": "src/components/checkbox/checkbox.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\r\n  args: {\r\n    id: 'tersd',\r\n    checked: true,\r\n    label: 'Checked Label',\r\n  },\r\n}"
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "CustomIcon",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/checkbox/checkbox.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<CheckboxInputComponent>",
+                    "defaultValue": "(args: any) => ({\r\n  props: args,\r\n  template: `\r\n    <input cpt-checkbox [checked]=\"${args.checked}\" id=\"check1\" class=\"[&:checked~label>svg]:fill-black\" />\r\n    <label for=\"check1\" class=\"inline-block h-8 w-8 border border-black\"\r\n        ><svg class=\"fill-transparent stroke-black\" focusable=\"false\" aria-hidden=\"true\" viewBox=\"0 0 24 24\" data-testid=\"BookmarkBorderIcon\">\r\n          <path d=\"M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z\"></path></svg\r\n      ></label>\r\n  `,\r\n})"
                 },
                 {
                     "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/components/checkbox.component.stories.ts",
+                    "file": "src/components/checkbox/checkbox.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\r\n  args: {\r\n    id: 'tersd',\r\n    label: 'Default Label',\r\n  },\r\n}"
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
                 },
                 {
-                    "name": "Unlabeled",
+                    "name": "Indeterminate",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/components/checkbox.component.stories.ts",
+                    "file": "src/components/checkbox/checkbox.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\r\n  args: {\r\n    id: 'tersd',\r\n    checked: true,\r\n  },\r\n}"
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/checkbox/checkbox.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
+                },
+                {
+                    "name": "Test2",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/checkbox/checkbox.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<CheckboxInputComponent>",
+                    "defaultValue": "(args: any) => ({\r\n  props: args,\r\n  template: `\r\n  <input cpt-checkbox [checked]=\"${args.checked}\" />\r\n  This is a template test.`,\r\n})"
+                }
+            ],
+            "src/components/layout/albatross-container.component.ts": [
+                {
+                    "name": "Classes",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/layout/albatross-container.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'inline-block [&>*]:min-w-[clamp(var(--min-width,0px),(var(--breakpoint)-100%)*999,100%-var(--gutter,0px))]'"
+                }
+            ],
+            "src/components/layout/albatross-container.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/layout/albatross-container.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/layout/albatross-container.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "(args) => ({\r\n  props: args,\r\n\r\n  template: templateTemplate,\r\n})"
+                },
+                {
+                    "name": "templateTemplate",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/layout/albatross-container.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "`\r\n  <div class=\"CheckboxGroup\" style=\"flex-direction: column; display: flex\">\r\n    <label style=\"display: block\">Group Label</label>\r\n    <div cpt-albatross class=\"[column-gap:0.4rem] [&_.Checkbox>input]:mr-1\">\r\n      <div class=\"Checkbox\">\r\n        <input type=\"checkbox\" name=\"groupName\" id=\"cinp1\" />\r\n        <label for=\"cinp1\">Label</label>\r\n      </div>\r\n      <div class=\"Checkbox\">\r\n        <input type=\"checkbox\" name=\"groupName\" id=\"cinp2\" />\r\n        <label for=\"cinp2\">Label</label>\r\n      </div>\r\n      <div class=\"Checkbox\">\r\n        <input type=\"checkbox\" name=\"groupName\" id=\"cinp3\" />\r\n        <label for=\"cinp3\">Label</label>\r\n      </div>\r\n      <div class=\"Checkbox\">\r\n        <input type=\"checkbox\" name=\"groupName\" id=\"cinp4\" />\r\n        <label for=\"cinp4\">Label</label>\r\n      </div>\r\n      <div class=\"Checkbox\">\r\n        <input type=\"checkbox\" name=\"groupName\" id=\"cinp5\" />\r\n        <label for=\"cinp5\">Label</label>\r\n      </div>\r\n      <div class=\"Checkbox\">\r\n        <input type=\"checkbox\" name=\"groupName\" id=\"cinp6\" />\r\n        <label for=\"cinp6\">Label</label>\r\n      </div>\r\n    </div>\r\n  </div>\r\n`"
                 }
             ],
             "src/stories/Header.stories.ts": [
@@ -1236,7 +1931,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 2,
+        "count": 1,
         "status": "low",
         "files": [
             {
@@ -1249,7 +1944,47 @@
                 "status": "low"
             },
             {
-                "filePath": "src/components/button.component.stories.ts",
+                "filePath": "src/components/button/button-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ButtonInput",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/button/button-input.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/button/button-link.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ButtonLink",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/button/button-link.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/button/button.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1259,35 +1994,35 @@
                 "status": "low"
             },
             {
-                "filePath": "src/components/button.component.stories_.ts",
+                "filePath": "src/components/button/button.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Button",
+                "name": "Template",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "src/components/button.component.ts",
+                "filePath": "src/components/button/button.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/6",
-                "status": "low"
-            },
-            {
-                "filePath": "src/components/button.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "ButtonInputComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/8",
                 "status": "low"
             },
             {
-                "filePath": "src/components/button.component.ts",
+                "filePath": "src/components/button/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonInputComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/button/button.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonLinkComponent",
@@ -1296,7 +2031,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/components/button.component.ts",
+                "filePath": "src/components/button/button.component.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1306,7 +2041,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/components/button.component.ts",
+                "filePath": "src/components/button/button.component.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1316,7 +2051,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/components/button.component.ts",
+                "filePath": "src/components/button/button.component.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1326,7 +2061,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/components/button.component.ts",
+                "filePath": "src/components/button/button.component.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1336,7 +2071,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/components/button.component.ts",
+                "filePath": "src/components/button/button.component.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1346,7 +2081,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/components/button.component.ts",
+                "filePath": "src/components/button/button.component.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1356,7 +2091,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/components/checkbox.component.stories.ts",
+                "filePath": "src/components/checkbox/checkbox.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1366,7 +2101,17 @@
                 "status": "low"
             },
             {
-                "filePath": "src/components/checkbox.component.stories.ts",
+                "filePath": "src/components/checkbox/checkbox.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "CustomIcon",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/checkbox/checkbox.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1376,22 +2121,136 @@
                 "status": "low"
             },
             {
-                "filePath": "src/components/checkbox.component.stories.ts",
+                "filePath": "src/components/checkbox/checkbox.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Unlabeled",
+                "name": "Indeterminate",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "src/components/checkbox.component.ts",
+                "filePath": "src/components/checkbox/checkbox.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/checkbox/checkbox.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Test2",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/checkbox/checkbox.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "CheckboxInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/icon.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "IconComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/label.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LabelComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/layout/albatross-container.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/layout/albatross-container.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/layout/albatross-container.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "templateTemplate",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/layout/albatross-container.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AlbatrossContainerComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/layout/albatross-container.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Classes",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/layout/block-container.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "BlockContainerComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/layout/inline-items-container.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "InlineItemsContainerComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/layout/inline-scrollable-container.component copy.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "InlineScrollableContainerComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {

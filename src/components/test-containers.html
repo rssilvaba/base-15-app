@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <fieldset>
+      <legend>Checkbox + label</legend>
+      <div class="Checkbox">
+        <input type="checkbox" name="" id="cinp1" />
+        <label for="cinp1">Label</label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Checkbox group block</legend>
+      <div class="CheckboxGroup">
+        <label>Group Label</label>
+        <div class="Checkbox">
+          <input type="checkbox" name="groupName" id="cinp2" />
+          <label for="cinp2">Label</label>
+        </div>
+        <div class="Checkbox">
+          <input type="checkbox" name="groupName" id="cinp3" />
+          <label for="cinp3">Label</label>
+        </div>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Checkbox group inlined</legend>
+      <div class="CheckboxGroup">
+        <label style="display: block">Group Label</label>
+        <div class="Checkbox" style="display: inline-block">
+          <input type="checkbox" name="groupName" id="cinp2" />
+          <label for="cinp2">Label</label>
+        </div>
+        <div class="Checkbox" style="display: inline-block">
+          <input type="checkbox" name="groupName" id="cinp3" />
+          <label for="cinp3">Label</label>
+        </div>
+        <div class="Checkbox" style="display: inline-block">
+          <input type="checkbox" name="groupName" id="cinp3" />
+          <label for="cinp3">Label</label>
+        </div>
+        <div class="Checkbox" style="display: inline-block">
+          <input type="checkbox" name="groupName" id="cinp3" />
+          <label for="cinp3">Label</label>
+        </div>
+        <div class="Checkbox" style="display: inline-block">
+          <input type="checkbox" name="groupName" id="cinp3" />
+          <label for="cinp3">Label</label>
+        </div>
+        <div class="Checkbox" style="display: inline-block">
+          <input type="checkbox" name="groupName" id="cinp3" />
+          <label for="cinp3">Label</label>
+        </div>
+      </div>
+    </fieldset>
+    <fieldset style="min-inline-size: auto">
+      <legend>Checkbox group inlined with overflow</legend>
+      <div class="CheckboxGroup" style="flex-direction: column; display: flex">
+        <label style="display: block">Group Label</label>
+        <div style="display: inline-block; overflow: auto; white-space: nowrap">
+          <div class="Checkbox" style="display: inline-block">
+            <input type="checkbox" name="groupName" id="cinp2" />
+            <label for="cinp2">Label</label>
+          </div>
+          <div class="Checkbox" style="display: inline-block">
+            <input type="checkbox" name="groupName" id="cinp3" />
+            <label for="cinp3">Label</label>
+          </div>
+          <div class="Checkbox" style="display: inline-block">
+            <input type="checkbox" name="groupName" id="cinp3" />
+            <label for="cinp3">Label</label>
+          </div>
+          <div class="Checkbox" style="display: inline-block">
+            <input type="checkbox" name="groupName" id="cinp3" />
+            <label for="cinp3">Label</label>
+          </div>
+          <div class="Checkbox" style="display: inline-block">
+            <input type="checkbox" name="groupName" id="cinp3" />
+            <label for="cinp3">Label</label>
+          </div>
+          <div class="Checkbox" style="display: inline-block">
+            <input type="checkbox" name="groupName" id="cinp3" />
+            <label for="cinp3">Label</label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <fieldset style="min-inline-size: auto">
+      <legend>Checkbox group inlined with albotros</legend>
+      <div class="CheckboxGroup" style="flex-direction: column; display: flex">
+        <label style="display: block">Group Label</label>
+        <div style="display: flex; flex-wrap: wrap; column-gap: 0.3rem; --breakpoint: 388px">
+          <div
+            class="Checkbox"
+            style="
+              display: inline-block;
+              min-width: clamp(var(--min-width, 0px), (var(--breakpoint) - 100%) * 999, 100% - var(--gutter, 0px));
+            "
+          >
+            <input type="checkbox" name="groupName" id="cinp2" />
+            <label for="cinp2">Label</label>
+          </div>
+          <div
+            class="Checkbox"
+            style="
+              display: inline-block;
+              min-width: clamp(var(--min-width, 0px), (var(--breakpoint) - 100%) * 999, 100% - var(--gutter, 0px));
+            "
+          >
+            <input type="checkbox" name="groupName" id="cinp3" />
+            <label for="cinp3">Label</label>
+          </div>
+          <div
+            class="Checkbox"
+            style="
+              display: inline-block;
+              min-width: clamp(var(--min-width, 0px), (var(--breakpoint) - 100%) * 999, 100% - var(--gutter, 0px));
+            "
+          >
+            <input type="checkbox" name="groupName" id="cinp3" />
+            <label for="cinp3">Label</label>
+          </div>
+          <div
+            class="Checkbox"
+            style="
+              display: inline-block;
+              min-width: clamp(var(--min-width, 0px), (var(--breakpoint) - 100%) * 999, 100% - var(--gutter, 0px));
+            "
+          >
+            <input type="checkbox" name="groupName" id="cinp3" />
+            <label for="cinp3">Label</label>
+          </div>
+          <div
+            class="Checkbox"
+            style="
+              display: inline-block;
+              min-width: clamp(var(--min-width, 0px), (var(--breakpoint) - 100%) * 999, 100% - var(--gutter, 0px));
+            "
+          >
+            <input type="checkbox" name="groupName" id="cinp3" />
+            <label for="cinp3">Label</label>
+          </div>
+          <div
+            class="Checkbox"
+            style="
+              display: inline-block;
+              min-width: clamp(var(--min-width, 0px), (var(--breakpoint) - 100%) * 999, 100% - var(--gutter, 0px));
+            "
+          >
+            <input type="checkbox" name="groupName" id="cinp3" />
+            <label for="cinp3">Label</label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </body>
+</html>

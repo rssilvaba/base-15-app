@@ -5,8 +5,12 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular
 const buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';
 
 const buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';
-const buttonDisabledStyles =
-  'disabled:cursor-not-allowed disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white';
+const buttonDisabledStyles = {
+  primary:
+    'disabled:cursor-not-allowed  disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white',
+  secondary:
+    'disabled:cursor-not-allowed  disabled:bg-white disabled:border-[color:#999999] disabled:text-[color:#999999]',
+};
 const buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';
 
 const buttonSizeVariantStyles = {
@@ -16,8 +20,8 @@ const buttonSizeVariantStyles = {
 };
 
 const buttonColorVariantStyles = {
-  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA] ',
-  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA] ',
+  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA]',
+  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA]',
 };
 
 @Component({
@@ -40,10 +44,10 @@ export class ButtonComponent {
   disabled = null;
 
   @HostBinding('attr.disabled')
-  get disabled_ () {
+  get disabled_() {
     return this.disabled ? true : null;
   }
-  
+
   @Input()
   label = '';
 
@@ -52,9 +56,8 @@ export class ButtonComponent {
 
   @HostBinding('attr.class')
   get class_() {
-    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${
-      this.class
-    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;
+    // eslint-disable-next-line prettier/prettier
+    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;
   }
 
   @Input()
@@ -91,9 +94,8 @@ export class ButtonLinkComponent {
 
   @HostBinding('attr.class')
   get class__() {
-    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${
-      this.class
-    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;
+    // eslint-disable-next-line prettier/prettier
+    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;
   }
 
   @Input()
@@ -123,7 +125,7 @@ export class ButtonInputComponent {
   disabled = null;
 
   @HostBinding('attr.disabled')
-  get disabled_ () {
+  get disabled_() {
     return this.disabled ? true : null;
   }
 
@@ -142,7 +144,7 @@ export class ButtonInputComponent {
   get class_() {
     return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${
       this.class
-    } ${buttonActiveStyles} ${buttonDisabledStyles} ${buttonFocusStyles} Button`;
+    } ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;
   }
 
   @HostBinding('value')

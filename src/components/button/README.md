@@ -1,0 +1,1 @@
+no reason for showing a statechart here, the behavior is simple enough to leave it to the dom. but there are some interesting use cases that we might revisit, like toggled buttons.

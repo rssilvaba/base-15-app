@@ -1,5 +1,12 @@
 // settings.json within VS Code
 {
   // Add ".*Styles" (or whatever matches your naming scheme)
-  "tailwindCSS.classAttributes": ["class", "className", "ngClass", ".*Styles", ".*Classes"]
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    ".*Styles",
+    ".*Classes"
+  ],
+  "livePreview.defaultPreviewPath": "c:\\Code\\BASE_APP_REPO_FOLDERS\\base-15-app\\src\\components\\checkbox\\checkbox-react.html"
 }
