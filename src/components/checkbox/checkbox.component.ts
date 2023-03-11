@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -23,10 +23,12 @@ export class CheckboxInputComponent {
 
   @Input()
   @HostBinding('indeterminate')
+  @HostBinding('class.indeterminate')
   indeterminate = false;
-
+  
   get indeterminate_() {
     // debugger;
+    // this.class = this.class + 'indeterminate'
     return this.indeterminate ? true : null;
   }
 
@@ -34,8 +36,9 @@ export class CheckboxInputComponent {
   get class_() {
     return `absolute invisible h-0 w-0 ${this.class} Input`;
   }
+
   // ngOnInit(): void {
-  //   this.elementRef.nativeElement.indeterminate = this.indeterminate;
+    // this.elementRef.nativeElement.indeterminate = this.indeterminate;
+    // this.class = `${this.class} ${this.indeterminate?'indeterminate':''}`;
   // }
 }
-

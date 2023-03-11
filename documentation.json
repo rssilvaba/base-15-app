@@ -697,7 +697,7 @@
         },
         {
             "name": "CheckboxInputComponent",
-            "id": "component-CheckboxInputComponent-df966b774be8026b78e0a84eb7b6d6ce23bd387e4247932f0086f36a38645fd5220cd6370654c1a69d4cf57d6a31684a007a90177359a16fa99bad68d54a2db1",
+            "id": "component-CheckboxInputComponent-84de1bfcf34950620e4e62e13040cd2fb3220228f76a0077a432285e2f6a6147b98c9b535e628fdfe0a30216279e55aae57234f744d65f2e988274ffd496d4a0",
             "file": "src/components/checkbox/checkbox.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -725,7 +725,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 19,
                     "type": "string",
                     "decorators": []
                 },
@@ -734,7 +734,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 26,
                     "type": "boolean",
                     "decorators": []
                 }
@@ -749,7 +749,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 22,
                     "decorators": [
                         {
                             "name": "HostBinding",
@@ -771,11 +771,19 @@
                     "decorators": []
                 },
                 {
+                    "name": "attr.class",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 34,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
                     "name": "attr.type",
                     "defaultValue": "'checkbox'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 23,
+                    "line": 22,
                     "type": "string",
                     "decorators": []
                 }
@@ -784,18 +792,10 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, HostBinding, Input } from '@angular/core';\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-checkbox]',\r\n  template: '<ng-content></ng-content>',\r\n  standalone: true,\r\n})\r\nexport class CheckboxInputComponent {\r\n  @Input()\r\n  checked = false;\r\n\r\n  @HostBinding('attr.checked')\r\n  get checked_() {\r\n    return this.checked ? true : null;\r\n  }\r\n\r\n  @Input()\r\n  @HostBinding('class')\r\n  class = '';\r\n\r\n  @HostBinding('attr.type')\r\n  type = 'checkbox';\r\n\r\n  @Input()\r\n  @HostBinding('indeterminate')\r\n  indeterminate = false;\r\n\r\n  get indeterminate_() {\r\n    // debugger;\r\n    return this.indeterminate ? true : null;\r\n  }\r\n\r\n  constructor() {\r\n    // debugger\r\n    this.class = `absolute invisible h-0 w-0 ${this.class} Input`;\r\n  }\r\n\r\n  // ngOnInit(): void {\r\n  //   this.elementRef.nativeElement.indeterminate = this.indeterminate;\r\n  // }\r\n}\r\n\r\n",
+            "sourceCode": "import { Component, HostBinding, Input } from '@angular/core';\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-checkbox]',\r\n  template: '<ng-content></ng-content>',\r\n  standalone: true,\r\n})\r\nexport class CheckboxInputComponent {\r\n  @Input()\r\n  checked = false;\r\n\r\n  @HostBinding('attr.checked')\r\n  get checked_() {\r\n    return this.checked ? true : null;\r\n  }\r\n\r\n  @Input()\r\n  class = '';\r\n\r\n  @HostBinding('attr.type')\r\n  type = 'checkbox';\r\n\r\n  @Input()\r\n  @HostBinding('indeterminate')\r\n  indeterminate = false;\r\n\r\n  get indeterminate_() {\r\n    // debugger;\r\n    return this.indeterminate ? true : null;\r\n  }\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `absolute invisible h-0 w-0 ${this.class} Input`;\r\n  }\r\n  // ngOnInit(): void {\r\n  //   this.elementRef.nativeElement.indeterminate = this.indeterminate;\r\n  // }\r\n}\r\n\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [],
-                "line": 32
-            },
             "accessors": {
                 "checked_": {
                     "name": "checked_",
@@ -812,7 +812,16 @@
                         "name": "indeterminate_",
                         "type": "",
                         "returnType": "",
-                        "line": 29
+                        "line": 28
+                    }
+                },
+                "class_": {
+                    "name": "class_",
+                    "getSignature": {
+                        "name": "class_",
+                        "type": "",
+                        "returnType": "",
+                        "line": 34
                     }
                 }
             }
@@ -884,7 +893,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".wrapper {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\nsvg {\n  display: inline-block;\n  vertical-align: top;\n}\n\nh1 {\n  font-weight: 900;\n  font-size: 20px;\n  line-height: 1;\n  margin: 6px 0 6px 10px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nbutton + button {\n  margin-left: 10px;\n}\n\n.welcome {\n  color: #333;\n  font-size: 14px;\n  margin-right: 10px;\n}\n",
+                    "data": ".wrapper {\r\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\r\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\r\n  padding: 15px 20px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n}\r\n\r\nsvg {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\nh1 {\r\n  font-weight: 900;\r\n  font-size: 20px;\r\n  line-height: 1;\r\n  margin: 6px 0 6px 10px;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\nbutton + button {\r\n  margin-left: 10px;\r\n}\r\n\r\n.welcome {\r\n  color: #333;\r\n  font-size: 14px;\r\n  margin-right: 10px;\r\n}\r\n",
                     "styleUrl": "./header.css"
                 }
             ],
@@ -1272,7 +1281,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "section {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 24px;\n  padding: 48px 20px;\n  margin: 0 auto;\n  max-width: 600px;\n  color: #333;\n}\n\nsection h2 {\n  font-weight: 900;\n  font-size: 32px;\n  line-height: 1;\n  margin: 0 0 4px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nsection p {\n  margin: 1em 0;\n}\n\nsection a {\n  text-decoration: none;\n  color: #1ea7fd;\n}\n\nsection ul {\n  padding-left: 30px;\n  margin: 1em 0;\n}\n\nsection li {\n  margin-bottom: 8px;\n}\n\nsection .tip {\n  display: inline-block;\n  border-radius: 1em;\n  font-size: 11px;\n  line-height: 12px;\n  font-weight: 700;\n  background: #e7fdd8;\n  color: #66bf3c;\n  padding: 4px 12px;\n  margin-right: 10px;\n  vertical-align: top;\n}\n\nsection .tip-wrapper {\n  font-size: 13px;\n  line-height: 20px;\n  margin-top: 40px;\n  margin-bottom: 40px;\n}\n\nsection .tip-wrapper svg {\n  display: inline-block;\n  height: 12px;\n  width: 12px;\n  margin-right: 4px;\n  vertical-align: top;\n  margin-top: 3px;\n}\n\nsection .tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
+                    "data": "section {\r\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\r\n  font-size: 14px;\r\n  line-height: 24px;\r\n  padding: 48px 20px;\r\n  margin: 0 auto;\r\n  max-width: 600px;\r\n  color: #333;\r\n}\r\n\r\nsection h2 {\r\n  font-weight: 900;\r\n  font-size: 32px;\r\n  line-height: 1;\r\n  margin: 0 0 4px;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\nsection p {\r\n  margin: 1em 0;\r\n}\r\n\r\nsection a {\r\n  text-decoration: none;\r\n  color: #1ea7fd;\r\n}\r\n\r\nsection ul {\r\n  padding-left: 30px;\r\n  margin: 1em 0;\r\n}\r\n\r\nsection li {\r\n  margin-bottom: 8px;\r\n}\r\n\r\nsection .tip {\r\n  display: inline-block;\r\n  border-radius: 1em;\r\n  font-size: 11px;\r\n  line-height: 12px;\r\n  font-weight: 700;\r\n  background: #e7fdd8;\r\n  color: #66bf3c;\r\n  padding: 4px 12px;\r\n  margin-right: 10px;\r\n  vertical-align: top;\r\n}\r\n\r\nsection .tip-wrapper {\r\n  font-size: 13px;\r\n  line-height: 20px;\r\n  margin-top: 40px;\r\n  margin-bottom: 40px;\r\n}\r\n\r\nsection .tip-wrapper svg {\r\n  display: inline-block;\r\n  height: 12px;\r\n  width: 12px;\r\n  margin-right: 4px;\r\n  vertical-align: top;\r\n  margin-top: 3px;\r\n}\r\n\r\nsection .tip-wrapper svg path {\r\n  fill: #1ea7fd;\r\n}\r\n",
                     "styleUrl": "./page.css"
                 }
             ],
@@ -1437,13 +1446,13 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<CheckboxInputComponent>",
-                "defaultValue": "(args: any) => ({\r\n  props: args,\r\n  template: `\r\n    <input cpt-checkbox [checked]=\"${args.checked}\" id=\"check1\" class=\"[&:checked~label>svg]:fill-black\" />\r\n    <label for=\"check1\" class=\"inline-block h-8 w-8 border border-black\"\r\n        ><svg class=\"fill-transparent stroke-black\" focusable=\"false\" aria-hidden=\"true\" viewBox=\"0 0 24 24\" data-testid=\"BookmarkBorderIcon\">\r\n          <path d=\"M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z\"></path></svg\r\n      ></label>\r\n  `,\r\n})"
+                "defaultValue": "(args: any) => ({\r\n  props: args,\r\n  template: `\r\n    <input cpt-checkbox [checked]=\"${args.checked}\" id=\"check1\" class=\"[&:checked~label>svg]:fill-black\" />\r\n    <label for=\"check1\" class=\"inline-block h-4 w-4 border border-black\"\r\n        ><svg class=\"fill-transparent stroke-black\" focusable=\"false\" aria-hidden=\"true\" viewBox=\"0 0 24 24\" data-testid=\"BookmarkBorderIcon\">\r\n          <path d=\"M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z\"></path></svg\r\n      >\r\n      Label</label>\r\n  `, \r\n})"
             },
             {
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/checkbox/checkbox.component.stories.ts",
+                "file": "src/components/layout/albatross-container.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1453,7 +1462,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/layout/albatross-container.component.stories.ts",
+                "file": "src/components/checkbox/checkbox.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1543,6 +1552,16 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/components/button/button-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/components/button/button-link.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1563,11 +1582,11 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/button/button-input.component.stories.ts",
+                "file": "src/components/layout/albatross-container.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
+                "defaultValue": "(args) => ({\r\n  props: args,\r\n\r\n  template: templateTemplate,\r\n})"
             },
             {
                 "name": "Template",
@@ -1578,16 +1597,6 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/components/layout/albatross-container.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "(args) => ({\r\n  props: args,\r\n\r\n  template: templateTemplate,\r\n})"
             },
             {
                 "name": "templateTemplate",
@@ -1761,7 +1770,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<CheckboxInputComponent>",
-                    "defaultValue": "(args: any) => ({\r\n  props: args,\r\n  template: `\r\n    <input cpt-checkbox [checked]=\"${args.checked}\" id=\"check1\" class=\"[&:checked~label>svg]:fill-black\" />\r\n    <label for=\"check1\" class=\"inline-block h-8 w-8 border border-black\"\r\n        ><svg class=\"fill-transparent stroke-black\" focusable=\"false\" aria-hidden=\"true\" viewBox=\"0 0 24 24\" data-testid=\"BookmarkBorderIcon\">\r\n          <path d=\"M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z\"></path></svg\r\n      ></label>\r\n  `,\r\n})"
+                    "defaultValue": "(args: any) => ({\r\n  props: args,\r\n  template: `\r\n    <input cpt-checkbox [checked]=\"${args.checked}\" id=\"check1\" class=\"[&:checked~label>svg]:fill-black\" />\r\n    <label for=\"check1\" class=\"inline-block h-4 w-4 border border-black\"\r\n        ><svg class=\"fill-transparent stroke-black\" focusable=\"false\" aria-hidden=\"true\" viewBox=\"0 0 24 24\" data-testid=\"BookmarkBorderIcon\">\r\n          <path d=\"M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z\"></path></svg\r\n      >\r\n      Label</label>\r\n  `, \r\n})"
                 },
                 {
                     "name": "Default",
