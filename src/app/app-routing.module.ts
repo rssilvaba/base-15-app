@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home.component';
-import { TodoComponent } from './components/todo.component';
+import { HomeContainerComponent } from './components/home-container.component';
+import { TodoContainerComponent } from './components/todo-detail-container.component';
 
 export const routes: Routes = [
-  { path: 'new', component: TodoComponent },
-  { path: 'edit/:itemTitle', component: TodoComponent },
-  { path: '', component: HomeComponent },
+  { path: 'new', component: TodoContainerComponent },
+  { path: 'edit/:itemTitle', component: TodoContainerComponent },
+  { path: '', component: HomeContainerComponent },
   { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{ useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { 

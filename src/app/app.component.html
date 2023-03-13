@@ -3,14 +3,20 @@ and we use xstate for app coordination, view and model the app behavior <br />
 
 <br />
 <label for="">next events:</label>
-<li *ngFor="let event of appService.state.nextEvents">{{ event }}</li>
+<!-- <li *ngFor="let event of appService.state.nextEvents">{{ event }}</li> -->
 <br />
 <label for="">current state:</label>
-{{ appService.state.value | json}}
+<!-- {{ appService.state.value | json}} -->
 <br />
 <br />
-<router-outlet></router-outlet>
-
+<div>
+  <router-outlet
+    (activate)="activate($event)"
+    (attach)="attach($event)"
+    (deactivate)="deactivate($event)"
+    (detach)="detach($event)"
+  ></router-outlet>
+</div>
 <!-- <app-todo-list
   *ngIf="(state$ | async) === 'TodoList'"
   [items]="items$ | async"

@@ -63,7 +63,6 @@ dependencies:
   '@angular/platform-browser': 15.0.4_bwwplqn6fknm3semymfqlvw5bm
   '@angular/platform-browser-dynamic': 15.0.4_hnn6v3m7xpfwy5wugozvutqsyi
   '@angular/router': 15.0.4_6qoe6dvkj2mvffppuvjrhovg7y
-  '@xstate/inspect': 0.7.1_xstate@4.36.0
   '@xstate/test': 0.5.1_xstate@4.36.0
   rxjs: 7.5.7
   tslib: 2.4.1
@@ -94,6 +93,7 @@ devDependencies:
   '@types/node': 18.11.18
   '@typescript-eslint/eslint-plugin': 5.48.0_5h7afou27muhw6nte4lfovu3qi
   '@typescript-eslint/parser': 5.48.0_hxm4ti6flr4ebpn5txq2vx72t4
+  '@xstate/inspect': 0.7.1_xstate@4.36.0
   babel-loader: 8.3.0_@babel+core@7.20.12
   eslint: 8.31.0
   eslint-config-prettier: 8.6.0_eslint@8.31.0
@@ -6025,7 +6025,7 @@ packages:
     dependencies:
       fast-safe-stringify: 2.1.1
       xstate: 4.36.0
-    dev: false
+    dev: true
 
   /@xstate/test/0.5.1_xstate@4.36.0:
     resolution: {integrity: sha512-Ltz46QR9QvEuhlNy+zvs+5ylfpGXzDBh+jVC1/WL8w88uEbN+Wf1bJ/Bi5OWVWWEgXJxfcmlavN4hJOqtQuqgQ==}
@@ -9458,7 +9458,7 @@ packages:
 
   /fast-safe-stringify/2.1.1:
     resolution: {integrity: sha512-W+KJc2dmILlPplD/H4K9l9LcAHAfPtP6BY84uVLXQ6Evcz9Lcg33Y2z1IVblT6xdY54PXYVHEv+0Wpq8Io6zkA==}
-    dev: false
+    dev: true
 
   /fastq/1.15.0:
     resolution: {integrity: sha512-wBrocU2LCXXa+lWBt8RoIRD89Fi8OdABODa/kEnyeyjS5aZO5/GNvI5sEINADqP/h8M29UHTHUb53sUu5Ihqdw==}
@@ -16809,7 +16809,6 @@ packages:
 
   /xstate/4.36.0:
     resolution: {integrity: sha512-AUI+KPgyy3g4PDpZWzUy/5ubd8VymbqikNmrJx5AQfqh+AQnemkBiabGROno+am1wUl2yeuT3UDrzUTSidfa6g==}
-    dev: false
 
   /xtend/4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
