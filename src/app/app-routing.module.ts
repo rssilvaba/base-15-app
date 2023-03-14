@@ -5,27 +5,30 @@ import { TodoDetailComponent } from './todo-detail.container.component';
 
 const routes: Routes = [
   {
-    path: 'new',
+    path: '',
     component: HomeContainerComponent,
     children: [
       {
-        path: '',
-        component: TodoDetailComponent,
-      }
-    ],
-  },
-  {
-    path: 'edit',
-    component: HomeContainerComponent,
-    children: [
+        path: 'edit',
+        children: [
+          {
+            path: ':itemId',
+            component: TodoDetailComponent,
+          },
+        ],
+        // resolve: {    item: TodoResolver,  }
+      },
       {
-        path: ':itemId',
-        component: TodoDetailComponent,
-      }
+        path: 'new',
+        children: [
+          {
+            path: '',
+            component: TodoDetailComponent,
+          },
+        ],
+      },
     ],
-    // resolve: {    item: TodoResolver,  }
   },
-  { path: '', component: HomeContainerComponent },
   { path: '**', redirectTo: '' },
 ];
 

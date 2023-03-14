@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { MyDialogComponent } from './dialog.component';
@@ -14,6 +14,7 @@ import { TodosDB, TodoService } from './todo.model.service';
       <ng-container my-dialog-body>
         <label for="">title:</label>
         <input type="text" #title [value]="item?.title" />
+        <br />
         <label for="">description:</label>
         <input type="text" #description [value]="item?.description" />
         <br />
@@ -31,12 +32,32 @@ export class TodoDetailComponent implements OnInit {
   @Input()
   item: { description: string; title: string; id?: number; status?: string } | null = null;
 
+  @Output()
+  itemAdded: any = null;
+
   constructor(public router: Router, public service: TodoService, private activatedRoute: ActivatedRoute) {}
   onSave(newValue: any, todo: any): void {
-    debugger;
-    this.service
-      .upsert({ ...todo, ...newValue, ...(todo?.id ? { id: todo?.id } : null) })
-      .then(() => this.router.navigate(['..']));
+    // debugger;
+    const newItem = { ...todo, ...newValue, ...(todo?.id ? { id: todo?.id } : null) };
+    TodosDB.set(newItem)
+      .then((key) => {
+        debugger;
+        if (todo?.id) {
+          window.dispatchEvent(
+            new CustomEvent('onTodoEdited', { detail: { ...newItem, ...(todo?.id ? { id: todo?.id } : { id: key }) } })
+          );
+        } else {
+          window.dispatchEvent(
+            new CustomEvent('onTodoAdded', { detail: { ...newItem, ...(todo?.id ? { id: todo?.id } : { id: key }) } })
+          );
+        }
+        
+        this.router.navigate(['..']);
+      })
+      .catch((e) => {
+        console.log(`item with name: ${newItem.name} was not added, we got an error`);
+        console.error(e);
+      });
   }
 
   async ngOnInit() {
