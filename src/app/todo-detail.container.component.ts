@@ -38,26 +38,14 @@ export class TodoDetailComponent implements OnInit {
   constructor(public router: Router, public service: TodoService, private activatedRoute: ActivatedRoute) {}
   onSave(newValue: any, todo: any): void {
     // debugger;
-    const newItem = { ...todo, ...newValue, ...(todo?.id ? { id: todo?.id } : null) };
-    TodosDB.set(newItem)
-      .then((key) => {
-        debugger;
-        if (todo?.id) {
-          window.dispatchEvent(
-            new CustomEvent('onTodoEdited', { detail: { ...newItem, ...(todo?.id ? { id: todo?.id } : { id: key }) } })
-          );
-        } else {
-          window.dispatchEvent(
-            new CustomEvent('onTodoAdded', { detail: { ...newItem, ...(todo?.id ? { id: todo?.id } : { id: key }) } })
-          );
-        }
-        
-        this.router.navigate(['..']);
-      })
-      .catch((e) => {
-        console.log(`item with name: ${newItem.name} was not added, we got an error`);
-        console.error(e);
-      });
+    const item = { ...todo, ...newValue, ...(todo?.id ? { id: todo?.id } : null) };
+    if (todo?.id) {
+      debugger
+      window.dispatchEvent(new CustomEvent('onTodoEdited', { detail: { key: TodosDB.set(item), item } }));
+    } else {
+      window.dispatchEvent(new CustomEvent('onTodoAdded', { detail: { key: TodosDB.set(item), item } }));
+    }
+    this.router.navigate(['..']);
   }
 
   async ngOnInit() {
