@@ -1,11 +1,6 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { lastValueFrom, Observable, firstValueFrom, take, takeLast } from 'rxjs';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MyDialogComponent } from './dialog.component';
-import { onTodoInsert, onTodoUpdate, selectTodo } from './ngrx';
-import { TodosDB, TodoService } from './todo.model.service';
 
 @Component({
   standalone: true,

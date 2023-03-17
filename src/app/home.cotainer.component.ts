@@ -71,33 +71,6 @@ export class HomeContainerComponent implements OnInit {
   constructor(public router: Router, public service: TodoService, public store: Store) {}
   todos$: Observable<any[]> = this.store.select(selectTodos);
   error: string | null = null;
-  @HostListener('window:onTodoAdded', ['$event.detail'])
-  async onTodoAdded(e: any) {
-    // e.key
-    //   .then((key: any) => {
-    //     console.log('updating list with new added item', e.item);
-    //     this.todos = this.todos?.concat({ ...e.item, id: key }) || this.todos;
-    //   })
-    //   .catch((e: any) => {
-    //     console.log(`item with name: ${e.item.name} was not added, we got an error`);
-    //     console.error(e);
-    //     this.error = e;
-    //   });
-  }
-
-  @HostListener('window:onTodoEdited', ['$event.detail'])
-  async onTodoEdited(e: any) {
-    // e.key
-    //   .then((key: any) => {
-    //     console.log('updating list with edited item', e.item);
-    //     this.todos = [...(this.todos?.filter((x) => x.id !== key) || []), e.item] || this.todos;
-    //   })
-    //   .catch((e: any) => {
-    //     console.log(`item with name: ${e.item.name} was not edited, we got an error`);
-    //     console.error(e);
-    //     this.error = e;
-    //   });
-  }
 
   async onDelete(item: any) {
     debugger;
@@ -105,35 +78,11 @@ export class HomeContainerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    ('');
     this.store.dispatch(onTodoLoad());
-    // TodosDB.getAll()
-    //   .then((x) => {
-    //     this.todos = x;
-    //   })
-    //   .catch((e) => {
-    //     console.log(`we could not fetch the todos`);
-    //     console.error(e);
-    //     this.error = e;
-    //   });
   }
 
   async onTodoStatusChange(item: any) {
-    // debugger;
-    // try {
     this.store.dispatch(onTodoUpdate({ item: { ...item, ...{ status: item.status === 'done' ? '' : 'done' } } }));
-    //   TodosDB.set({ ...item, ...{ status: item.status === 'done' ? '' : 'done' } });
-    //   // const todos = await this.todos;
-    //   if (this.todos !== null) {
-    //     this.todos = this.todos.map((x) =>
-    //       x.id === item.id ? { ...item, status: item.status === 'done' ? '' : 'done' } : x
-    //     );
-    //     console.log(`item with id: ${item.id} was changed status`);
-    //   }
-    // } catch (error: any) {
-    //   console.error(`item with id: ${item.id} was not changed, we got an error`, error);
-    //   this.error = error;
-    // }
   }
 
   onEdit(item: any) {
