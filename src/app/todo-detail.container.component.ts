@@ -1,61 +1,64 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { firstValueFrom } from 'rxjs';
+import { Component, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { MyDialogComponent } from './dialog.component';
-import { TodosDB, TodoService } from './todo.model.service';
+import { onTodoInsert, onTodoUpdate, selectTodo } from './ngrx';
+import { TodoDetailComponent } from './todo-detail.component';
 
 @Component({
   standalone: true,
-  selector: 'cpt-todo-detail',
+
+  // selector: 'cpt-todo-detail-container',
   template: `
     <my-dialog>
       <ng-container my-dialog-header>Details</ng-container>
       <ng-container my-dialog-body>
-        <label for="">title:</label>
-        <input type="text" #title [value]="item?.title" />
-        <br />
-        <label for="">description:</label>
-        <input type="text" #description [value]="item?.description" />
-        <br />
-        <br />
-        <button title="save" (click)="onSave({ title: title.value, description: description.value }, item)">
-          save
-        </button>
-        <button title="cancel" (click)="router.navigate(['..'])">cancel</button>
+        <cpt-todo-detail [todo]="todo$ | async" (onSave)="onSave($event)" (onCancel)="router.navigate(['..'])">
+        </cpt-todo-detail>
       </ng-container>
     </my-dialog>
   `,
-  imports: [AsyncPipe, MyDialogComponent],
+  imports: [AsyncPipe, MyDialogComponent, TodoDetailComponent],
 })
-export class TodoDetailComponent implements OnInit {
+export class TodoDetailContainerComponent implements OnInit, OnDestroy {
   @Input()
-  item: { description: string; title: string; id?: number; status?: string } | null = null;
+  todo$: Observable<{ description: string; title: string; id?: number; status?: string } | null> =
+    this.store.select(selectTodo);
 
   @Output()
   itemAdded: any = null;
 
-  constructor(public router: Router, public service: TodoService, private activatedRoute: ActivatedRoute) {}
-  onSave(newValue: any, todo: any): void {
-    // debugger;
-    const item = { ...todo, ...newValue, ...(todo?.id ? { id: todo?.id } : null) };
-    if (todo?.id) {
-      debugger
-      window.dispatchEvent(new CustomEvent('onTodoEdited', { detail: { key: TodosDB.set(item), item } }));
+  constructor(public router: Router, public store: Store) {}
+
+  onSave({ current, update }: any) {
+    debugger;
+    const item = { ...current, ...update, ...(current?.id ? { id: current?.id } : null) };
+    if (current?.id) {
+      debugger;
+      this.store.dispatch(onTodoUpdate({ item }));
+      // window.dispatchEvent(new CustomEvent('onTodoEdited', { detail: { key: TodosDB.set(item), item } }));
     } else {
-      window.dispatchEvent(new CustomEvent('onTodoAdded', { detail: { key: TodosDB.set(item), item } }));
+      this.store.dispatch(onTodoInsert({ item }));
+      // window.dispatchEvent(new CustomEvent('onTodoAdded', { detail: { key: TodosDB.set(item), item } }));
     }
     this.router.navigate(['..']);
   }
 
+  ngOnDestroy() {
+    ('');
+  }
+
   async ngOnInit() {
-    const params = await firstValueFrom(this.activatedRoute.params);
-    const item = params?.['itemId'] ? await TodosDB.get(parseInt(params?.['itemId'])) : null;
-    if (item) {
-      this.item = item;
-    } else if (this.router.url !== '/new') {
-      alert('no item with that id, navigating back');
-      this.router.navigate(['..']);
-    }
+    ('');
+    // const params = await firstValueFrom(this.activatedRoute.params);
+    // const item = params?.['todoId'] ? await TodosDB.get(parseInt(params?.['todoId'])) : null;
+    // if (item) {
+    //   this.item = item;
+    // } else if (this.router.url !== '/new') {
+    //   alert('no item with that id, navigating back');
+    //   this.router.navigate(['..']);
+    // }
   }
 }

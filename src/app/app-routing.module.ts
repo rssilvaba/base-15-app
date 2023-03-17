@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeContainerComponent } from './home.cotainer.component';
-import { TodoDetailComponent } from './todo-detail.container.component';
+import { TodoDetailContainerComponent } from './todo-detail.container.component';
 
 const routes: Routes = [
   {
@@ -12,8 +12,8 @@ const routes: Routes = [
         path: 'edit',
         children: [
           {
-            path: ':itemId',
-            component: TodoDetailComponent,
+            path: ':todoId',
+            component: TodoDetailContainerComponent,
           },
         ],
         // resolve: {    item: TodoResolver,  }
@@ -23,7 +23,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            component: TodoDetailComponent,
+            component: TodoDetailContainerComponent,
           },
         ],
       },

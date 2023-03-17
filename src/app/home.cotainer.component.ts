@@ -10,7 +10,10 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { TodoDetailComponent } from './todo-detail.container.component';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { onTodoLoad, onTodoRemove, onTodoUpdate, selectTodos } from './ngrx';
+import { TodoDetailContainerComponent } from './todo-detail.container.component';
 import { TodoListComponent } from './todo-list.component';
 import { TodosDB, TodoService } from './todo.model.service';
 
@@ -32,7 +35,7 @@ export class SearchPipe implements PipeTransform {
   }
 }
 @Component({
-  imports: [TodoListComponent, TodoDetailComponent, AsyncPipe, NgIf, RouterOutlet, SearchPipe],
+  imports: [TodoListComponent, TodoDetailContainerComponent, AsyncPipe, NgIf, RouterOutlet, SearchPipe],
   standalone: true,
   selector: 'cpt-home',
   template: `
@@ -45,12 +48,12 @@ export class SearchPipe implements PipeTransform {
     >
       x
     </button>
-    <ng-container *ngIf="todos?.length; else empty">
+    <ng-container *ngIf="(todos$ | async)?.length; else empty">
       <cpt-todo-list
-        [items]="todos | filter: 'title':searchValue"
+        [items]="todos$ | async | filter: 'title':searchValue"
         (onEdit)="onEdit($event)"
         (onChange)="onTodoStatusChange($event)"
-        (onDelete)="onDelete($event.id)"
+        (onDelete)="onDelete($event)"
       ></cpt-todo-list>
     </ng-container>
     <ng-template #empty>
@@ -65,82 +68,72 @@ export class HomeContainerComponent implements OnInit {
 
   searchValue = '';
 
-  constructor(public router: Router, public service: TodoService) {}
-  todos: null | any[] = null;
+  constructor(public router: Router, public service: TodoService, public store: Store) {}
+  todos$: Observable<any[]> = this.store.select(selectTodos);
   error: string | null = null;
   @HostListener('window:onTodoAdded', ['$event.detail'])
   async onTodoAdded(e: any) {
-    e.key
-      .then((key: any) => {
-        console.log('updating list with new added item', e.item);
-        this.todos = this.todos?.concat({ ...e.item, id: key }) || this.todos;
-      })
-      .catch((e: any) => {
-        console.log(`item with name: ${e.item.name} was not added, we got an error`);
-        console.error(e);
-        this.error = e;
-      });
+    // e.key
+    //   .then((key: any) => {
+    //     console.log('updating list with new added item', e.item);
+    //     this.todos = this.todos?.concat({ ...e.item, id: key }) || this.todos;
+    //   })
+    //   .catch((e: any) => {
+    //     console.log(`item with name: ${e.item.name} was not added, we got an error`);
+    //     console.error(e);
+    //     this.error = e;
+    //   });
   }
 
   @HostListener('window:onTodoEdited', ['$event.detail'])
   async onTodoEdited(e: any) {
-    e.key
-      .then((key: any) => {
-        console.log('updating list with edited item', e.item);
-        this.todos = [...(this.todos?.filter((x) => x.id !== key) || []), e.item] || this.todos;
-      })
-      .catch((e: any) => {
-        console.log(`item with name: ${e.item.name} was not edited, we got an error`);
-        console.error(e);
-        this.error = e;
-      });
+    // e.key
+    //   .then((key: any) => {
+    //     console.log('updating list with edited item', e.item);
+    //     this.todos = [...(this.todos?.filter((x) => x.id !== key) || []), e.item] || this.todos;
+    //   })
+    //   .catch((e: any) => {
+    //     console.log(`item with name: ${e.item.name} was not edited, we got an error`);
+    //     console.error(e);
+    //     this.error = e;
+    //   });
   }
 
-  async onDelete(id: any) {
-    // debugger;
-    try {
-      await TodosDB.delete(id);
-      // const todos = this.todos;
-      if (this.todos !== null) {
-        // debugger;
-        this.todos = this.todos.filter((x) => x.id !== id);
-      }
-      console.log(`item with id: ${id} was deleted`);
-    } catch (error: any) {
-      // console.log();
-      console.error(`item with id: ${id} was not deleted, we got an error`, error);
-      this.error = error;
-    }
+  async onDelete(item: any) {
+    debugger;
+    this.store.dispatch(onTodoRemove({ item }));
   }
 
   ngOnInit(): void {
     ('');
-    TodosDB.getAll()
-      .then((x) => {
-        this.todos = x;
-      })
-      .catch((e) => {
-        console.log(`we could not fetch the todos`);
-        console.error(e);
-        this.error = e;
-      });
+    this.store.dispatch(onTodoLoad());
+    // TodosDB.getAll()
+    //   .then((x) => {
+    //     this.todos = x;
+    //   })
+    //   .catch((e) => {
+    //     console.log(`we could not fetch the todos`);
+    //     console.error(e);
+    //     this.error = e;
+    //   });
   }
 
   async onTodoStatusChange(item: any) {
     // debugger;
-    try {
-      TodosDB.set({ ...item, ...{ status: item.status === 'done' ? '' : 'done' } });
-      // const todos = await this.todos;
-      if (this.todos !== null) {
-        this.todos = this.todos.map((x) =>
-          x.id === item.id ? { ...item, status: item.status === 'done' ? '' : 'done' } : x
-        );
-        console.log(`item with id: ${item.id} was changed status`);
-      }
-    } catch (error: any) {
-      console.error(`item with id: ${item.id} was not changed, we got an error`, error);
-      this.error = error;
-    }
+    // try {
+    this.store.dispatch(onTodoUpdate({ item: { ...item, ...{ status: item.status === 'done' ? '' : 'done' } } }));
+    //   TodosDB.set({ ...item, ...{ status: item.status === 'done' ? '' : 'done' } });
+    //   // const todos = await this.todos;
+    //   if (this.todos !== null) {
+    //     this.todos = this.todos.map((x) =>
+    //       x.id === item.id ? { ...item, status: item.status === 'done' ? '' : 'done' } : x
+    //     );
+    //     console.log(`item with id: ${item.id} was changed status`);
+    //   }
+    // } catch (error: any) {
+    //   console.error(`item with id: ${item.id} was not changed, we got an error`, error);
+    //   this.error = error;
+    // }
   }
 
   onEdit(item: any) {
