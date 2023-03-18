@@ -1,6 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,ts}"],
+  content: {
+    files: ["./src/**/*.{html,js,ts}"],
+  // extract: {
+    // ts: function (content) {
+    //   // debugger
+    //   // return content.match(/[^<>"'`\s]*/)
+    //   // return content.match(/class="([^<>"'`\s]*)"/)
+    //   return content.match(/class="([^"]*)"/) || content.match('');
+    // }
+  // }
+},
   theme: {
     extend: {},
   },
