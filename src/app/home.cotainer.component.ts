@@ -1,21 +1,13 @@
-import { AsyncPipe, NgIf } from '@angular/common';
-import {
-  Component,
-  HostListener,
-  Injectable,
-  OnInit,
-  Pipe,
-  PipeTransform,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
+import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
+import { Component, Injectable, OnInit, Pipe, PipeTransform, TemplateRef, ViewChild } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { onTodoLoad, onTodoRemove, onTodoUpdate, selectTodos } from './ngrx';
+import { inspect } from '@xstate/inspect';
+import { from, Observable } from 'rxjs';
+import { createMachine, interpret } from 'xstate';
+import { query, todoRootStates } from './app.fsm';
+import { TodosDB } from './model';
 import { TodoDetailContainerComponent } from './todo-detail.container.component';
 import { TodoListComponent } from './todo-list.component';
-import { TodosDB, TodoService } from './todo.model.service';
 
 @Pipe({
   name: 'filter',
@@ -35,7 +27,7 @@ export class SearchPipe implements PipeTransform {
   }
 }
 @Component({
-  imports: [TodoListComponent, TodoDetailContainerComponent, AsyncPipe, NgIf, RouterOutlet, SearchPipe],
+  imports: [TodoListComponent, TodoDetailContainerComponent, AsyncPipe, NgIf, RouterOutlet, SearchPipe, JsonPipe],
   standalone: true,
   selector: 'cpt-home',
   template: `
@@ -60,6 +52,7 @@ export class SearchPipe implements PipeTransform {
       <div>there are no todos add some.</div>
     </ng-template>
     <router-outlet></router-outlet>
+    {{ todos$ | json }}
   `,
 })
 export class HomeContainerComponent implements OnInit {
@@ -68,24 +61,43 @@ export class HomeContainerComponent implements OnInit {
 
   searchValue = '';
 
-  constructor() {}
-  todos$: Observable<any[]> = this.store.select(selectTodos);
+  constructor(public router: Router) {}
+  todos$: Observable<any[]> | null = null;
+  state$: Observable<any> | null = null;
   error: string | null = null;
+  appService: any = null;
 
   async onDelete(item: any) {
     debugger;
-    this.store.dispatch(onTodoRemove({ item }));
+    // this.store.dispatch(onTodoRemove({ item }));
   }
 
   ngOnInit(): void {
-    this.store.dispatch(onTodoLoad());
+    const queryMachine = createMachine(query as any, { services: { query: TodosDB.getAll } });
+    this.appService = interpret(
+      createMachine(todoRootStates as any, {
+        services: { query: queryMachine },
+        guards: { isEmpty: (context, event) => event['data'].length === 0 },
+      }),
+      { devTools: true }
+    );
+    inspect({
+      // options
+      // url: 'https://stately.ai/viz?inspect', // (default)
+      iframe: false, // open in new window
+    });
+    this.appService.onTransition((state: any) => console.log(state)).start();
+    this.state$ = from(this.appService);
+    // debugger
+    // this.service$ = from(this.appService.state.nextEvents)
+    // this.store.dispatch(onTodoLoad());
   }
 
   async onTodoStatusChange(item: any) {
-    this.store.dispatch(onTodoUpdate({ item: { ...item, ...{ status: item.status === 'done' ? '' : 'done' } } }));
+    // this.store.dispatch(onTodoUpdate({ item: { ...item, ...{ status: item.status === 'done' ? '' : 'done' } } }));
   }
 
   onEdit(item: any) {
-    this.router.navigate(['edit', item.id]);
+    // this.router.navigate(['edit', item.id]);
   }
 }

@@ -39,6 +39,7 @@ specifiers:
   eslint-config-prettier: ^8
   eslint-plugin-prettier: ^4
   eslint-plugin-storybook: ^0.6
+  idb: ^7.1.1
   jasmine-core: ~4.5.0
   karma: ~6.4.0
   karma-chrome-launcher: ~3.1.0
@@ -64,6 +65,7 @@ dependencies:
   '@angular/platform-browser-dynamic': 15.0.4_hnn6v3m7xpfwy5wugozvutqsyi
   '@angular/router': 15.0.4_6qoe6dvkj2mvffppuvjrhovg7y
   '@xstate/test': 0.5.1_xstate@4.36.0
+  idb: 7.1.1
   rxjs: 7.5.7
   tslib: 2.4.1
   xstate: 4.36.0
@@ -10646,6 +10648,10 @@ packages:
     dependencies:
       postcss: 8.4.19
     dev: true
+
+  /idb/7.1.1:
+    resolution: {integrity: sha512-gchesWBzyvGHRO9W8tzUWFDycow5gwjvFKfyV9FF32Y7F50yZMp7mP+T2mJIWFx49zicqyC4uefHM17o6xKIVQ==}
+    dev: false
 
   /ieee754/1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
