@@ -1,9 +1,9 @@
-import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
+import { AsyncPipe, JsonPipe, NgFor, NgIf } from '@angular/common';
 import { Component, Injectable, OnInit, Pipe, PipeTransform, TemplateRef, ViewChild } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { inspect } from '@xstate/inspect';
 import { from, Observable } from 'rxjs';
-import { createMachine, interpret } from 'xstate';
+import { actions, createMachine, interpret } from 'xstate';
 import { query, todoRootStates } from './app.fsm';
 import { TodosDB } from './model';
 import { TodoDetailContainerComponent } from './todo-detail.container.component';
@@ -27,11 +27,28 @@ export class SearchPipe implements PipeTransform {
   }
 }
 @Component({
-  imports: [TodoListComponent, TodoDetailContainerComponent, AsyncPipe, NgIf, RouterOutlet, SearchPipe, JsonPipe],
+  imports: [
+    TodoListComponent,
+    TodoDetailContainerComponent,
+    AsyncPipe,
+    NgIf,
+    NgFor,
+    RouterOutlet,
+    SearchPipe,
+    JsonPipe,
+  ],
   standalone: true,
   selector: 'cpt-home',
   template: `
-    <button title="new todo" (click)="router.navigate(['new'])">new todo</button>
+    <br />
+    <label for="">next events:</label>
+    <li *ngFor="let event of appService.state.nextEvents">{{ event }}</li>
+    <br />
+    <label for="">current state:</label>
+    {{ appService.state.value | json }}
+    <br />
+    <br />
+    <button title="new todo" (click)="appService.send({ type: 'onTodoNew' })">new todo</button>
     <br />
     <br />
     <input type="text" #search (input)="searchValue = search.value" /><button
@@ -40,19 +57,19 @@ export class SearchPipe implements PipeTransform {
     >
       x
     </button>
-    <ng-container *ngIf="(todos$ | async)?.length; else empty">
+    <ng-container *ngIf="(state$ | async).matches('RootContainer.Root.TodoList')">
       <cpt-todo-list
-        [items]="todos$ | async | filter: 'title':searchValue"
-        (onEdit)="onEdit($event)"
+        [items]="(state$ | async).context.items | filter: 'title':searchValue"
+        (onEdit)="appService.send({ type: 'onTodoDetail', item: $event })"
         (onChange)="onTodoStatusChange($event)"
         (onDelete)="onDelete($event)"
       ></cpt-todo-list>
     </ng-container>
-    <ng-template #empty>
+    <ng-template *ngIf="(state$ | async).matches('RootContainer.Root.Empty')">
       <div>there are no todos add some.</div>
     </ng-template>
     <router-outlet></router-outlet>
-    {{ todos$ | json }}
+    {{ state$ | async | json }}
   `,
 })
 export class HomeContainerComponent implements OnInit {
@@ -67,7 +84,7 @@ export class HomeContainerComponent implements OnInit {
   error: string | null = null;
   appService: any = null;
 
-  async onDelete(item: any) {
+  async onDelete(item: any) { 
     debugger;
     // this.store.dispatch(onTodoRemove({ item }));
   }
@@ -76,7 +93,13 @@ export class HomeContainerComponent implements OnInit {
     const queryMachine = createMachine(query as any, { services: { query: TodosDB.getAll } });
     this.appService = interpret(
       createMachine(todoRootStates as any, {
-        services: { query: queryMachine },
+        services: { query: queryMachine }, actions:{
+          toRouterTodoDetail: (context,event,data) => {
+            debugger
+            this.router.navigateByUrl(['edit',])
+            console.log(context,event,data)
+          }
+        },
         guards: { isEmpty: (context, event) => event['data'].length === 0 },
       }),
       { devTools: true }
@@ -86,7 +109,12 @@ export class HomeContainerComponent implements OnInit {
       // url: 'https://stately.ai/viz?inspect', // (default)
       iframe: false, // open in new window
     });
-    this.appService.onTransition((state: any) => console.log(state)).start();
+    this.appService
+      .onTransition((state: any) => {
+        console.log(state);
+        debugger;
+      })
+      .start();
     this.state$ = from(this.appService);
     // debugger
     // this.service$ = from(this.appService.state.nextEvents)

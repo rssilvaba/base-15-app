@@ -1,14 +1,6 @@
 the idea here is to use ngrx as store with memoized selectors just to keep state
 and we use xstate for app coordination, view and model the app behavior <br />
 
-<br />
-<label for="">next events:</label>
-<!-- <li *ngFor="let event of appService.state.nextEvents">{{ event }}</li> -->
-<br />
-<label for="">current state:</label>
-<!-- {{ appService.state.value | json}} -->
-<br />
-<br />
 <div>
   <router-outlet
     (activate)="activate($event)"

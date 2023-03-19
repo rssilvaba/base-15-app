@@ -1,7 +1,9 @@
 import { assign, createMachine, MachineConfig, raise, send, sendParent, sendTo } from 'xstate';
 import { escalate } from 'xstate/lib/actions';
 
+//TODO missing the onDone events for the invoked promise
 export const query = {
+  /** @xstate-layout N4IgpgJg5mDOIC5QAoC2BDAxgCwJYDswBKAOgEUBXMAJwE8CoBiCAe0JIIDcWBrMEtFjyFSlGvXxQEXFpnQAXXGwDaABgC6a9YlAAHFrFyK2OkAA9EARgCs1kgE4AHABYAzADZX1+5dWuA7JaOADQgtIguJABM1qpx7nGuqv5ezgC+aaGCOATE5FR0DIw01CzUJLoANgoAZmWoAhg5IvniDNL43HLG+FpapvqGPaYWCDbuJO7W7lGujt6+AUGh4QgxqiSxceOxzjP2GZkg+CwQcKbZwsQDBkZK+COIALTuK8929p9fsdaOc7YHI6XXKiAoSKA3Ib3R4IZxRN5jKL2TZxVSzGbuGz+fzpIFNK6kADyPEhdxMSHMiCRyKcbnc9Pszkc9msllcCMclhRqNUzkZlkxzlxWXxIJIAFFqKVqKThhTRtSHC4PAymSy2QjLHDuapLDY9U5pq5DmkgA */
   context: {
     items: null,
   },
@@ -9,19 +11,26 @@ export const query = {
     Querying: {
       invoke: {
         src: 'query',
-      },
-      on: {
-        Ok: {
+        onDone: {
           target: 'Ok',
+          actions: assign({
+            items: (_context, event) => (event as any).data,
+          }),
         },
-        Fail: 'Error',
+        onError: {
+          target: 'Error',
+          actions: assign({
+            items: (_context, event) => (event as any).data,
+          }),
+        },
       },
     },
     Ok: {
       type: 'final',
-      data: (context: any, event: any) => ({
-        items: [],
-      }),
+      data: (context: any, event: any) => {
+        debugger;
+        return context.items;
+      },
     },
     Error: {
       entry: escalate({ message: 'We could not fetch the todos' }),
@@ -48,9 +57,19 @@ export const todoRootStates = {
                   {
                     target: 'Empty',
                     cond: 'isEmpty',
+                    actions: assign({
+                      items: (context, event) => {
+                        return (event as any)?.['data'];
+                      },
+                    }),
                   },
                   {
                     target: 'TodoList',
+                    actions: assign({
+                      items: (context, event) => {
+                        return (event as any)?.['data'];
+                      },
+                    }),
                   },
                 ],
                 onError: [
@@ -68,6 +87,7 @@ export const todoRootStates = {
               on: {
                 onTodoDetail: {
                   target: 'TodoDetail',
+                  actions: 'toRouterTodoDetail',
                 },
                 onTodoDelete: {
                   target: 'QueryTodo',
