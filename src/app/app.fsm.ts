@@ -41,6 +41,64 @@ export const query = {
   initial: 'Querying',
 };
 
+export const formTodoDetailStates = {
+  id: 'todoDetail',
+  // entry: assign({
+  //   item: (context, event, ...data) => {
+  //     debugger;
+  //     return (event as any)?.['data'].item;
+  //   },
+  // }),
+  context: {
+    item: null,
+  },
+  states: {
+    Detail: {
+      states: {
+        Invalid: {},
+        Pristine: {},
+        Validating: {
+          on: {
+            onValidateFail: 'Invalid',
+            onValidateOk: 'Valid',
+          },
+          description: `Query`,
+        },
+        Valid: {
+          on: {
+            onSave: 'Saving',
+          },
+        },
+        Saving: {
+          description: `Query`,
+          type: 'final',
+        },
+        Closing: {
+          on: {
+            onCancel: 'Validating',
+            onOk: 'Closed',
+          },
+        },
+        Closed: {
+          type: 'final',
+          entry: 'Close',
+        },
+      },
+      initial: 'Pristine',
+      on: {
+        onChange: '.Validating',
+        onClose: [
+          {
+            target: '.Closed',
+            cond: 'pristine',
+          },
+          '.Closing',
+        ],
+      },
+    },
+  },
+  initial: 'Detail',
+};
 export const todoRootStates = {
   id: 'Todo',
   initial: 'RootContainer',
@@ -87,7 +145,7 @@ export const todoRootStates = {
               on: {
                 onTodoDetail: {
                   target: 'TodoDetail',
-                  actions: 'toRouterTodoDetail',
+                  actions: ['toRouterTodoDetail'],
                 },
                 onTodoDelete: {
                   target: 'QueryTodo',
@@ -97,6 +155,12 @@ export const todoRootStates = {
             TodoDetail: {
               invoke: {
                 src: 'form',
+                data: {
+                  item: (context: any, event: any) => {
+                    debugger;
+                    return event.item;
+                  },
+                },
               },
               on: {
                 onClose: {

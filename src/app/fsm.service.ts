@@ -4,27 +4,60 @@ import { inspect } from '@xstate/inspect';
 import { from, Observable } from 'rxjs';
 // import { todoMachine } from './app.fsm';
 import { Router } from '@angular/router';
+import { formTodoDetailStates, query, todoRootStates } from './app.fsm';
+import { TodosDB } from './model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MachineService {
-  appService: any;
+  service: any;
   state$: Observable<any> | undefined;
   service$: Observable<any> | undefined;
   constructor(public router: Router) {
-    // this.appService = interpret(todoMachine, { devTools: true });
-    // inspect({
-    //   // options
-    //   // url: 'https://stately.ai/viz?inspect', // (default)
-    //   iframe: false, // open in new window
-    // });
-    // this.appService.onTransition((state:any) => console.log(state)).start();
-    // this.state$ = from(this.appService);
-    // // debugger
-    // this.service$ = from(this.appService.state.nextEvents)
+    const queryMachine = createMachine(query as any, { services: { query: TodosDB.getAll } });
+    const detailMachine = createMachine(formTodoDetailStates as any);
+    this.service = interpret(
+      createMachine(todoRootStates as any, {
+        services: {
+          query: queryMachine,
+          form: detailMachine,
+          router: (context, event, data) => {
+            return Promise.resolve(event['item'] || null);
+          },
+        },
+        actions: {
+          toRouterTodoDetail: (context, event, data) => {
+            debugger;
+            this.router.navigate(['edit', event['item'].id]);
+            console.log(context, event, data);
+          },
+        },
+        guards: {
+          isEmpty: (context, event) => event['data'].length === 0,
+          isTodoNewRoute: () => this.router.url.includes('new'),
+          isTodoDetailRoute: () => this.router.url.includes('edit'),
+        },
+      }),
+      { devTools: true }
+    );
+    inspect({
+      // options
+      // url: 'https://stately.ai/viz?inspect', // (default)
+      iframe: false, // open in new window
+    });
+    this.service
+      .onTransition((state: any) => {
+        console.log(state);
+        debugger;
+      })
+      .start();
+    this.state$ = from(this.service);
+    // debugger
+    // this.service$ = from(this.service.state.nextEvents)
+    // this.store.dispatch(onTodoLoad());
   }
   ngOnDestroy() {
-    this.appService.stop();
+    this.service.stop();
   }
 }
