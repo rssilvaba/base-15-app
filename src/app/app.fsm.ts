@@ -1,5 +1,6 @@
 import { assign, createMachine, MachineConfig, raise, send, sendParent, sendTo } from 'xstate';
 import { escalate } from 'xstate/lib/actions';
+import { TodosDB } from './model';
 
 //TODO missing the onDone events for the invoked promise
 export const query = {
@@ -42,18 +43,23 @@ export const query = {
 };
 
 export const formTodoDetailStates = {
+  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FUBEzIIYEsAbAOmzyIGJUA7AYQAtdqYBtABgF1FQAHVWfMnw1uIAB6IA7ACYANCACeiAIwBWABzE26gMw7VATgBsqtnoPTVAXyvy0GMgRKPKNWoX5h2XJCD4ChEV8JBBl5JQQAFlMtXX1pdTZlbVUTGzt0LBwnUmzXOg9YL2UfXn5BYWpRELDFRATVYks2M1VlSOVJSOlI9JB7LPJnPJIANVxCfAhcIWYqanHJ6eQwADEnb1F-CqDQEKN1SOIjSWV1VUiDdUl1c7k6hDVNA2UjIwsrnRPpIz6Bl2GQ2IiymM3wcxoIOWYAA8gBrTa+baBKrBRAHI4nM4XK43O7heqdYgdN4nHSRclmSR-TIA3JAqHzADKuAAbl5OFtyijqogDJdiaodGwMe9JAcjASENIiSS3pJyZSdNTbP1aSN6Tl3OUIXQmABjMCERFlAKVXlRNhHZIGL5sSzkixGSJS6Q3YhxfSSW2JSzXGkODV07UCXXwk1+bnmtGW61sW1Ge1Cy4-F0PHTSAzEPR6C5tcwGEU2VXUdBwUT-EZcs27cSIAC0PSljZ0xAM7fbJ10QuUOn9qsrQIB1Z2qL29TTESMrdMLTYkgu+leLwDgxydIAktRWRMpiOeTHDtJBcLDJEuidVKopWosyTJFb4+0E6u6XSAAoAJ3wsFmYH30bjo8CTEFekRYr2rw9vcEQypoGi5kY0iWKcPS9AO6pDhqUJgswAG1iEi6gQ+boJNI9p6DBKhtFoc7KGcD6pKo0ivkG2G7hA+FjnWCBHiebBnheC7Xg8MqSG2rxdtEyjIeeOisVhQIsqy4JQFxFrJEYyjHD0trijI5HdDe-LEpJWkysk1xaQp64aiGqnqTGmbiTaS5+jo7aRJO9TnMQC50eoZxuraNlEJqYUhpAjlAcxWZYocySZlcVEIBmbCgXE6hOm6GbKMWVhAA */
   id: 'todoDetail',
-  // entry: assign({
-  //   item: (context, event, ...data) => {
-  //     debugger;
-  //     return (event as any)?.['data'].item;
-  //   },
-  // }),
   context: {
     item: null,
   },
   states: {
     Detail: {
+      invoke: {
+        src: 'queryTodo',
+        onDone: {
+          actions: assign({
+            item: (context, event) => {
+              return (event as any)?.['data'];
+            },
+          }),
+        },
+      },
       states: {
         Invalid: {},
         Pristine: {},
@@ -95,10 +101,16 @@ export const formTodoDetailStates = {
           '.Closing',
         ],
       },
+      // entry: 'checkItem',
+      // (c: any, e: any, d: any) => {
+      //   debugger
+      //   return '';
+      // },
     },
   },
   initial: 'Detail',
 };
+
 export const todoRootStates = {
   id: 'Todo',
   initial: 'RootContainer',

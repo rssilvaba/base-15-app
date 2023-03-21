@@ -1,9 +1,9 @@
 import { Injectable, NgModule } from '@angular/core';
 import { createMachine, interpret, assign } from 'xstate';
 import { inspect } from '@xstate/inspect';
-import { from, Observable } from 'rxjs';
+import { firstValueFrom, from, Observable } from 'rxjs';
 // import { todoMachine } from './app.fsm';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { formTodoDetailStates, query, todoRootStates } from './app.fsm';
 import { TodosDB } from './model';
 
@@ -14,9 +14,23 @@ export class MachineService {
   service: any;
   state$: Observable<any> | undefined;
   service$: Observable<any> | undefined;
-  constructor(public router: Router) {
+  constructor(public router: Router, private activatedRoute: ActivatedRoute) {
     const queryMachine = createMachine(query as any, { services: { query: TodosDB.getAll } });
-    const detailMachine = createMachine(formTodoDetailStates as any);
+    const detailMachine = createMachine(formTodoDetailStates as any, {
+      services: {
+        queryTodo: async () => {
+          const params = await firstValueFrom(this.activatedRoute.params);
+          // const item = params?.['itemId'] ? await TodosDB.get(parseInt(params?.['itemId'])) : null;
+          // if (this.router.url !== '/new') {
+          //   alert('no item with that id, navigating back');
+          //   this.router.navigate(['..']);
+          // }
+          // debugger;
+          
+          return TodosDB.get(parseInt(params?.['itemId']));
+        },
+      },
+    });
     this.service = interpret(
       createMachine(todoRootStates as any, {
         services: {
@@ -57,6 +71,7 @@ export class MachineService {
     // this.service$ = from(this.service.state.nextEvents)
     // this.store.dispatch(onTodoLoad());
   }
+
   ngOnDestroy() {
     this.service.stop();
   }
