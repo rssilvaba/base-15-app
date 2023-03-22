@@ -1,9 +1,9 @@
 import { Injectable, NgModule } from '@angular/core';
 import { createMachine, interpret, assign } from 'xstate';
 import { inspect } from '@xstate/inspect';
-import { firstValueFrom, from, Observable } from 'rxjs';
+import { filter, first, firstValueFrom, forkJoin, from, map, Observable, switchMap } from 'rxjs';
 // import { todoMachine } from './app.fsm';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ActivationEnd, NavigationEnd, Router } from '@angular/router';
 import { formTodoDetailStates, query, todoRootStates } from './app.fsm';
 import { TodosDB } from './model';
 
@@ -15,19 +15,47 @@ export class MachineService {
   state$: Observable<any> | undefined;
   service$: Observable<any> | undefined;
   constructor(public router: Router, private activatedRoute: ActivatedRoute) {
+    // this.router.events.subscribe(e => {
+    //   debugger
+    //   console.log('current route: ', this.router.url.toString());
+    //   // e instanceof NavigationEnd
+    // });
     const queryMachine = createMachine(query as any, { services: { query: TodosDB.getAll } });
     const detailMachine = createMachine(formTodoDetailStates as any, {
       services: {
-        queryTodo: async () => {
-          const params = await firstValueFrom(this.activatedRoute.params);
-          // const item = params?.['itemId'] ? await TodosDB.get(parseInt(params?.['itemId'])) : null;
-          // if (this.router.url !== '/new') {
-          //   alert('no item with that id, navigating back');
-          //   this.router.navigate(['..']);
-          // }
-          // debugger;
-          
-          return TodosDB.get(parseInt(params?.['itemId']));
+        resolve: (c, e) => {
+          return TodosDB.get(27);
+          // let prom: any;
+          // return this.router.events.pipe(
+          //   filter((e) => e instanceof ActivationEnd),
+          //   switchMap(() => {
+          //     debugger;
+          //     return from(TodosDB.get(parseInt(this.activatedRoute.snapshot.params?.['todoId'])));
+          //   })
+          // );
+          // return await new Promise((res, rej) => {
+          //   const sub = this.router.events.subscribe((e) => {
+          //     // console.log('current route: ', this.router.url.toString());
+          //     // e instanceof NavigationEnd
+          //     debugger
+          //     if (e instanceof ActivationEnd && e?.snapshot?.routeConfig?.path === ':todoId') {
+          //       // prom = TodosDB.get(parseInt(e.snapshot.params['todoId']));
+          //       sub.unsubscribe();
+          //       // prom = TodosDB.get(parseInt(e.snapshot.params['todoId']));
+          //       TodosDB.get(parseInt(e.snapshot.params['todoId'])).then(res).catch(rej)
+          //     }
+          //   });
+          //   // const params = await firstValueFrom(this.activatedRoute.params);
+          //   // const item = params?.['itemId'] ? await TodosDB.get(parseInt(params?.['itemId'])) : null;
+          //   // if (this.router.url !== '/new') {
+          //   //   alert('no item with that id, navigating back');
+          //   //   this.router.navigate(['..']);
+          //   // }
+          //   // debugger;
+          //   // return prom;
+          //   // prom.then()
+          //   // return TodosDB.get(parseInt(params?.['itemId']));
+          // });
         },
       },
     });

@@ -43,26 +43,41 @@ export const query = {
 };
 
 export const formTodoDetailStates = {
-  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FUBEzIIYEsAbAOmzyIGJUA7AYQAtdqYBtABgF1FQAHVWfMnw1uIAB6IA7ACYANCACeiAIwBWABzE26gMw7VATgBsqtnoPTVAXyvy0GMgRKPKNWoX5h2XJCD4ChEV8JBBl5JQQAFlMtXX1pdTZlbVUTGzt0LBwnUmzXOg9YL2UfXn5BYWpRELDFRATVYks2M1VlSOVJSOlI9JB7LPJnPJIANVxCfAhcIWYqanHJ6eQwADEnb1F-CqDQEKN1SOIjSWV1VUiDdUl1c7k6hDVNA2UjIwsrnRPpIz6Bl2GQ2IiymM3wcxoIOWYAA8gBrTa+baBKrBRAHI4nM4XK43O7heqdYgdN4nHSRclmSR-TIA3JAqHzADKuAAbl5OFtyijqogDJdiaodGwMe9JAcjASENIiSS3pJyZSdNTbP1aSN6Tl3OUIXQmABjMCERFlAKVXlRNhHZIGL5sSzkixGSJS6Q3YhxfSSW2JSzXGkODV07UCXXwk1+bnmtGW61sW1Ge1Cy4-F0PHTSAzEPR6C5tcwGEU2VXUdBwUT-EZcs27cSIAC0PSljZ0xAM7fbJ10QuUOn9qsrQIB1Z2qL29TTESMrdMLTYkgu+leLwDgxydIAktRWRMpiOeTHDtJBcLDJEuidVKopWosyTJFb4+0E6u6XSAAoAJ3wsFmYH30bjo8CTEFekRYr2rw9vcEQypoGi5kY0iWKcPS9AO6pDhqUJgswAG1iEi6gQ+boJNI9p6DBKhtFoc7KGcD6pKo0ivkG2G7hA+FjnWCBHiebBnheC7Xg8MqSG2rxdtEyjIeeOisVhQIsqy4JQFxFrJEYyjHD0trijI5HdDe-LEpJWkysk1xaQp64aiGqnqTGmbiTaS5+jo7aRJO9TnMQC50eoZxuraNlEJqYUhpAjlAcxWZYocySZlcVEIBmbCgXE6hOm6GbKMWVhAA */
+  /** @xstate-layout N4IgpgJg5mDOIC5QBcD2FUBEzIIYEsAbAOmzyIGJUA7AYQAtdqYBtABgF1FQAHVWfMnw1uIAB6IA7ACYANCACeiAIwBWABzE26gMw7VATgBsqtnoPTVAXyvy0GMgRKPKNWoX5h2XJCD4ChEV8JBBl5JQQAFlMtXX1pdTZlbVUTGzt0LBwnUmzXOg9YL2UfXn5BYWpRELDFRATVYks2M1VlSOVJSOlI9JB7LPJnPJIANVxCfAhcIWYqanHJ6eQwADEnb1F-CqDQEKN1SOIjSWV1VUiDdUl1c7k6hDVNA2UjIwsrnRPpIz6Bl2GQ2IiymM3wcxoIOWYAA8gBrTa+baBKrBRAHI4nM4XK43O7heqdYgdN4nHSRclmSR-TIA3JAqHzADKuAAbl5OFtyijqogDJdiaodGwMe9JAcjASENIiSS3pJyZSdNTbP1aSN6Tl3OUIXQmABjMCERFlAKVXlRNhHZIGL5sSzkixGSJS6Q3YhxfSSW2JSzXGkODV07UCXXwk1+bnmtGW61sW1Ge1Cy4-F0PHTSAzEPR6C5tcwGEUBwY5OkAJTgqEI7IoGGoYGI4NZqDhDf+QY1FdgVfZCCbqH1YJo3gjyOje0QAFplcQDIZ1EY3RYRQnJQ9pNI2LE9Im3Tn7SrVdR0HBRO2hlyzbtxFOM41VJJxYvlG62KYvlLJ9IdLODH+3skFwmK8OjFnSAKXjsqITggX6PsQD5PjKr7vmuERGD+pgtDo6gbk8OjKKBqrnqWGoAJLUKyExTJBPIxoc0iCsKhiRF0JyqKoUpqFmJKSFa8btAmYEdkCAAKABO+CwLMYC0eON6PAkCFAachGvEKL6umcCFxKkG4Pi+kS9MR6pAnSUJgswcnXiEFyYXxboJJu34ZlxbRaC0SRnHxqSqNIwlmRqULWdBCkMUxb78mxkgcVpkizq8JyHG0G6sURGSBoFQIsqy4JQCFFrJEYyjHD0trijIm7dFx-LEolxUysk1zFQFpFAiGeUFTGmbxTa+gvhoOh-kZrrnMQMWeWcZxLulaqZW1WqFJAXUwX5WZYocySZlc9wRBmW6DThTp7jKrVEJq51dj2slIlGNlThuWaIW8yE+WYaEqHO26KvyBEUo+Ng2EAA */
   id: 'todoDetail',
   context: {
     item: null,
   },
   states: {
+    // Resolve: {
+    //   oke: {
+    //       src: 'queryTodo',
+    //       onDone: {
+    //         actions: assign({
+    //           item: (context, event) => {
+    //             debugger
+    //             return (event as any)?.['data'];
+    //           },
+    //         }),
+    //       },
+    //     },
+    // },
     Detail: {
-      invoke: {
-        src: 'queryTodo',
-        onDone: {
-          actions: assign({
-            item: (context, event) => {
-              return (event as any)?.['data'];
-            },
-          }),
-        },
-      },
+      // invoke: {
+      //   src: 'queryTodo',
+      //   onDone: {
+      //     actions: assign({
+      //       item: (context, event) => {
+      //         debugger
+      //         return (event as any)?.['data'];
+      //       },
+      //     }),
+      //   },
+      // },
       states: {
         Invalid: {},
         Pristine: {},
+
         Validating: {
           on: {
             onValidateFail: 'Invalid',
@@ -70,27 +85,48 @@ export const formTodoDetailStates = {
           },
           description: `Query`,
         },
+
         Valid: {
           on: {
             onSave: 'Saving',
           },
         },
+
         Saving: {
           description: `Query`,
           type: 'final',
         },
+
         Closing: {
           on: {
             onCancel: 'Validating',
             onOk: 'Closed',
           },
         },
+
         Closed: {
           type: 'final',
           entry: 'Close',
         },
+
+        Resolve: {
+          invoke: {
+            src: 'resolve',
+            // onDone: 'Pristine',
+            onDone: {
+              target: 'Pristine',
+              actions: assign({
+                item: (context, event) => {
+                  debugger;
+                  return (event as any)?.['data'];
+                },
+              }),
+            },
+            // },
+          },
+        },
       },
-      initial: 'Pristine',
+      initial: 'Resolve',
       on: {
         onChange: '.Validating',
         onClose: [
