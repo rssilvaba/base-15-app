@@ -1,7 +1,7 @@
 import { AsyncPipe, JsonPipe } from '@angular/common';
-import { Component, Input, Output } from '@angular/core';
-import { Router } from '@angular/router';
-import { from, Observable } from 'rxjs';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { MyDialogComponent } from './dialog.component';
 import { MachineService } from './fsm.service';
 import { TodoDetailComponent } from './todo-detail.component';
@@ -17,12 +17,22 @@ import { TodoDetailComponent } from './todo-detail.component';
         <cpt-todo-detail
           [todo]="(service | async)?.context.item"
           (onSave)="
-            appService.service.state.children['Todo.RootContainer.Root.TodoDetail:invocation[0]'].send({
-              type: 'onSave',
-              item: $event
-            })
+            appService.service.send(
+              {
+                type: 'onSave',
+                item: $event
+              },
+              { to: 'formTodoDetail' }
+            )
           "
-          (onCancel)="appService.service.send({ type: 'onClose' })"
+          (onCancel)="
+            appService.service.send(
+              {
+                type: 'onClose'
+              },
+              { to: 'formTodoDetail' }
+            )
+          "
         >
         </cpt-todo-detail>
       </ng-container>
@@ -30,12 +40,19 @@ import { TodoDetailComponent } from './todo-detail.component';
   `,
   imports: [AsyncPipe, MyDialogComponent, TodoDetailComponent, JsonPipe],
 })
-export class TodoDetailContainerComponent {
+export class TodoDetailContainerComponent implements OnInit {
+  // @Input()
+  service: Observable<any> = this.appService.service.state.children['formTodoDetail'];
+
   @Input()
-  service: Observable<any> = this.appService.service.state.children['Todo.RootContainer.Root.TodoDetail:invocation[0]'];
+  todoId = this.activatedRoute.snapshot.params['todoId'];
 
-  @Output()
-  itemAdded: any = null;
+  constructor(public router: Router, public activatedRoute: ActivatedRoute, public appService: MachineService) {}
 
-  constructor(public router: Router, public appService: MachineService) {}
+  ngOnInit(): void {
+    // (window as any)['d'] = this.appService.service;
+    // trigger this machine from the component?
+
+    this.appService.service.send({ type: 'onRouteChange', data: { todoId: this.todoId } });
+  }
 }

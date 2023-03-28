@@ -1,6 +1,5 @@
-import { assign, createMachine, MachineConfig, raise, send, sendParent, sendTo } from 'xstate';
+import { assign, createMachine } from 'xstate';
 import { escalate } from 'xstate/lib/actions';
-import { TodosDB } from './model';
 
 //TODO missing the onDone events for the invoked promise
 export const query = {
@@ -77,7 +76,6 @@ export const formTodoDetailStates = {
       states: {
         Invalid: {},
         Pristine: {},
-
         Validating: {
           on: {
             onValidateFail: 'Invalid',
@@ -148,6 +146,7 @@ export const formTodoDetailStates = {
 };
 
 export const todoRootStates = {
+  /** @xstate-layout N4IgpgJg5mDOIC5QBUD2FUDoBKrUBcBhVAO3wEMBLEsAJxz3wGJS0MA5MAdwG0AGALqJQAB1SxK+SqWEgAHogBsAJgCsmRXwCcAFj4B2ZQGZFRgIxmjAGhABPRGb6KtmPnr5HVigBxrlZ5QBfQJs2LFwCYjIqGnoI-EwARQBXOlswpgwaTGoAN1QAazBMMIZI0gpqOjKElLSwhDzUAGNyKVJ+AU7ZMQl2klkFBG9LTH0tZx0A40NFMxt7BC03TFV3ZW8jCdVzRWDQ9HDGKMrYmqTU2nTDzNJipqKSw5qTmOr4i-rDxpJ81v7OjwzEIkCBepJpANQUMRkYxhNdNMjLN5nYlGYXMplnxLKZDMo+N59iBSvFXlU4oxPlcMnRaKh6CIADZtABmDIAtk8MC8Km9KQRqdcMD8-m1IYDBD1xBCZNCHN5FDpMFpkTslTjNvoFg4TMqsXw3PpfIpjT5iaTjnyKecwgAZSiwZisQ4AETAlSZ3VB4P6gwcBMUmB0avM428+jMilUOoQmmVyKMeqM3l8yn0RgtzzJ1rOH3tjudJDC7qZHrA3tEMr98qWOMwakNFmUSq0qZjaIQXm8Y28Wn7iuWqmNqizPJz0Rt+bdHqoTJYJEITPEFalPurkP9CCjKlWqvGWmUemMiljcx7zk2OkVauNRJCJOzVsnedQyXwdFu2QexUt5Rf7xvh+tCii04odIIlZghucqgEMfi9gEax8MYUapqenaqGYPbIYa+jaPo+GpmORz-qcgHvp+WT3L8hS-k+ZH8gwlEgU0-wSpBwLSn0m61i2yiIWox67OhsY6MYqxbP2qipr4OL6HsD5-kQuYUcBX40fkjzKeSr4saB7EQV0ygglWPGwfIiD8YJyGoT4ipiZGrjuDiOiHloqiqEeJG8gBlIsUwdIMpgzJspy3KkSpfnMcBBngSQkqmdB5lQnBCpKiqoYathyKxpYUbwoa4nKCVHhGEESnPAAorQ9K0AuADyBRQb6vFpV2yixiMwb9v2+GGFMWhmKOlXjs+5H+eppC4JRhAABbkCQMAtTBqWWQgAC0OjqOJEz6DoOhzISnidZhZj6M5TbeAdPj6GswQPiQ6BwLIYTcbKa1DBtZhTMGWKmjdjibF5sYbUGhoQ44BLGCVGI+ROE3vTW7Ubaqf17YDx0g525V8K4fa6F4lhYW48PjUx8RI2163Dhdmi6AYJ7mJYYndQahqaBmpjEaNkW6YBgp1DShxUxZQwqOo9N6IYJjM9YnYRkGCmqHhOiEVGHhk4xU5UlVHIiPgixmR9W6OKoLjRiougTAdRGxoeQZDSrblYmbFUHGN2uvoKBZOqLn0OHw5saF4WJuUqauEmeKz7cDEZYaqnla1FE22jOnr+6bejKj9TgmIR4z+Dosbm5LbaeIi-i6JmvO+anM3AZntYRmJBirATRhTJM2GKR7WA1XVTftQSQeYBXh3lfl+3F52+U9gajhB8NSr6A9gRAA */
   id: 'Todo',
   initial: 'RootContainer',
   states: {
@@ -202,6 +201,7 @@ export const todoRootStates = {
             },
             TodoDetail: {
               invoke: {
+                id: 'formTodoDetail',
                 src: 'form',
                 data: {
                   item: (context: any, event: any) => {
@@ -245,6 +245,12 @@ export const todoRootStates = {
               },
             ],
           },
+          on: {
+            onRouteChange: {
+              target: 'Router',
+              internal: true,
+            },
+          },
         },
       },
       type: 'parallel',
@@ -256,17 +262,6 @@ export const todoRootStates = {
         },
       },
     },
-  },
-  schema: {
-    context: {
-      items: null,
-    } as object,
-    events: {} as
-      | { type: 'onTodoNew' }
-      | { type: 'onClose' }
-      | { type: 'onTodoDetail' }
-      | { type: 'onOk' }
-      | { type: 'onTodoDelete' },
   },
   context: {},
   predictableActionArguments: true,

@@ -1,7 +1,21 @@
 import { Injectable, NgModule } from '@angular/core';
 import { createMachine, interpret, assign } from 'xstate';
 import { inspect } from '@xstate/inspect';
-import { filter, first, firstValueFrom, forkJoin, from, map, Observable, switchMap } from 'rxjs';
+import {
+  exhaustMap,
+  filter,
+  first,
+  firstValueFrom,
+  forkJoin,
+  from,
+  map,
+  mergeMap,
+  Observable,
+  scan,
+  switchMap,
+  tap,
+  withLatestFrom,
+} from 'rxjs';
 // import { todoMachine } from './app.fsm';
 import { ActivatedRoute, ActivationEnd, NavigationEnd, Router } from '@angular/router';
 import { formTodoDetailStates, query, todoRootStates } from './app.fsm';
@@ -13,8 +27,11 @@ import { TodosDB } from './model';
 export class MachineService {
   service: any;
   state$: Observable<any> | undefined;
-  service$: Observable<any> | undefined;
+  // service$: Observable<any> | undefined;
   constructor(public router: Router, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.params.subscribe(params => {console.log(params);});
+  this.activatedRoute.queryParams.subscribe(qParams => {console.log(qParams);});
+
     // this.router.events.subscribe(e => {
     //   debugger
     //   console.log('current route: ', this.router.url.toString());
@@ -22,14 +39,50 @@ export class MachineService {
     // });
     const queryMachine = createMachine(query as any, { services: { query: TodosDB.getAll } });
     const detailMachine = createMachine(formTodoDetailStates as any, {
+      guards: {
+        pristine: () => true,
+      },
       services: {
         resolve: (c, e) => {
+          // return this.router.events.pipe(
+          //   map(()=>this.activatedRoute),
+          //   tap(console.log),
+          //   switchMap(e=>{
+          //     debugger
+          //     e;
+          //     return from(TodosDB.get(27))
+          //   })
+          // );
+
           return TodosDB.get(27);
           // let prom: any;
-          // return this.router.events.pipe(
-          //   filter((e) => e instanceof ActivationEnd),
-          //   switchMap(() => {
+          // return this.activatedRoute.params.pipe(
+          //   tap(console.log),
+          //   map((p) => p['todoId']),
+          //   exhaustMap((todoId) => {
           //     debugger;
+          //     return from(TodosDB.get(parseInt(todoId)));
+          //   })
+            // withLatestFrom(this.activatedRoute.params),
+            // tap(s=>{
+            //   console.log(s)
+            // }),
+            // filter((e) => e instanceof NavigationEnd),
+            // mergeMap(([e,a]) => {
+            //   debugger;
+            //   e;a;
+            //   return from(TodosDB.get(parseInt(this.activatedRoute.snapshot.params?.['todoId'])));
+            // })
+          // );
+          // return this.router.events.pipe(
+          //   withLatestFrom(this.activatedRoute.params),
+          //   // tap(s=>{
+          //   //   console.log(s)
+          //   // }),
+          //   // filter((e) => e instanceof NavigationEnd),
+          //   mergeMap(([e,a]) => {
+          //     debugger;
+          //     e;a;
           //     return from(TodosDB.get(parseInt(this.activatedRoute.snapshot.params?.['todoId'])));
           //   })
           // );
@@ -65,15 +118,16 @@ export class MachineService {
           query: queryMachine,
           form: detailMachine,
           router: (context, event, data) => {
+            debugger
             return Promise.resolve(event['item'] || null);
           },
         },
         actions: {
-          toRouterTodoDetail: (context, event, data) => {
-            debugger;
-            this.router.navigate(['edit', event['item'].id]);
-            console.log(context, event, data);
-          },
+          // toRouterTodoDetail: (context, event, data) => {
+          //   debugger;
+          //   this.router.navigate(['edit', event['item'].id]);
+          //   console.log(context, event, data);
+          // },
         },
         guards: {
           isEmpty: (context, event) => event['data'].length === 0,
