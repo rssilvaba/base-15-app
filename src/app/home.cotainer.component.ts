@@ -42,13 +42,6 @@ export class SearchPipe implements PipeTransform {
   selector: 'cpt-home',
   template: `
     <br />
-    <label for="">next events:</label>
-    <li *ngFor="let event of appService.service.state.nextEvents">{{ event }}</li>
-    <br />
-    <label for="">current state:</label>
-    {{ appService.service.state.value | json }}
-    <br />
-    <br />
     <button title="new todo" (click)="appService.service.send({ type: 'onTodoNew' })">new todo</button>
     <br />
     <br />
@@ -58,19 +51,27 @@ export class SearchPipe implements PipeTransform {
     >
       x
     </button>
-    <ng-container *ngIf="(appService.state$ | async).matches('RootContainer.Root.TodoList')">
+    <!-- <ng-container *ngIf="(appService.state$ | async).matches('RootContainer.Root.TodoList')"> -->
       <cpt-todo-list
         [items]="(appService.state$ | async).context.items | filter: 'title':searchValue"
         (onEdit)="appService.service.send({ type: 'onTodoDetail', item: $event })"
         (onChange)="onTodoStatusChange($event)"
         (onDelete)="onDelete($event)"
       ></cpt-todo-list>
-    </ng-container>
+    <!-- </ng-container> -->
     <ng-template *ngIf="(appService.state$ | async).matches('RootContainer.Root.Empty')">
       <div>there are no todos add some.</div>
     </ng-template>
+    <br />
+    <label for="">next events:</label>
+    <li *ngFor="let event of appService.service.state.nextEvents">{{ event }}</li>
+    <br />
+    <label for="">current state:</label>
+    {{ appService.service.state.value | json }}
+    <br />
+    <br />
     <router-outlet></router-outlet>
-    {{ appService.state$ | async | json }}
+    <!-- {{ appService.state$ | async | json }} -->
   `,
 })
 export class HomeContainerComponent implements OnInit {

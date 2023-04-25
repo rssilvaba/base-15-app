@@ -2,16 +2,11 @@ the idea here is to use ngrx as store with memoized selectors just to keep state
 and we use xstate for app coordination, view and model the app behavior <br />
 
 <div>
-  <router-outlet
-    (activate)="activate($event)"
-    (attach)="attach($event)"
-    (deactivate)="deactivate($event)"
-    (detach)="detach($event)"
-  ></router-outlet>
+  <router-outlet></router-outlet>
 </div>
 <!-- <app-todo-list
   *ngIf="(state$ | async) === 'TodoList'"
   [items]="items$ | async"
 ></app-todo-list> -->
 
-<div>{{state$ | async | json}}</div>
+<!-- <div>{{state$ | async | json}}</div> -->

@@ -93,9 +93,9 @@ export class MachineService {
       iframe: false, // open in new window
     });
     this.service
-      .onTransition((state: any) => {
-        console.log(state);
-        debugger;
+      .onTransition((state: any, ) => {
+        console.log(state, state.value);
+        // debugger;
       })
       .start();
     this.state$ = from(this.service);
