@@ -1,6 +1,7 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MyDialogComponent } from './dialog.component';
+import { todoT } from './ngrx';
 
 @Component({
   standalone: true,
@@ -25,7 +26,7 @@ import { MyDialogComponent } from './dialog.component';
 })
 export class TodoDetailComponent {
   @Input()
-  todo: { description: string; title: string; id?: number; status?: string } | null = null;
+  todo: todoT | undefined;
 
   @Output()
   onCancel = new EventEmitter();

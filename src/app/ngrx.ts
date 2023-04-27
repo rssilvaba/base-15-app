@@ -1,7 +1,7 @@
 /* eslint-disable no-duplicate-imports */
-import { createAction, createReducer, on, props } from '@ngrx/store';
+import { createAction, createFeatureSelector, createReducer, on, props } from '@ngrx/store';
 
-type todoT = {
+export type todoT = {
   title: string;
   description: string;
   id?: number;
@@ -32,19 +32,16 @@ export const TodosReducer = createReducer(
   initialState,
   // onTodoLoadOk(({ todos } ) => (state: { todos }))
   on(onTodoLoadOk, (state, { todos }) => {
-    debugger;
     return {
       todos,
     };
   }),
   on(onTodoInsertOk, (state, { item }) => {
-    debugger;
     return {
       todos: state.todos?.concat(item),
     };
   }),
   on(onTodoUpdateOk, (state, { item }) => {
-    debugger;
     return {
       todos: state.todos?.map((t) => (t.id === item.id ? item : t)),
     };
@@ -137,15 +134,17 @@ export const {
   selectTitle, // select the title if available
 } = getRouterSelectors();
 
-export const selectFeature = (state: any) => state.todoState;
+export const selectFeature = createFeatureSelector<typeof initialState>('todoState')
 
-export const selectTodos = createSelector(selectFeature, (state: any) => {
-  debugger;
-  return state?.todos;
+export const selectTodos = createSelector(selectFeature, (state) => {
+  return state.todos;
 });
-export const selectTodo = createSelector(selectTodos, selectRouteParams, (todos, { todoId }) => {
-  debugger;
-  return todos?.find((x: any) => x.id === parseInt(todoId, 10));
-});
+export const selectTodo = createSelector(
+  selectTodos,
+  selectRouteParams,
+  (todos, { todoId }: Record<string, string>) => {
+    return todos?.find((todo) => todo.id === parseInt(todoId, 10));
+  }
+);
 
 //#endregion SELECTORS

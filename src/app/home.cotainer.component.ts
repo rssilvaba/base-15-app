@@ -69,7 +69,7 @@ export class HomeContainerComponent implements OnInit {
   searchValue = '';
 
   constructor(public router: Router, public service: TodoService, public store: Store) {}
-  todos$: Observable<any[]> = this.store.select(selectTodos);
+  todos$ = this.store.select(selectTodos);
   error: string | null = null;
 
   async onDelete(item: any) {
