@@ -31,7 +31,7 @@ export class TodoDetailContainerComponent {
   todo$ = this.store.select(selectTodo);
 
   @Output()
-  itemAdded: any = undefined;
+  itemAdded: todoT | undefined = undefined;
 
   constructor(public router: Router, public store: Store) {}
 

@@ -12,7 +12,7 @@ import {
 import { Router, RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { onTodoLoad, onTodoRemove, onTodoUpdate, selectTodos } from './ngrx';
+import { onTodoLoad, onTodoRemove, onTodoUpdate, selectTodos, todoT } from './ngrx';
 import { TodoDetailContainerComponent } from './todo-detail.container.component';
 import { TodoListComponent } from './todo-list.component';
 import { TodosDB, TodoService } from './todo.model.service';
@@ -31,7 +31,7 @@ export class SearchPipe implements PipeTransform {
       return items;
     }
 
-    return items.filter((singleItem) => singleItem[field].toLowerCase().includes(value.toLowerCase()));
+    return items.filter((singleItem) => singleItem?.[field]?.toLowerCase().includes(value.toLowerCase()));
   }
 }
 @Component({
@@ -72,7 +72,7 @@ export class HomeContainerComponent implements OnInit {
   todos$ = this.store.select(selectTodos);
   error: string | null = null;
 
-  async onDelete(item: any) {
+  async onDelete(item: todoT) {
     debugger;
     this.store.dispatch(onTodoRemove({ item }));
   }
@@ -81,11 +81,11 @@ export class HomeContainerComponent implements OnInit {
     this.store.dispatch(onTodoLoad());
   }
 
-  async onTodoStatusChange(item: any) {
+  async onTodoStatusChange(item: todoT) {
     this.store.dispatch(onTodoUpdate({ item: { ...item, ...{ status: item.status === 'done' ? '' : 'done' } } }));
   }
 
-  onEdit(item: any) {
+  onEdit(item: todoT) {
     this.router.navigate(['edit', item.id]);
   }
 }

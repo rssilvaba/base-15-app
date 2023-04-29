@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { openDB } from 'idb';
 import { BehaviorSubject, map, Observable } from 'rxjs';
+import { todoT } from './ngrx';
 
 const dbPromise = openDB('todo-store', 1, {
   upgrade(db) {
@@ -70,17 +71,18 @@ export const TodosDB = {
 
 @Injectable({ providedIn: 'root' })
 export class TodoService {
-  private todos$ = new BehaviorSubject<any>(null);
+  private todos$ = new BehaviorSubject<todoT[] | undefined>(undefined);
   public init(): void {
     TodosDB.getAll().then((d) => this.todos$.next(d));
   }
 
-  public upsert(todo: any) {
+  public upsert(todo: todoT) {
+    debugger
     return TodosDB.set(todo).then(() => TodosDB.getAll().then((d) => this.todos$.next(d)));
   }
 
-  public delete(todo: any) {
-    return TodosDB.delete(todo).then(() => TodosDB.getAll().then((d) => this.todos$.next(d)));
+  public delete(key: string) {
+    return TodosDB.delete(key).then(() => TodosDB.getAll().then((d) => this.todos$.next(d)));
   }
 
   constructor() {
@@ -91,7 +93,7 @@ export class TodoService {
     return this.todos$;
   }
 
-  public get(id: string|null): any {
-    return this.todos$.pipe(map(arr=>arr.find((x: {id:number}) => (id?x.id == parseInt(id,10):false))));
+  public get(id: string | null) {
+    return this.todos$.pipe(map((arr) => arr?.find((x) => (id ? x.id === parseInt(id, 10) : false))));
   }
 }

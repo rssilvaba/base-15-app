@@ -1,5 +1,6 @@
 import { NgClass, NgFor } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { todoT } from './ngrx';
 
 @Component({
   standalone: true,
@@ -29,7 +30,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class TodoListComponent {
   @Input()
-  items: any[] | null = null;
+  items: todoT[] | null = null;
 
   @Output()
   onDelete = new EventEmitter();
