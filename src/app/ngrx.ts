@@ -14,13 +14,13 @@ export const onTodoLoadOk = createAction('[Home Container] onTodoLoadOk', props<
 export const onTodoLoadFail = createAction('[Home Container] onTodoLoadFail', props<{ error: string }>());
 export const onTodoEdit = createAction('[Home Container] onTodoEdit', props<{ item: todoT }>());
 export const onTodoNew = createAction('[Home Container] onTodoNew');
-export const onTodoInsert = createAction('[Todo Detail] onTodoInsert', props<{ item: todoT }>());
+export const onTodoInsert = createAction('[Todo Detail Container] onTodoInsert', props<{ item: todoT }>());
 export const onTodoInsertOk = createAction('[Todo Detail Container] onTodoInsertOk', props<{ item: todoT }>());
 export const onTodoInsertFail = createAction('[Todo Detail Container] onTodoInsertFail', props<{ error: string }>());
-export const onTodoUpdate = createAction('[Todo Detail] onTodoUpdate', props<{ item: todoT }>());
+export const onTodoUpdate = createAction('[Todo Detail Container] onTodoUpdate', props<{ item: todoT }>());
 export const onTodoUpdateOk = createAction('[Todo Detail Container] onTodoUpdateOk', props<{ item: todoT }>());
 export const onTodoUpdateFail = createAction('[Todo Detail Container] onTodoUpdateFail', props<{ error: string }>());
-export const onTodoRemove = createAction('[Todo Detail] onTodoRemove', props<{ item: todoT }>());
+export const onTodoRemove = createAction('[Todo Detail Container] onTodoRemove', props<{ item: todoT }>());
 export const onTodoRemoveOk = createAction('[Todo Detail Container] onTodoRemoveOk', props<{ item: todoT }>());
 export const onTodoRemoveFail = createAction('[Todo Detail Container] onTodoRemoveFail', props<{ error: string }>());
 //#endregion ACTIONS
@@ -96,6 +96,21 @@ export class TodosEffects {
     )
   );
 
+  todoUpdate$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(onTodoUpdate),
+      exhaustMap(({ type, item }) => {
+        return from(TodosDB.set(item)).pipe(
+          map((key) => {
+            debugger;
+            return onTodoUpdateOk({ item: { ...item, id: key as number } });
+          }),
+          catchError((error) => of(onTodoUpdateFail({ error })))
+        );
+      })
+    )
+  );
+
   todoRemove$ = createEffect(() =>
     this.actions$.pipe(
       ofType(onTodoRemove),
@@ -134,17 +149,13 @@ export const {
   selectTitle, // select the title if available
 } = getRouterSelectors();
 
-export const selectFeature = createFeatureSelector<typeof initialState>('todoState')
+export const selectFeature = createFeatureSelector<typeof initialState>('todoState');
 
 export const selectTodos = createSelector(selectFeature, (state) => {
   return state.todos;
 });
-export const selectTodo = createSelector(
-  selectTodos,
-  selectRouteParams,
-  (todos, { todoId }: Record<string, string>) => {
-    return todos?.find((todo) => todo.id === parseInt(todoId, 10));
-  }
-);
+export const selectTodo = createSelector(selectTodos, selectRouteParams, (todos, { todoId }) => {
+  return todos?.find((todo) => todo.id === parseInt(todoId, 10));
+});
 
 //#endregion SELECTORS
