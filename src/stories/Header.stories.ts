@@ -10,8 +10,8 @@ export default {
   component: Header,
   decorators: [
     moduleMetadata({
-      declarations: [Button],
-      imports: [CommonModule],
+      declarations: [],
+      imports: [CommonModule, Button],
     }),
   ],
   parameters: {

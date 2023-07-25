@@ -2,7 +2,14 @@
 
 import { componentWrapperDecorator, Meta, moduleMetadata, Story } from '@storybook/angular/';
 
-import { ButtonComponent, ButtonLinkComponent, ButtonInputComponent } from './button.component';
+import {
+  ButtonComponent,
+  ButtonLinkComponent,
+  ButtonInputComponent,
+  buttonDisabledStyles,
+  buttonSizeVariantStyles,
+  ButtonArgTypes,
+} from './button.component';
 
 export default {
   /* 👇 The title prop is optional.
@@ -11,24 +18,8 @@ export default {
    */
   title: 'Components/Buttons',
   component: ButtonInputComponent,
-  argTypes: {
-    disabled: {
-      options: [true, false],
-    },
-    variant: {
-      description: 'the variant of the type of the button, default value is "primary"',
-      options: ['primary', 'secondary'],
-      control: { type: 'radio' },
-    },
-    size: {
-      description: 'the vertical size of the button, default value is "large"',
-      options: ['large', 'medium', 'small'],
-      control: { type: 'radio' },
-    },
-  },
-  decorators: [
-    componentWrapperDecorator((story) => `<div class="p-2">${story}</div>`),
-  ],
+  argTypes: ButtonArgTypes,
+  decorators: [componentWrapperDecorator((story) => `<div class="p-2">${story}</div>`)],
 } as Meta;
 
 //👇 We create a “template” of how args map to rendering

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import ButtonComponent from './button.component';
+import ButtonComponentSB from './button.component';
 import { User } from './User';
 
 @Component({
@@ -59,7 +59,7 @@ import { User } from './User';
       </div>
     </div>
   </header>`,
-  imports: [ButtonComponent],
+  imports: [ButtonComponentSB],
   styleUrls: ['./header.css'],
 })
 export default class HeaderComponent {

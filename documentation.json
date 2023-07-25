@@ -216,7 +216,122 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-a23a703326ec36512e2302aeb6c0f66a4b3f7d852a8a60ef02f66cf720973b02c5c1e5ce10e0606fb122f35a08e62b72977983376fa776e6259ea90b17b16cbd",
+            "id": "component-ButtonComponent-dcec6c8e1c08da5f7f41b43d18f99db9ef2fb168ed956fc26614f11ee846e215f31c613324dc7f3bf85cf86001aad871cb8e45da317687d66bc9e4ae0a9d7341",
+            "file": "src/components/button/button.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "button[cpt-btn]",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<ng-container *ngIf=\"label\">\n  {{ label }}\n</ng-container>\n<ng-container *ngIf=\"!label\">\n  <ng-content></ng-content>\n</ng-container>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "class",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 56,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 45,
+                    "type": "boolean | null",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 53,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'large'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 65,
+                    "type": "",
+                    "decorators": []
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 68,
+                    "type": "",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "attr.class",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 59,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "attr.disabled",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 48,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { NgIf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\r\nimport type { ArgTypes } from '@storybook/angular';\r\n\r\nconst buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';\r\n\r\nconst buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';\r\nexport const buttonDisabledStyles = {\r\n  primary:\r\n    'disabled:cursor-not-allowed  disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white',\r\n  secondary:\r\n    'disabled:cursor-not-allowed  disabled:bg-white disabled:border-[color:#999999] disabled:text-[color:#999999]',\r\n};\r\nconst buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';\r\n\r\nexport const buttonSizeVariantStyles = {\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n};\r\n\r\nconst buttonColorVariantStyles = {\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA]',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA]',\r\n};\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'button[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  disabled: boolean | null = false;\r\n\r\n  @HostBinding('attr.disabled')\r\n  get disabled_() {\r\n    return this.disabled ? '' : null;\r\n  }\r\n\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class? = '';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    // eslint-disable-next-line prettier/prettier\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'a[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonLinkComponent {\r\n  // @Input()\r\n  // disabled: boolean | null = false;\r\n\r\n  // @HostBinding('attr.disabled')\r\n  // get disabled_() {\r\n  //   return this.disabled ? '' : null;\r\n  // }\r\n\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  // @Input()\r\n  // @HostBinding('attr.type')\r\n  // get type__() {\r\n  //   return 'button';\r\n  // }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @HostBinding('attr.class')\r\n  get class__() {\r\n    // eslint-disable-next-line prettier/prettier\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  // @Input()\r\n  // href: string | null = null;\r\n\r\n  // @HostBinding('attr.href')\r\n  // @Input()\r\n  // get href__() {\r\n  //   return this.disabled || this.href === '' ? null : this.href;\r\n  // }\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonInputComponent {\r\n  @Input()\r\n  disabled: boolean | null = false;\r\n\r\n  @HostBinding('attr.disabled')\r\n  get disabled_() {\r\n    return this.disabled ? '' : null;\r\n  }\r\n\r\n  @Input()\r\n  @HostBinding('attr.value')\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  /** @hidden */\r\n  @HostBinding('attr.type')\r\n  get type_() {\r\n    return 'button';\r\n  }\r\n\r\n  /** @hidden */\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @HostBinding('value')\r\n  get value() {\r\n    return this.label;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\nexport const ButtonArgTypes: ArgTypes = {\r\n  disabled: {\r\n    options: [true, false],\r\n    control: { type: 'boolean' },\r\n  },\r\n  variant: {\r\n    description: 'the variant of the type of the button, default value is \"primary\"',\r\n    options: Object.keys(buttonDisabledStyles),\r\n    control: { type: 'radio' },\r\n  },\r\n  size: {\r\n    defaultValue: Object.keys(buttonSizeVariantStyles)[0],\r\n    description: 'the vertical size of the button, default value is \"large\"',\r\n    options: Object.keys(buttonSizeVariantStyles),\r\n    control: { type: 'radio' },\r\n  },\r\n};\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "accessors": {
+                "disabled_": {
+                    "name": "disabled_",
+                    "getSignature": {
+                        "name": "disabled_",
+                        "type": "",
+                        "returnType": "",
+                        "line": 48
+                    }
+                },
+                "class_": {
+                    "name": "class_",
+                    "getSignature": {
+                        "name": "class_",
+                        "type": "",
+                        "returnType": "",
+                        "line": 59
+                    }
+                }
+            }
+        },
+        {
+            "name": "ButtonComponentSB",
+            "id": "component-ButtonComponentSB-5a7ae657d501264d9c531010a8e486a3dfbe84dafbff076f6656f9856931799026fc2f6f16d3f3bf2e2bb532503ab0b3c32651dea259d4c3c3eb439023a36d42",
             "file": "src/stories/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -249,15 +364,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 844,
-                            "end": 858,
+                            "pos": 847,
+                            "end": 861,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 325,
                             "tagName": {
-                                "pos": 845,
-                                "end": 853,
+                                "pos": 848,
+                                "end": 856,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -317,7 +432,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\r\n\r\n@Component({\r\n  standalone: true,\r\n  selector: 'storybook-button',\r\n  template: ` <button\r\n    type=\"button\"\r\n    (click)=\"onClick.emit($event)\"\r\n    [ngClass]=\"classes\"\r\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\r\n  >\r\n    {{ label }}\r\n  </button>`,\r\n  styleUrls: ['./button.css'],\r\n  imports: [CommonModule]\r\n})\r\nexport default class ButtonComponent {\r\n  /**\r\n   * Is this the principal call to action on the page?\r\n   */\r\n  @Input()\r\n  primary = false;\r\n\r\n  /**\r\n   * What background color to use\r\n   */\r\n  @Input()\r\n  backgroundColor?: string;\r\n\r\n  /**\r\n   * How large should the button be?\r\n   */\r\n  @Input()\r\n  size: 'small' | 'medium' | 'large' = 'medium';\r\n\r\n  /**\r\n   * Button contents\r\n   *\r\n   * @required\r\n   */\r\n  @Input()\r\n  label = 'Button';\r\n\r\n  /**\r\n   * Optional click handler\r\n   */\r\n  @Output()\r\n  onClick = new EventEmitter<Event>();\r\n\r\n  public get classes(): string[] {\r\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\r\n\r\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\r\n  }\r\n}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\r\n\r\n@Component({\r\n  standalone: true,\r\n  selector: 'storybook-button',\r\n  template: ` <button\r\n    type=\"button\"\r\n    (click)=\"onClick.emit($event)\"\r\n    [ngClass]=\"classes\"\r\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\r\n  >\r\n    {{ label }}\r\n  </button>`,\r\n  styleUrls: ['./button.css'],\r\n  imports: [CommonModule],\r\n})\r\nexport default class ButtonComponentSB {\r\n  /**\r\n   * Is this the principal call to action on the page?\r\n   */\r\n  @Input()\r\n  primary = false;\r\n\r\n  /**\r\n   * What background color to use\r\n   */\r\n  @Input()\r\n  backgroundColor?: string;\r\n\r\n  /**\r\n   * How large should the button be?\r\n   */\r\n  @Input()\r\n  size: 'small' | 'medium' | 'large' = 'medium';\r\n\r\n  /**\r\n   * Button contents\r\n   *\r\n   * @required\r\n   */\r\n  @Input()\r\n  label = 'Button';\r\n\r\n  /**\r\n   * Optional click handler\r\n   */\r\n  @Output()\r\n  onClick = new EventEmitter<Event>();\r\n\r\n  public get classes(): string[] {\r\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\r\n\r\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -339,126 +454,8 @@
             }
         },
         {
-            "name": "ButtonComponent",
-            "id": "component-ButtonComponent-595aca138866973c5a8d4c6ee4be82c31d820b16cc48a27a853202305c21fa2c2810a60b3684539c2226d109d17eb7a54559009a56e85036d6dc7a0db4d0176e-1",
-            "file": "src/components/button/button.component.ts",
-            "changeDetection": "ChangeDetectionStrategy.OnPush",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "button[cpt-btn]",
-            "styleUrls": [],
-            "styles": [],
-            "template": "<ng-container *ngIf=\"label\">\n  {{ label }}\n</ng-container>\n<ng-container *ngIf=\"!label\">\n  <ng-content></ng-content>\n</ng-container>\n",
-            "templateUrl": [],
-            "viewProviders": [],
-            "inputsClass": [
-                {
-                    "name": "class",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 55,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "disabled",
-                    "defaultValue": "null",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 44,
-                    "type": "any",
-                    "decorators": []
-                },
-                {
-                    "name": "label",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 52,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "size",
-                    "defaultValue": "'large'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 64,
-                    "type": "",
-                    "decorators": []
-                },
-                {
-                    "name": "variant",
-                    "defaultValue": "'primary'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 67,
-                    "type": "",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [
-                {
-                    "name": "attr.class",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 58,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "attr.disabled",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 47,
-                    "type": "boolean",
-                    "decorators": []
-                }
-            ],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { NgIf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\r\n\r\nconst buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';\r\n\r\nconst buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';\r\nconst buttonDisabledStyles = {\r\n  primary:\r\n    'disabled:cursor-not-allowed  disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white',\r\n  secondary:\r\n    'disabled:cursor-not-allowed  disabled:bg-white disabled:border-[color:#999999] disabled:text-[color:#999999]',\r\n};\r\nconst buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';\r\n\r\nconst buttonSizeVariantStyles = {\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n};\r\n\r\nconst buttonColorVariantStyles = {\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA]',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA]',\r\n};\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'button[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  disabled = null;\r\n\r\n  @HostBinding('attr.disabled')\r\n  get disabled_() {\r\n    return this.disabled ? true : null;\r\n  }\r\n\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class? = '';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    // eslint-disable-next-line prettier/prettier\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'a[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonLinkComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class__() {\r\n    // eslint-disable-next-line prettier/prettier\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonInputComponent {\r\n  @Input()\r\n  disabled = null;\r\n\r\n  @HostBinding('attr.disabled')\r\n  get disabled_() {\r\n    return this.disabled ? true : null;\r\n  }\r\n\r\n  @Input()\r\n  @HostBinding('attr.value')\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @HostBinding('value')\r\n  get value() {\r\n    return this.label;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "accessors": {
-                "disabled_": {
-                    "name": "disabled_",
-                    "getSignature": {
-                        "name": "disabled_",
-                        "type": "",
-                        "returnType": "",
-                        "line": 47
-                    }
-                },
-                "class_": {
-                    "name": "class_",
-                    "getSignature": {
-                        "name": "class_",
-                        "type": "",
-                        "returnType": "",
-                        "line": 58
-                    }
-                }
-            },
-            "isDuplicate": true,
-            "duplicateId": 1,
-            "duplicateName": "ButtonComponent-1"
-        },
-        {
             "name": "ButtonInputComponent",
-            "id": "component-ButtonInputComponent-595aca138866973c5a8d4c6ee4be82c31d820b16cc48a27a853202305c21fa2c2810a60b3684539c2226d109d17eb7a54559009a56e85036d6dc7a0db4d0176e",
+            "id": "component-ButtonInputComponent-dcec6c8e1c08da5f7f41b43d18f99db9ef2fb168ed956fc26614f11ee846e215f31c613324dc7f3bf85cf86001aad871cb8e45da317687d66bc9e4ae0a9d7341",
             "file": "src/components/button/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -478,17 +475,17 @@
                     "defaultValue": "'block'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 137,
+                    "line": 157,
                     "type": "string",
                     "decorators": []
                 },
                 {
                     "name": "disabled",
-                    "defaultValue": "null",
+                    "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 125,
-                    "type": "any",
+                    "line": 145,
+                    "type": "boolean | null",
                     "decorators": []
                 },
                 {
@@ -496,7 +493,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 134,
+                    "line": 154,
                     "type": "string",
                     "decorators": []
                 },
@@ -505,17 +502,8 @@
                     "defaultValue": "'large'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 156,
+                    "line": 179,
                     "type": "",
-                    "decorators": []
-                },
-                {
-                    "name": "type",
-                    "defaultValue": "'button'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 141,
-                    "type": "string",
                     "decorators": []
                 },
                 {
@@ -523,7 +511,7 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 159,
+                    "line": 182,
                     "type": "",
                     "decorators": []
                 }
@@ -538,7 +526,27 @@
                     "name": "attr.class",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 144,
+                    "jsdoctags": [
+                        {
+                            "pos": 4420,
+                            "end": 4428,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 4421,
+                                "end": 4427,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "hidden"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "line": 167,
                     "type": "string",
                     "decorators": []
                 },
@@ -546,15 +554,43 @@
                     "name": "attr.disabled",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 128,
-                    "type": "boolean",
+                    "line": 148,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "attr.type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 4327,
+                            "end": 4335,
+                            "flags": 4227072,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 325,
+                            "tagName": {
+                                "pos": 4328,
+                                "end": 4334,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "hidden"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "line": 161,
+                    "type": "string",
                     "decorators": []
                 },
                 {
                     "name": "value",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 151,
+                    "line": 174,
                     "type": "string",
                     "decorators": []
                 }
@@ -563,7 +599,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { NgIf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\r\n\r\nconst buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';\r\n\r\nconst buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';\r\nconst buttonDisabledStyles = {\r\n  primary:\r\n    'disabled:cursor-not-allowed  disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white',\r\n  secondary:\r\n    'disabled:cursor-not-allowed  disabled:bg-white disabled:border-[color:#999999] disabled:text-[color:#999999]',\r\n};\r\nconst buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';\r\n\r\nconst buttonSizeVariantStyles = {\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n};\r\n\r\nconst buttonColorVariantStyles = {\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA]',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA]',\r\n};\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'button[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  disabled = null;\r\n\r\n  @HostBinding('attr.disabled')\r\n  get disabled_() {\r\n    return this.disabled ? true : null;\r\n  }\r\n\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class? = '';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    // eslint-disable-next-line prettier/prettier\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'a[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonLinkComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class__() {\r\n    // eslint-disable-next-line prettier/prettier\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonInputComponent {\r\n  @Input()\r\n  disabled = null;\r\n\r\n  @HostBinding('attr.disabled')\r\n  get disabled_() {\r\n    return this.disabled ? true : null;\r\n  }\r\n\r\n  @Input()\r\n  @HostBinding('attr.value')\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @HostBinding('value')\r\n  get value() {\r\n    return this.label;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n",
+            "sourceCode": "import { NgIf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\r\nimport type { ArgTypes } from '@storybook/angular';\r\n\r\nconst buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';\r\n\r\nconst buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';\r\nexport const buttonDisabledStyles = {\r\n  primary:\r\n    'disabled:cursor-not-allowed  disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white',\r\n  secondary:\r\n    'disabled:cursor-not-allowed  disabled:bg-white disabled:border-[color:#999999] disabled:text-[color:#999999]',\r\n};\r\nconst buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';\r\n\r\nexport const buttonSizeVariantStyles = {\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n};\r\n\r\nconst buttonColorVariantStyles = {\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA]',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA]',\r\n};\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'button[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  disabled: boolean | null = false;\r\n\r\n  @HostBinding('attr.disabled')\r\n  get disabled_() {\r\n    return this.disabled ? '' : null;\r\n  }\r\n\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class? = '';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    // eslint-disable-next-line prettier/prettier\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'a[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonLinkComponent {\r\n  // @Input()\r\n  // disabled: boolean | null = false;\r\n\r\n  // @HostBinding('attr.disabled')\r\n  // get disabled_() {\r\n  //   return this.disabled ? '' : null;\r\n  // }\r\n\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  // @Input()\r\n  // @HostBinding('attr.type')\r\n  // get type__() {\r\n  //   return 'button';\r\n  // }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @HostBinding('attr.class')\r\n  get class__() {\r\n    // eslint-disable-next-line prettier/prettier\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  // @Input()\r\n  // href: string | null = null;\r\n\r\n  // @HostBinding('attr.href')\r\n  // @Input()\r\n  // get href__() {\r\n  //   return this.disabled || this.href === '' ? null : this.href;\r\n  // }\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonInputComponent {\r\n  @Input()\r\n  disabled: boolean | null = false;\r\n\r\n  @HostBinding('attr.disabled')\r\n  get disabled_() {\r\n    return this.disabled ? '' : null;\r\n  }\r\n\r\n  @Input()\r\n  @HostBinding('attr.value')\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  /** @hidden */\r\n  @HostBinding('attr.type')\r\n  get type_() {\r\n    return 'button';\r\n  }\r\n\r\n  /** @hidden */\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @HostBinding('value')\r\n  get value() {\r\n    return this.label;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\nexport const ButtonArgTypes: ArgTypes = {\r\n  disabled: {\r\n    options: [true, false],\r\n    control: { type: 'boolean' },\r\n  },\r\n  variant: {\r\n    description: 'the variant of the type of the button, default value is \"primary\"',\r\n    options: Object.keys(buttonDisabledStyles),\r\n    control: { type: 'radio' },\r\n  },\r\n  size: {\r\n    defaultValue: Object.keys(buttonSizeVariantStyles)[0],\r\n    description: 'the vertical size of the button, default value is \"large\"',\r\n    options: Object.keys(buttonSizeVariantStyles),\r\n    control: { type: 'radio' },\r\n  },\r\n};\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -574,16 +610,7 @@
                         "name": "disabled_",
                         "type": "",
                         "returnType": "",
-                        "line": 128
-                    }
-                },
-                "class_": {
-                    "name": "class_",
-                    "getSignature": {
-                        "name": "class_",
-                        "type": "",
-                        "returnType": "",
-                        "line": 144
+                        "line": 148
                     }
                 },
                 "value": {
@@ -592,14 +619,14 @@
                         "name": "value",
                         "type": "",
                         "returnType": "",
-                        "line": 151
+                        "line": 174
                     }
                 }
             }
         },
         {
             "name": "ButtonLinkComponent",
-            "id": "component-ButtonLinkComponent-595aca138866973c5a8d4c6ee4be82c31d820b16cc48a27a853202305c21fa2c2810a60b3684539c2226d109d17eb7a54559009a56e85036d6dc7a0db4d0176e",
+            "id": "component-ButtonLinkComponent-dcec6c8e1c08da5f7f41b43d18f99db9ef2fb168ed956fc26614f11ee846e215f31c613324dc7f3bf85cf86001aad871cb8e45da317687d66bc9e4ae0a9d7341",
             "file": "src/components/button/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -619,7 +646,7 @@
                     "defaultValue": "'block'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 89,
+                    "line": 98,
                     "type": "string",
                     "decorators": []
                 },
@@ -628,7 +655,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 86,
+                    "line": 95,
                     "type": "string",
                     "decorators": []
                 },
@@ -637,17 +664,8 @@
                     "defaultValue": "'large'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 102,
+                    "line": 107,
                     "type": "",
-                    "decorators": []
-                },
-                {
-                    "name": "type",
-                    "defaultValue": "'button'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 93,
-                    "type": "string",
                     "decorators": []
                 },
                 {
@@ -655,7 +673,7 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 105,
+                    "line": 125,
                     "type": "",
                     "decorators": []
                 }
@@ -670,7 +688,7 @@
                     "name": "attr.class",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 96,
+                    "line": 110,
                     "type": "string",
                     "decorators": []
                 }
@@ -679,7 +697,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { NgIf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\r\n\r\nconst buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';\r\n\r\nconst buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';\r\nconst buttonDisabledStyles = {\r\n  primary:\r\n    'disabled:cursor-not-allowed  disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white',\r\n  secondary:\r\n    'disabled:cursor-not-allowed  disabled:bg-white disabled:border-[color:#999999] disabled:text-[color:#999999]',\r\n};\r\nconst buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';\r\n\r\nconst buttonSizeVariantStyles = {\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n};\r\n\r\nconst buttonColorVariantStyles = {\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA]',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA]',\r\n};\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'button[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  disabled = null;\r\n\r\n  @HostBinding('attr.disabled')\r\n  get disabled_() {\r\n    return this.disabled ? true : null;\r\n  }\r\n\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class? = '';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    // eslint-disable-next-line prettier/prettier\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'a[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonLinkComponent {\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class__() {\r\n    // eslint-disable-next-line prettier/prettier\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonInputComponent {\r\n  @Input()\r\n  disabled = null;\r\n\r\n  @HostBinding('attr.disabled')\r\n  get disabled_() {\r\n    return this.disabled ? true : null;\r\n  }\r\n\r\n  @Input()\r\n  @HostBinding('attr.value')\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  @Input()\r\n  @HostBinding('attr.type')\r\n  type = 'button';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @HostBinding('value')\r\n  get value() {\r\n    return this.label;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n",
+            "sourceCode": "import { NgIf } from '@angular/common';\r\nimport { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';\r\nimport type { ArgTypes } from '@storybook/angular';\r\n\r\nconst buttonDefaultStyles = 'min-w-[35px] border max-w-fit rounded';\r\n\r\nconst buttonActiveStyles = '[&:not(:disabled)]:active:shadow-inner2';\r\nexport const buttonDisabledStyles = {\r\n  primary:\r\n    'disabled:cursor-not-allowed  disabled:bg-[color:#999999] disabled:border-[color:#999999] disabled:text-white',\r\n  secondary:\r\n    'disabled:cursor-not-allowed  disabled:bg-white disabled:border-[color:#999999] disabled:text-[color:#999999]',\r\n};\r\nconst buttonFocusStyles = '[&:not(:disabled)]:focus:ring-blur ring-[color:rgb(3,155,218,0.4)] focus:outline-none';\r\n\r\nexport const buttonSizeVariantStyles = {\r\n  large: 'py-1.5 px-4',\r\n  medium: 'py-1 px-3',\r\n  small: 'py-0 px-2.5',\r\n};\r\n\r\nconst buttonColorVariantStyles = {\r\n  primary: 'bg-[color:#039BDA] text-white border-[color:#039BDA]',\r\n  secondary: 'bg-white text-[color:#039BDA] border-[color:#039BDA]',\r\n};\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'button[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonComponent {\r\n  @Input()\r\n  disabled: boolean | null = false;\r\n\r\n  @HostBinding('attr.disabled')\r\n  get disabled_() {\r\n    return this.disabled ? '' : null;\r\n  }\r\n\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class? = '';\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    // eslint-disable-next-line prettier/prettier\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'a[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonLinkComponent {\r\n  // @Input()\r\n  // disabled: boolean | null = false;\r\n\r\n  // @HostBinding('attr.disabled')\r\n  // get disabled_() {\r\n  //   return this.disabled ? '' : null;\r\n  // }\r\n\r\n  @Input()\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  // @Input()\r\n  // @HostBinding('attr.type')\r\n  // get type__() {\r\n  //   return 'button';\r\n  // }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @HostBinding('attr.class')\r\n  get class__() {\r\n    // eslint-disable-next-line prettier/prettier\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${this.class} ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  // @Input()\r\n  // href: string | null = null;\r\n\r\n  // @HostBinding('attr.href')\r\n  // @Input()\r\n  // get href__() {\r\n  //   return this.disabled || this.href === '' ? null : this.href;\r\n  // }\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-btn]',\r\n  template: `\r\n    <ng-container *ngIf=\"label\">\r\n      {{ label }}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"!label\">\r\n      <ng-content></ng-content>\r\n    </ng-container>\r\n  `,\r\n  standalone: true,\r\n  imports: [NgIf],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ButtonInputComponent {\r\n  @Input()\r\n  disabled: boolean | null = false;\r\n\r\n  @HostBinding('attr.disabled')\r\n  get disabled_() {\r\n    return this.disabled ? '' : null;\r\n  }\r\n\r\n  @Input()\r\n  @HostBinding('attr.value')\r\n  label = '';\r\n\r\n  @Input()\r\n  class = 'block';\r\n\r\n  /** @hidden */\r\n  @HostBinding('attr.type')\r\n  get type_() {\r\n    return 'button';\r\n  }\r\n\r\n  /** @hidden */\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `${buttonDefaultStyles} ${buttonSizeVariantStyles[this.size]} ${buttonColorVariantStyles[this.variant]} ${\r\n      this.class\r\n    } ${buttonActiveStyles} ${buttonDisabledStyles[this.variant]} ${buttonFocusStyles} Button`;\r\n  }\r\n\r\n  @HostBinding('value')\r\n  get value() {\r\n    return this.label;\r\n  }\r\n\r\n  @Input()\r\n  size: keyof typeof buttonSizeVariantStyles = 'large';\r\n\r\n  @Input()\r\n  variant: keyof typeof buttonColorVariantStyles = 'primary';\r\n}\r\n\r\nexport const ButtonArgTypes: ArgTypes = {\r\n  disabled: {\r\n    options: [true, false],\r\n    control: { type: 'boolean' },\r\n  },\r\n  variant: {\r\n    description: 'the variant of the type of the button, default value is \"primary\"',\r\n    options: Object.keys(buttonDisabledStyles),\r\n    control: { type: 'radio' },\r\n  },\r\n  size: {\r\n    defaultValue: Object.keys(buttonSizeVariantStyles)[0],\r\n    description: 'the vertical size of the button, default value is \"large\"',\r\n    options: Object.keys(buttonSizeVariantStyles),\r\n    control: { type: 'radio' },\r\n  },\r\n};\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -690,14 +708,14 @@
                         "name": "class__",
                         "type": "",
                         "returnType": "",
-                        "line": 96
+                        "line": 110
                     }
                 }
             }
         },
         {
             "name": "CheckboxInputComponent",
-            "id": "component-CheckboxInputComponent-84de1bfcf34950620e4e62e13040cd2fb3220228f76a0077a432285e2f6a6147b98c9b535e628fdfe0a30216279e55aae57234f744d65f2e988274ffd496d4a0",
+            "id": "component-CheckboxInputComponent-21a2786ff6166c1c36a5f21463672a8208d32bf5852d3e6a68e45d9b0a0785d44a6ae94e5b3d1e2c385c01ab65478e1bd8a02da3ffceb13c3bf40852f8ec0bb3",
             "file": "src/components/checkbox/checkbox.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -734,7 +752,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 27,
                     "type": "boolean",
                     "decorators": []
                 }
@@ -774,7 +792,7 @@
                     "name": "attr.class",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 34,
+                    "line": 36,
                     "type": "string",
                     "decorators": []
                 },
@@ -792,7 +810,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, HostBinding, Input } from '@angular/core';\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-checkbox]',\r\n  template: '<ng-content></ng-content>',\r\n  standalone: true,\r\n})\r\nexport class CheckboxInputComponent {\r\n  @Input()\r\n  checked = false;\r\n\r\n  @HostBinding('attr.checked')\r\n  get checked_() {\r\n    return this.checked ? true : null;\r\n  }\r\n\r\n  @Input()\r\n  class = '';\r\n\r\n  @HostBinding('attr.type')\r\n  type = 'checkbox';\r\n\r\n  @Input()\r\n  @HostBinding('indeterminate')\r\n  indeterminate = false;\r\n\r\n  get indeterminate_() {\r\n    // debugger;\r\n    return this.indeterminate ? true : null;\r\n  }\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `absolute invisible h-0 w-0 ${this.class} Input`;\r\n  }\r\n  // ngOnInit(): void {\r\n  //   this.elementRef.nativeElement.indeterminate = this.indeterminate;\r\n  // }\r\n}\r\n\r\n",
+            "sourceCode": "import { Component, HostBinding, Input, OnInit } from '@angular/core';\r\n\r\n@Component({\r\n  // eslint-disable-next-line @angular-eslint/component-selector\r\n  selector: 'input[cpt-checkbox]',\r\n  template: '<ng-content></ng-content>',\r\n  standalone: true,\r\n})\r\nexport class CheckboxInputComponent {\r\n  @Input()\r\n  checked = false;\r\n\r\n  @HostBinding('attr.checked')\r\n  get checked_() {\r\n    return this.checked ? true : null;\r\n  }\r\n\r\n  @Input()\r\n  class = '';\r\n\r\n  @HostBinding('attr.type')\r\n  type = 'checkbox';\r\n\r\n  @Input()\r\n  @HostBinding('indeterminate')\r\n  @HostBinding('class.indeterminate')\r\n  indeterminate = false;\r\n  \r\n  get indeterminate_() {\r\n    // debugger;\r\n    // this.class = this.class + 'indeterminate'\r\n    return this.indeterminate ? true : null;\r\n  }\r\n\r\n  @HostBinding('attr.class')\r\n  get class_() {\r\n    return `absolute invisible h-0 w-0 ${this.class} Input`;\r\n  }\r\n\r\n  // ngOnInit(): void {\r\n    // this.elementRef.nativeElement.indeterminate = this.indeterminate;\r\n    // this.class = `${this.class} ${this.indeterminate?'indeterminate':''}`;\r\n  // }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -812,7 +830,7 @@
                         "name": "indeterminate_",
                         "type": "",
                         "returnType": "",
-                        "line": 28
+                        "line": 29
                     }
                 },
                 "class_": {
@@ -821,14 +839,14 @@
                         "name": "class_",
                         "type": "",
                         "returnType": "",
-                        "line": 34
+                        "line": 36
                     }
                 }
             }
         },
         {
             "name": "HeaderComponent",
-            "id": "component-HeaderComponent-f28a7b1cbbd29ec8ca8344af43fa57da43c98cdd7dde0ac8dce8302444c92a2b59a7c970988f310c35c7be3a4492c1c7a2c673421d6d426320b008fd4762e525",
+            "id": "component-HeaderComponent-7b75781575e4c24d919afd2cf7bc25df609b8f7b321b36026a14f50f408f4132c4a65319934da88cfa921298dc518a4b1250e931f7f4b7bf5e5da0b7d4da6681",
             "file": "src/stories/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -889,7 +907,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\nimport ButtonComponent from './button.component';\r\nimport { User } from './User';\r\n\r\n@Component({\r\n  standalone: true,\r\n  selector: 'storybook-header',\r\n  template: `<header>\r\n    <div class=\"wrapper\">\r\n      <div>\r\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\r\n          <g fill=\"none\" fillRule=\"evenodd\">\r\n            <path\r\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\r\n              fill=\"#FFF\"\r\n            />\r\n            <path\r\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\r\n              fill=\"#555AB9\"\r\n            />\r\n            <path\r\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\r\n              fill=\"#91BAF8\"\r\n            />\r\n          </g>\r\n        </svg>\r\n        <h1>Acme</h1>\r\n      </div>\r\n      <div>\r\n        <div *ngIf=\"user\">\r\n          <span class=\"welcome\">\r\n            Welcome, <b>{{ user?.name }}</b\r\n            >!\r\n          </span>\r\n          <storybook-button\r\n            *ngIf=\"user\"\r\n            size=\"small\"\r\n            (onClick)=\"onLogout.emit($event)\"\r\n            label=\"Log out\"\r\n          ></storybook-button>\r\n        </div>\r\n        <div *ngIf=\"!user\">\r\n          <storybook-button\r\n            *ngIf=\"!user\"\r\n            size=\"small\"\r\n            class=\"margin-left\"\r\n            (onClick)=\"onLogin.emit($event)\"\r\n            label=\"Log in\"\r\n          ></storybook-button>\r\n          <storybook-button\r\n            *ngIf=\"!user\"\r\n            size=\"small\"\r\n            [primary]=\"true\"\r\n            class=\"margin-left\"\r\n            (onClick)=\"onCreateAccount.emit($event)\"\r\n            label=\"Sign up\"\r\n          ></storybook-button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </header>`,\r\n  imports: [ButtonComponent],\r\n  styleUrls: ['./header.css'],\r\n})\r\nexport default class HeaderComponent {\r\n  @Input()\r\n  user: User | null = null;\r\n\r\n  @Output()\r\n  onLogin = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onLogout = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onCreateAccount = new EventEmitter<Event>();\r\n}\r\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\nimport ButtonComponentSB from './button.component';\r\nimport { User } from './User';\r\n\r\n@Component({\r\n  standalone: true,\r\n  selector: 'storybook-header',\r\n  template: `<header>\r\n    <div class=\"wrapper\">\r\n      <div>\r\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\r\n          <g fill=\"none\" fillRule=\"evenodd\">\r\n            <path\r\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\r\n              fill=\"#FFF\"\r\n            />\r\n            <path\r\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\r\n              fill=\"#555AB9\"\r\n            />\r\n            <path\r\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\r\n              fill=\"#91BAF8\"\r\n            />\r\n          </g>\r\n        </svg>\r\n        <h1>Acme</h1>\r\n      </div>\r\n      <div>\r\n        <div *ngIf=\"user\">\r\n          <span class=\"welcome\">\r\n            Welcome, <b>{{ user?.name }}</b\r\n            >!\r\n          </span>\r\n          <storybook-button\r\n            *ngIf=\"user\"\r\n            size=\"small\"\r\n            (onClick)=\"onLogout.emit($event)\"\r\n            label=\"Log out\"\r\n          ></storybook-button>\r\n        </div>\r\n        <div *ngIf=\"!user\">\r\n          <storybook-button\r\n            *ngIf=\"!user\"\r\n            size=\"small\"\r\n            class=\"margin-left\"\r\n            (onClick)=\"onLogin.emit($event)\"\r\n            label=\"Log in\"\r\n          ></storybook-button>\r\n          <storybook-button\r\n            *ngIf=\"!user\"\r\n            size=\"small\"\r\n            [primary]=\"true\"\r\n            class=\"margin-left\"\r\n            (onClick)=\"onCreateAccount.emit($event)\"\r\n            label=\"Sign up\"\r\n          ></storybook-button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </header>`,\r\n  imports: [ButtonComponentSB],\r\n  styleUrls: ['./header.css'],\r\n})\r\nexport default class HeaderComponent {\r\n  @Input()\r\n  user: User | null = null;\r\n\r\n  @Output()\r\n  onLogin = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onLogout = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onCreateAccount = new EventEmitter<Event>();\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1164,50 +1182,6 @@
             }
         },
         {
-            "name": "MyComponent",
-            "id": "component-MyComponent-eb20675f1728128b2b5e2b2646aaf58cb8b3c61370f0e4932278e2fd82573be77726ad8d062f0d73d566f347443a9bf94d2370bb08b8675c16dad8f756dd6ab6",
-            "file": "src/components/test.component.stories.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "my-component, MyComponent",
-            "styleUrls": [],
-            "styles": [
-                "\n      .h1 {\n        margin-top: 10px;\n      }\n    "
-            ],
-            "template": "<ng-container>\n  <link\n    href=\"https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css\"\n    rel=\"stylesheet\"\n  />\n\n  <input\n    class=\"shadow-md rounded w-full px-4 py-2\"\n    placeholder=\"What is your name?\"\n    [attr.value]=\"name\"\n    (input)=\"\n  name = $event.target.value;\n\"\n  />\n\n  <h1 class=\"text-lg h1\">Hello, {{name}} !</h1>\n</ng-container>\n",
-            "templateUrl": [],
-            "viewProviders": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "name",
-                    "defaultValue": "\"Steve\"",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 35
-                }
-            ],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, NgModule } from \"@angular/core\";\r\nimport { Story, Meta } from '@storybook/angular/types-6-0';\r\n\r\n@Component({\r\n  selector: \"my-component, MyComponent\",\r\n  standalone: true,\r\n  template: `\r\n    <ng-container>\r\n      <link\r\n        href=\"https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css\"\r\n        rel=\"stylesheet\"\r\n      />\r\n\r\n      <input\r\n        class=\"shadow-md rounded w-full px-4 py-2\"\r\n        placeholder=\"What is your name?\"\r\n        [attr.value]=\"name\"\r\n        (input)=\"\r\n      name = $event.target.value;\r\n    \"\r\n      />\r\n\r\n      <h1 class=\"text-lg h1\">Hello, {{name}} !</h1>\r\n    </ng-container>\r\n  `,\r\n  styles: [\r\n    `\r\n      .h1 {\r\n        margin-top: 10px;\r\n      }\r\n    `,\r\n  ],\r\n})\r\nexport class MyComponent {\r\n  name = \"Steve\";\r\n}\r\n\r\nexport default {\r\n  title: 'Example/MyComponent',\r\n  component: MyComponent,\r\n  // render: (args) => {\r\n  //   const { label, ...props } = args;\r\n  //   return {\r\n  //     props,\r\n  //     template: `\r\n  //       <input cpt-checkbox-input id=\"test2\" class=\"dwr\" checked />\r\n  //     `,\r\n  //   };\r\n  // },\r\n} as Meta;\r\n\r\n// const Template: Story<Page> = (args: Page) => ({\r\n//   props: args,\r\n// });\r\n\r\n// More on interaction testing: https://storybook.js.org/docs/angular/writing-tests/interaction-testing\r\nexport const SampleMyComponent = (args: any) => ({\r\n  args,\r\n});\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "\n      .h1 {\n        margin-top: 10px;\n      }\n    \n"
-        },
-        {
             "name": "PageComponent",
             "id": "component-PageComponent-9c1111eb162d8d58143abe707f63313892c6b5fc179b75f6c11fc66ac56d5b67a73357df130fd18c2be1f2d8f1049c1cb4a5798dc84954a995252e911a76ba56",
             "file": "src/stories/page.component.ts",
@@ -1335,8 +1309,8 @@
                 "file": "src/components/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    disabled: false,\r\n    variant: 'primary',\r\n    label: 'Button',\r\n  },\r\n  // parameters: {\r\n  //   controls: { exclude: /^input*/ },\r\n  // },\r\n}"
             },
             {
                 "name": "buttonActiveStyles",
@@ -1347,6 +1321,16 @@
                 "deprecationMessage": "",
                 "type": "string",
                 "defaultValue": "'[&:not(:disabled)]:active:shadow-inner2'"
+            },
+            {
+                "name": "ButtonArgTypes",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/button/button.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ArgTypes",
+                "defaultValue": "{\r\n  disabled: {\r\n    options: [true, false],\r\n    control: { type: 'boolean' },\r\n  },\r\n  variant: {\r\n    description: 'the variant of the type of the button, default value is \"primary\"',\r\n    options: Object.keys(buttonDisabledStyles),\r\n    control: { type: 'radio' },\r\n  },\r\n  size: {\r\n    defaultValue: Object.keys(buttonSizeVariantStyles)[0],\r\n    description: 'the vertical size of the button, default value is \"large\"',\r\n    options: Object.keys(buttonSizeVariantStyles),\r\n    control: { type: 'radio' },\r\n  },\r\n}"
             },
             {
                 "name": "buttonColorVariantStyles",
@@ -1405,8 +1389,8 @@
                 "file": "src/components/button/button-link.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    variant: 'primary',\r\n    label: 'Button',\r\n  },\r\n  // parameters: {\r\n  //   controls: { exclude: /^input*/ },\r\n  // },\r\n}"
             },
             {
                 "name": "buttonSizeVariantStyles",
@@ -1446,13 +1430,33 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<CheckboxInputComponent>",
-                "defaultValue": "(args: any) => ({\r\n  props: args,\r\n  template: `\r\n    <input cpt-checkbox [checked]=\"${args.checked}\" id=\"check1\" class=\"[&:checked~label>svg]:fill-black\" />\r\n    <label for=\"check1\" class=\"inline-block h-4 w-4 border border-black\"\r\n        ><svg class=\"fill-transparent stroke-black\" focusable=\"false\" aria-hidden=\"true\" viewBox=\"0 0 24 24\" data-testid=\"BookmarkBorderIcon\">\r\n          <path d=\"M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z\"></path></svg\r\n      >\r\n      Label</label>\r\n  `, \r\n})"
+                "defaultValue": "(args: any) => ({\r\n  props: args,\r\n  template: /* HTML */ `\r\n    <input cpt-checkbox [checked]=\"${args.checked}\" id=\"check1\" class=\"[&:checked~label>svg]:fill-black\" />\r\n    <label for=\"check1\" class=\"inline-block h-4 w-4 border border-black align-middle\">\r\n      <svg\r\n        class=\"fill-transparent stroke-black\"\r\n        focusable=\"false\"\r\n        aria-hidden=\"true\"\r\n        viewBox=\"0 0 24 24\"\r\n        data-testid=\"BookmarkBorderIcon\"\r\n      >\r\n        <path d=\"M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z\"></path>\r\n      </svg>\r\n    </label>\r\n    <label for=\"check1\" class=\"align-middle ml-1\">Label</label>\r\n  `,\r\n})"
+            },
+            {
+                "name": "CustomIcon2",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/checkbox/checkbox.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<CheckboxInputComponent>",
+                "defaultValue": "(args: any) => ({\r\n  props: args,\r\n  template: /* HTML */ `\r\n    <input cpt-checkbox [checked]=\"${args.checked}\" id=\"check1\" class=\"[&:checked~label>svg]:fill-black\" />\r\n    <label for=\"check1\" class=\"flex gap-1 items-center \">\r\n      <svg\r\n        class=\"fill-transparent stroke-black h-4 w-4 border border-black\"\r\n        focusable=\"false\"\r\n        aria-hidden=\"true\"\r\n        viewBox=\"0 0 24 24\"\r\n      >\r\n        <path d=\"M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z\"></path>\r\n      </svg>\r\n      Label\r\n    </label>\r\n  `,\r\n})"
+            },
+            {
+                "name": "CustomIcon3",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/components/checkbox/checkbox.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<CheckboxInputComponent>",
+                "defaultValue": "(args: any) => ({\r\n  props: args,\r\n  template: /* HTML */ `\r\n    <input cpt-checkbox [indeterminate]=${args.indeterminate} [checked]=\"${args.checked}\" id=\"check1\" class=\"[&:not(.indeterminate):checked~label_.checked]:block [&.indeterminate~label_i.indeterminate]:block\" />\r\n    <label for=\"check1\" class=\"flex gap-1 items-center \">\r\n      <label for=\"check1\" class=\"border border-black inline-block h-4 w-4\">\r\n        <i class=\"checked hidden leading-[14px] text-[13px] pis-[1px]\">✓</i>\r\n        <i class=\"indeterminate hidden leading-[12px] text-[15px] pis-[2px]\">−</i>\r\n      </label>\r\n      <span>Label</span>\r\n    </label>\r\n  `,\r\n})"
             },
             {
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/layout/albatross-container.component.stories.ts",
+                "file": "src/components/checkbox/checkbox.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1462,7 +1466,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/checkbox/checkbox.component.stories.ts",
+                "file": "src/components/layout/albatross-container.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1519,14 +1523,14 @@
                 "defaultValue": "Template.bind({})"
             },
             {
-                "name": "SampleMyComponent",
+                "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/test.component.stories.ts",
+                "file": "src/components/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "(args: any) => ({\r\n  args,\r\n})"
+                "type": "Meta<ButtonComponent>",
+                "defaultValue": "{\r\n  /* 👇 The title prop is optional.\r\n   * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading\r\n   * to learn how to generate automatic titles\r\n   */\r\n  title: 'Components/Buttons',\r\n  component: ButtonComponent,\r\n  argTypes: {\r\n    disabled: {\r\n      options: [true, false],\r\n      control: { type: 'boolean' },\r\n    },\r\n    variant: {\r\n      description: 'the variant of the type of the button, default value is \"primary\"',\r\n      options: Object.keys(buttonDisabledStyles),\r\n      control: { type: 'radio' },\r\n    },\r\n    size: {\r\n      description: 'the vertical size of the button, default value is \"large\"',\r\n      options: Object.keys(buttonSizeVariantStyles),\r\n      control: { type: 'radio' },\r\n    },\r\n  },\r\n  decorators: [\r\n    componentWrapperDecorator((story) => `<div class=\"p-2\">${story}</div>`),\r\n    // moduleMetadata({\r\n    //   imports:[ButtonComponent, ButtonLinkComponent, ButtonInputComponent]\r\n    // })\r\n  ],\r\n}"
             },
             {
                 "name": "Template",
@@ -1562,17 +1566,7 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/components/button/button-link.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/components/button/button.component.stories.ts",
+                "file": "src/components/checkbox/checkbox.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -1587,16 +1581,6 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "(args) => ({\r\n  props: args,\r\n\r\n  template: templateTemplate,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/components/checkbox/checkbox.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "templateTemplate",
@@ -1620,7 +1604,30 @@
             }
         ],
         "functions": [],
-        "typealiases": [],
+        "typealiases": [
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ButtonLinkComponent>",
+                "file": "src/components/button/button-link.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 177
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ButtonComponent>",
+                "file": "src/components/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 177
+            }
+        ],
         "enumerations": [],
         "groupedVariables": {
             "src/components/button/button.component.stories.ts": [
@@ -1631,18 +1638,18 @@
                     "file": "src/components/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    disabled: false,\r\n    variant: 'primary',\r\n    label: 'Button',\r\n  },\r\n  // parameters: {\r\n  //   controls: { exclude: /^input*/ },\r\n  // },\r\n}"
                 },
                 {
-                    "name": "Template",
+                    "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/components/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
+                    "type": "Meta<ButtonComponent>",
+                    "defaultValue": "{\r\n  /* 👇 The title prop is optional.\r\n   * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading\r\n   * to learn how to generate automatic titles\r\n   */\r\n  title: 'Components/Buttons',\r\n  component: ButtonComponent,\r\n  argTypes: {\r\n    disabled: {\r\n      options: [true, false],\r\n      control: { type: 'boolean' },\r\n    },\r\n    variant: {\r\n      description: 'the variant of the type of the button, default value is \"primary\"',\r\n      options: Object.keys(buttonDisabledStyles),\r\n      control: { type: 'radio' },\r\n    },\r\n    size: {\r\n      description: 'the vertical size of the button, default value is \"large\"',\r\n      options: Object.keys(buttonSizeVariantStyles),\r\n      control: { type: 'radio' },\r\n    },\r\n  },\r\n  decorators: [\r\n    componentWrapperDecorator((story) => `<div class=\"p-2\">${story}</div>`),\r\n    // moduleMetadata({\r\n    //   imports:[ButtonComponent, ButtonLinkComponent, ButtonInputComponent]\r\n    // })\r\n  ],\r\n}"
                 }
             ],
             "src/components/button/button.component.ts": [
@@ -1655,6 +1662,16 @@
                     "deprecationMessage": "",
                     "type": "string",
                     "defaultValue": "'[&:not(:disabled)]:active:shadow-inner2'"
+                },
+                {
+                    "name": "ButtonArgTypes",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/button/button.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ArgTypes",
+                    "defaultValue": "{\r\n  disabled: {\r\n    options: [true, false],\r\n    control: { type: 'boolean' },\r\n  },\r\n  variant: {\r\n    description: 'the variant of the type of the button, default value is \"primary\"',\r\n    options: Object.keys(buttonDisabledStyles),\r\n    control: { type: 'radio' },\r\n  },\r\n  size: {\r\n    defaultValue: Object.keys(buttonSizeVariantStyles)[0],\r\n    description: 'the vertical size of the button, default value is \"large\"',\r\n    options: Object.keys(buttonSizeVariantStyles),\r\n    control: { type: 'radio' },\r\n  },\r\n}"
                 },
                 {
                     "name": "buttonColorVariantStyles",
@@ -1737,18 +1754,8 @@
                     "file": "src/components/button/button-link.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/components/button/button-link.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "(args) => ({\r\n  props: args,\r\n})"
+                    "defaultValue": "{\r\n  args: {\r\n    variant: 'primary',\r\n    label: 'Button',\r\n  },\r\n  // parameters: {\r\n  //   controls: { exclude: /^input*/ },\r\n  // },\r\n}"
                 }
             ],
             "src/components/checkbox/checkbox.component.stories.ts": [
@@ -1770,7 +1777,27 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<CheckboxInputComponent>",
-                    "defaultValue": "(args: any) => ({\r\n  props: args,\r\n  template: `\r\n    <input cpt-checkbox [checked]=\"${args.checked}\" id=\"check1\" class=\"[&:checked~label>svg]:fill-black\" />\r\n    <label for=\"check1\" class=\"inline-block h-4 w-4 border border-black\"\r\n        ><svg class=\"fill-transparent stroke-black\" focusable=\"false\" aria-hidden=\"true\" viewBox=\"0 0 24 24\" data-testid=\"BookmarkBorderIcon\">\r\n          <path d=\"M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z\"></path></svg\r\n      >\r\n      Label</label>\r\n  `, \r\n})"
+                    "defaultValue": "(args: any) => ({\r\n  props: args,\r\n  template: /* HTML */ `\r\n    <input cpt-checkbox [checked]=\"${args.checked}\" id=\"check1\" class=\"[&:checked~label>svg]:fill-black\" />\r\n    <label for=\"check1\" class=\"inline-block h-4 w-4 border border-black align-middle\">\r\n      <svg\r\n        class=\"fill-transparent stroke-black\"\r\n        focusable=\"false\"\r\n        aria-hidden=\"true\"\r\n        viewBox=\"0 0 24 24\"\r\n        data-testid=\"BookmarkBorderIcon\"\r\n      >\r\n        <path d=\"M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z\"></path>\r\n      </svg>\r\n    </label>\r\n    <label for=\"check1\" class=\"align-middle ml-1\">Label</label>\r\n  `,\r\n})"
+                },
+                {
+                    "name": "CustomIcon2",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/checkbox/checkbox.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<CheckboxInputComponent>",
+                    "defaultValue": "(args: any) => ({\r\n  props: args,\r\n  template: /* HTML */ `\r\n    <input cpt-checkbox [checked]=\"${args.checked}\" id=\"check1\" class=\"[&:checked~label>svg]:fill-black\" />\r\n    <label for=\"check1\" class=\"flex gap-1 items-center \">\r\n      <svg\r\n        class=\"fill-transparent stroke-black h-4 w-4 border border-black\"\r\n        focusable=\"false\"\r\n        aria-hidden=\"true\"\r\n        viewBox=\"0 0 24 24\"\r\n      >\r\n        <path d=\"M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z\"></path>\r\n      </svg>\r\n      Label\r\n    </label>\r\n  `,\r\n})"
+                },
+                {
+                    "name": "CustomIcon3",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/components/checkbox/checkbox.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<CheckboxInputComponent>",
+                    "defaultValue": "(args: any) => ({\r\n  props: args,\r\n  template: /* HTML */ `\r\n    <input cpt-checkbox [indeterminate]=${args.indeterminate} [checked]=\"${args.checked}\" id=\"check1\" class=\"[&:not(.indeterminate):checked~label_.checked]:block [&.indeterminate~label_i.indeterminate]:block\" />\r\n    <label for=\"check1\" class=\"flex gap-1 items-center \">\r\n      <label for=\"check1\" class=\"border border-black inline-block h-4 w-4\">\r\n        <i class=\"checked hidden leading-[14px] text-[13px] pis-[1px]\">✓</i>\r\n        <i class=\"indeterminate hidden leading-[12px] text-[15px] pis-[2px]\">−</i>\r\n      </label>\r\n      <span>Label</span>\r\n    </label>\r\n  `,\r\n})"
                 },
                 {
                     "name": "Default",
@@ -1920,23 +1947,38 @@
                     "type": "Story<Page>",
                     "defaultValue": "(args: Page) => ({\n  props: args,\n})"
                 }
-            ],
-            "src/components/test.component.stories.ts": [
-                {
-                    "name": "SampleMyComponent",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/components/test.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "(args: any) => ({\r\n  args,\r\n})"
-                }
             ]
         },
         "groupedFunctions": {},
         "groupedEnumerations": {},
-        "groupedTypeAliases": {}
+        "groupedTypeAliases": {
+            "src/components/button/button-link.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ButtonLinkComponent>",
+                    "file": "src/components/button/button-link.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 177
+                }
+            ],
+            "src/components/button/button.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ButtonComponent>",
+                    "file": "src/components/button/button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 177
+                }
+            ]
+        }
     },
     "routes": [],
     "coverage": {
@@ -1983,16 +2025,6 @@
                 "status": "low"
             },
             {
-                "filePath": "src/components/button/button-link.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Template",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
                 "filePath": "src/components/button/button.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -2007,7 +2039,7 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Template",
+                "name": "meta",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -2036,7 +2068,7 @@
                 "linktype": "component",
                 "name": "ButtonLinkComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {
@@ -2045,6 +2077,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "buttonActiveStyles",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/button/button.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ButtonArgTypes",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -2115,6 +2157,26 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "CustomIcon",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/checkbox/checkbox.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "CustomIcon2",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/components/checkbox/checkbox.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "CustomIcon3",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -2263,25 +2325,6 @@
                 "status": "low"
             },
             {
-                "filePath": "src/components/test.component.stories.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "MyComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/2",
-                "status": "low"
-            },
-            {
-                "filePath": "src/components/test.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "SampleMyComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
                 "filePath": "src/stories/Header.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -2354,7 +2397,7 @@
                 "filePath": "src/stories/button.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "ButtonComponent",
+                "name": "ButtonComponentSB",
                 "coveragePercent": 83,
                 "coverageCount": "5/6",
                 "status": "very-good"

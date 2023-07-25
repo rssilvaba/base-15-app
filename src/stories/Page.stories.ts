@@ -2,7 +2,7 @@ import { moduleMetadata, Story, Meta } from '@storybook/angular';
 import { within, userEvent } from '@storybook/testing-library';
 import { CommonModule } from '@angular/common';
 
-import Button from './button.component';
+import ButtonComponentSB from './button.component';
 import Header from './header.component';
 import Page from './page.component';
 
@@ -15,8 +15,8 @@ export default {
   },
   decorators: [
     moduleMetadata({
-      declarations: [Button, Header],
-      imports: [CommonModule],
+      declarations: [],
+      imports: [CommonModule, Header, ButtonComponentSB],
     }),
   ],
 } as Meta;

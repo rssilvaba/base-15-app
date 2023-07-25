@@ -4,13 +4,13 @@ setCompodocJson(docJson);
 
 export const parameters = {
   layout: 'fullscreen',
-  actions: { argTypesRegex: "^on[A-Z].*" },
-  controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
+  // actions: { argTypesRegex: "^on[A-Z].*" },
+  // controls: {
+  //   matchers: {
+  //     color: /(background|color)$/i,
+  //     date: /Date$/,
+  //   },
+  // },
   viewport: {
     viewports: {
       small: { name: 'small', styles: { width: '360px', height: '640px' } },

@@ -13,9 +13,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     {{ label }}
   </button>`,
   styleUrls: ['./button.css'],
-  imports: [CommonModule]
+  imports: [CommonModule],
 })
-export default class ButtonComponent {
+export default class ButtonComponentSB {
   /**
    * Is this the principal call to action on the page?
    */

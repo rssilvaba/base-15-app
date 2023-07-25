@@ -1,53 +1,53 @@
 // Button.stories.ts
 
-import { componentWrapperDecorator, Meta, moduleMetadata, Story } from '@storybook/angular/';
+import { componentWrapperDecorator, Meta, moduleMetadata, StoryObj } from '@storybook/angular/';
 
-import { ButtonComponent, ButtonLinkComponent, ButtonInputComponent } from './button.component';
-
-export default {
+import {
+  ButtonComponent,
+  ButtonLinkComponent,
+  ButtonInputComponent,
+  buttonSizeVariantStyles,
+  buttonDisabledStyles,
+  ButtonArgTypes,
+} from './button.component';
+const meta: Meta<ButtonComponent> = {
   /* 👇 The title prop is optional.
    * See https://storybook.js.org/docs/angular/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
   title: 'Components/Buttons',
   component: ButtonComponent,
-  argTypes: {
-    disabled: {
-      options: [true, false],
-    },
-    variant: {
-      description: 'the variant of the type of the button, default value is "primary"',
-      options: ['primary', 'secondary'],
-      control: { type: 'radio' },
-    },
-    size: {
-      description: 'the vertical size of the button, default value is "large"',
-      options: ['large', 'medium', 'small'],
-      control: { type: 'radio' },
-    },
-  },
+  argTypes: ButtonArgTypes,
   decorators: [
     componentWrapperDecorator((story) => `<div class="p-2">${story}</div>`),
     // moduleMetadata({
     //   imports:[ButtonComponent, ButtonLinkComponent, ButtonInputComponent]
     // })
   ],
-} as Meta;
+};
 
 //👇 We create a “template” of how args map to rendering
-const Template: Story = (args) => ({
-  props: args,
-});
+// const Template: Story<ButtonComponent> = (args) => ({
+//   props: args,
+// });
+
+type Story = StoryObj<ButtonComponent>;
 
 //👇 Each story then reuses that template
-export const Button = Template.bind({});
-Button.args = {
-  disabled: false,
-  variant: 'primary',
-  label: 'Button',
+export const Button: Story = {
+  args: {
+    disabled: false,
+    variant: 'primary',
+    label: 'Button',
+  },
+  // parameters: {
+  //   controls: { exclude: /^input*/ },
+  // },
 };
 // export const Button = (args: ButtonComponent) => ({
 //     template: `
 //       <input cpt-btn class="Aw" [size]="${args.size}" [variant]="${args.variant}" label="${args.label}">
 //     `,
 //   });
+
+export default meta;
